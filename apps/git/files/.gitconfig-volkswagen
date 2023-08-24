@@ -1,0 +1,3 @@
+# override default ~/.gitconfig
+[user]
+	email = benjamin.stuermer@quartett-mobile.de

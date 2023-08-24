@@ -1,0 +1,6 @@
+actions:
+  - action: package.install
+    where: os.name == "macos"
+    list:
+      - adobe-creative-cloud
+      - adobe-acrobat-reader

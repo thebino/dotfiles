@@ -1,0 +1,56 @@
+# default user
+[user]
+    name = Benjamin Stürmer
+    email = benjamin@stuermer.pro
+    signingkey = 121AA72AB89DCDC2FEEAA5CD2525AE02D55B53E9
+
+[core]
+    editor = hx
+    excludesfile = ~/.gitignore_global
+
+[gpg]
+    format = "openpgp"
+
+[commit]
+    gpgSign = true
+
+[init]
+    defaultBranch = main
+
+[fetch]
+    prune = true
+
+[push]
+    default = "current"
+
+[pull]
+    default = "current"
+    rebase = true
+[help]
+    autocorrect = 1
+
+# custom .gitconfig if inside work directory
+[includeIf "gitdir:~/workspace/quartett/"]
+    path = ~/.gitconfig-quartett
+
+[includeIf "gitdir:~/workspace/volkswagen/"]
+    path = ~/.gitconfig-volkswagen
+
+[includeIf "gitdir:~/workspace/cassyopaya/"]
+    path = ~/.gitconfig-cassyopaya
+
+
+[alias]
+    clean-branches = !"git branch --merged | grep -vE 'main|master|development|\\*' | xargs -n 1 git branch -D"
+    unstage = reset HEAD --
+    co = checkout
+    ci = commit
+    br = branch
+    branches = branch -a
+    who = shortlog -s --
+    flog = log --name-only --pretty='\n%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short
+    vlog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen - %cD (%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative -p
+    slog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    incoming = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' ..@{u})
+    outgoing = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' @{u}..)
+    committers = !(git log | grep Author | sort | uniq -c | sort -n -r)

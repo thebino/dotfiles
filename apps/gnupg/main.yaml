@@ -1,0 +1,18 @@
+actions:
+  - action: package.install
+    where: os.name == "macos"
+    provider: brew
+    name: gnupg
+
+  - action: package.install
+    where: os.name == "linux"
+    provider: apt
+    name: gnupg
+  
+  - action: command.run
+    command: gpg
+    args:
+      - "--output"
+      - "message.txt"
+      - "--decrypt"
+      - "apps/gnupg/files/encrypted.gpg"

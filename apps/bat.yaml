@@ -1,0 +1,10 @@
+actions:
+  - action: package.install
+    where: os.name == "macos"
+    provider: homebrew
+    name: bat
+
+  - action: package.install
+    where: os.name == "linux"
+    provider: aptitude
+    name: bat

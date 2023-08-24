@@ -1,0 +1,10 @@
+actions:
+  - action: package.install
+    where: os.name == "macos"
+    name: mas
+
+  - action: command.run
+    where: os.name == "macos"
+    command: mas
+    args:
+      - upgrade

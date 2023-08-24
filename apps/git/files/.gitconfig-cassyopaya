@@ -1,0 +1,3 @@
+# override default ~/.gitconfig
+[user]
+	email = stuermer@cassyopaya.de

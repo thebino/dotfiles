@@ -1,0 +1,33 @@
+depends:
+- gnupg
+
+actions:
+  - action: package.install
+    list:
+      - git
+      - git-crypt
+
+  - action: file.copy
+    from: .gitconfig
+    to: "{{ user.home_dir }}/.gitconfig"
+    chmod: "644"
+
+  - action: file.copy
+    from: .gitconfig-personal
+    to: "{{ user.home_dir }}/.gitconfig-personal"
+  
+  - action: file.copy
+    from: .gitconfig-quartett
+    to: "{{ user.home_dir }}/.gitconfig-quartett"
+
+  - action: file.copy
+    from: .gitconfig-volkswagen
+    to: "{{ user.home_dir }}/.gitconfig-volkswagen"
+
+  - action: file.copy
+    from: .gitconfig-cassyopaya
+    to: "{{ user.home_dir }}/.gitconfig-cassyopaya"
+
+  - action: file.copy
+    from: .gitignore_global
+    to: "{{ user.home_dir }}/.gitignore_global"

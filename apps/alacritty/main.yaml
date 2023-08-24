@@ -1,0 +1,21 @@
+---
+actions:
+  - action: package.install
+    name: alacritty
+
+  - action: file.copy
+    where: os.name == "linux" || os.name == "macos"
+    from: alacritty/alacritty.yaml
+    to: "{{ user.config_dir }}/alacritty/alacritty.yml"
+
+  - action: file.copy
+    where: os.name == "linux" || os.name == "macos"
+    from: alacritty/colors.yaml
+    template: true
+    to: "{{ user.home_dir }}/.config/alacritty/colors.yml"
+
+  - action: file.copy
+    where: os.name == "linux" || os.name == "macos"
+    from: alacritty/fonts.yaml
+    template: true
+    to: "{{ user.home_dir }}/.config/alacritty/fonts.yml"

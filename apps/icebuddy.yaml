@@ -1,0 +1,10 @@
+depends:
+- mas
+
+actions:
+  - action: command.run
+    where: os.name == "macos"
+    command: mas
+    args:
+      - "install"
+      - "1595947689"
