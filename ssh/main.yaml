@@ -1,0 +1,94 @@
+depends:
+  - gnupg
+
+actions:
+  # ~/.ssh/config
+  - action: command.run
+    command: gpg
+    args:
+      - "--output"
+      - "apps/ssh/files/config"
+      - "--decrypt"
+      - "apps/ssh/files/config_encrypted.asc"
+
+  - action: file.copy
+    from: config
+    to: "{{ user.home_dir }}/.ssh/config"
+
+  - action: command.run
+    command: rm
+    args:
+      - "apps/ssh/files/config"
+
+
+  # ~/.ssh/id_github
+  - action: command.run
+    command: gpg
+    args:
+      - "--output"
+      - "apps/ssh/files/id_github"
+      - "--decrypt"
+      - "apps/ssh/files/id_github_encrypted.asc"
+
+  - action: file.copy
+    from: id_github
+    to: "{{ user.home_dir }}/.ssh/id_github"
+
+  - action: command.run
+    command: rm
+    args:
+      - "apps/ssh/files/id_github"
+
+  # ~/.ssh/id_gitlab
+  - action: command.run
+    command: gpg
+    args:
+      - "--output"
+      - "apps/ssh/files/id_gitlab"
+      - "--decrypt"
+      - "apps/ssh/files/id_gitlab_encrypted.asc"
+
+  - action: file.copy
+    from: id_gitlab
+    to: "{{ user.home_dir }}/.ssh/id_gitlab"
+
+  - action: command.run
+    command: rm
+    args:
+      - "apps/ssh/files/id_gitlab"
+
+  # ~/.ssh/id_gitlab_qm
+  - action: command.run
+    command: gpg
+    args:
+      - "--output"
+      - "apps/ssh/files/id_gitlab_qm"
+      - "--decrypt"
+      - "apps/ssh/files/id_gitlab_qm_encrypted.asc"
+
+  - action: file.copy
+    from: id_gitlab_qm
+    to: "{{ user.home_dir }}/.ssh/id_gitlab_qm"
+
+  - action: command.run
+    command: rm
+    args:
+      - "apps/ssh/files/id_gitlab_qm"
+
+  # ~/.ssh/known_hosts
+  - action: command.run
+    command: gpg
+    args:
+      - "--output"
+      - "apps/ssh/files/known_hosts"
+      - "--decrypt"
+      - "apps/ssh/files/known_hosts_encrypted.asc"
+
+  - action: file.copy
+    from: known_hosts
+    to: "{{ user.home_dir }}/.ssh/known_hosts"
+
+  - action: command.run
+    command: rm
+    args:
+      - "apps/ssh/files/known_hosts

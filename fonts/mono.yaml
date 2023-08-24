@@ -1,0 +1,18 @@
+actions:
+  - action: package.repository
+    where: os.name == "macos"
+    provider: homebrew
+    name: homebrew/cask-fonts
+
+  - action: package.install
+    where: os.name == "macos"
+    list:
+      - font-jetbrains-mono
+
+  # Install packages on linux
+  - action: command.run
+    where: os.name == "linux"
+    command: sh
+    args:
+      - "-c"
+      - "curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh | sh -s -"

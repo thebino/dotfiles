@@ -1,0 +1,27 @@
+depends:
+  - gnupg
+
+actions:
+  - action: package.install
+    name: rustup-init
+
+  - action: file.copy
+    from: env
+    to: "{{ user.home_dir }}/.cargo/env"
+
+  - action: command.run
+    command: gpg
+    args:
+      - "--output"
+      - "apps/cargo/files/credentials.toml"
+      - "--decrypt"
+      - "apps/cargo/files/credentials_encrypted.asc"
+
+  - action: file.copy
+    from: credentials.toml
+    to: "{{ user.home_dir }}/.cargo/credentials.toml"
+
+  - action: command.run
+    command: rm
+    args:
+      - "apps/cargo/files/credentials.toml"

@@ -1,0 +1,17 @@
+theme = "onedark"
+
+[editor]
+line-number = "absolute"
+
+[editor.cursor-shape]
+insert = "block"
+normal = "bar"
+select = "underline"
+
+[keys.normal]
+C-r = ":sh cargo run"
+
+[editor.statusline]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"

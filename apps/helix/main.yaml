@@ -1,0 +1,11 @@
+actions:
+  - action: package.install
+    name: helix
+
+  - action: file.copy
+    from: config.toml
+    to: "{{ user.config_dir }}/helix/config.toml"
+
+  - action: file.copy
+    from: languages.toml
+    to: "{{ user.config_dir }}/helix/languages.toml"
