@@ -1,3 +1,4 @@
+# Media system
 actions:
   - action: package.install
     where: os.name == "macos"

@@ -10,7 +10,23 @@ Comtrya allows to configure and provision the system with these files.
 curl -fsSL https://get.comtrya.dev | sh
 ```
 
-Provisioning **all**
+🚨 Due to an issue [#337](https://github.com/comtrya/comtrya/issues/337) a manual installation might be needed!
+## Manual installation
+Install [rustup](https://rustup.rs/)
+```shell
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+Clone & build comtrya
+```shell
+git clone https://github.com/comtrya/comtrya.git
+cargo build --release
+./target/release/comtrya
+```
+
+
+## Provisioning
+Provisioning **all** from repository
 ```shell
 comtrya -d https://github.com/thebino/dotfiles apply
 ```
@@ -18,22 +34,4 @@ comtrya -d https://github.com/thebino/dotfiles apply
 Provisioning a specific manifest or a subset
 ```shell
 comtrya -d https://github.com/thebino/dotfiles apply -m apps.git
-```
-
-
-## Manual installation
-Clone comtrya project
-```shell
-git clone https://github.com/comtrya/comtrya.git
-```
-
-Install [rustup](https://rustup.rs/)
-```shell
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
-Build and run comtrya
-```shell
-cd comtrya
-~/.cargo/bin/cargo run --bin comtrya --
 ```

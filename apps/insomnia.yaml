@@ -1,3 +1,5 @@
+# GUI HTTP Client
+# https://insomnia.rest/
 actions:
   - action: package.install
     where: os.name == "macos"

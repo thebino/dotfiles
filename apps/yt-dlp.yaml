@@ -1,0 +1,5 @@
+# downloader
+# https://github.com/yt-dlp/yt-dlp
+actions:
+  - action: package.install
+    name: yt-dlp

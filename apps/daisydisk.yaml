@@ -1,3 +1,5 @@
+# Disk space analyzer
+# daisydiskapp.com
 actions:
   - action: package.install
     name: daisydisk

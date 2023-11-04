@@ -1,0 +1,5 @@
+# Java Development kit
+actions:
+  - action: package.install
+    where: os.name == "macos"
+    name: openjdk

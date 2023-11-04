@@ -1,3 +1,5 @@
+# static-site generator
+# https://cobalt-org.github.io/
 actions:
   - action: package.install
     name: cobalt

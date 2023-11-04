@@ -1,3 +1,4 @@
+# automation
 actions:
   - action: package.install
     name: home-assistant

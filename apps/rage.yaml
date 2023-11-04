@@ -1,3 +1,5 @@
+# AGE encryption with rust
+# str4d.xyz/rage
 actions:
   - action: package.install
     name: rage

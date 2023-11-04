@@ -1,3 +1,5 @@
+# find
+# https://github.com/sharkdp/fd
 actions:
   - action: package.install
     name: fd

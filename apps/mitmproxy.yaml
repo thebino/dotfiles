@@ -1,0 +1,4 @@
+# Intercept, modify, replay, save HTTP/S traffic
+actions:
+  - action: package.install
+    name: mitmproxy

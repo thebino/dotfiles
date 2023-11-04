@@ -1,3 +1,4 @@
+# TUI git client
 actions:
   - action: package.install
     name: gitui

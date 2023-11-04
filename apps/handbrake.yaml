@@ -1,3 +1,4 @@
+# gui video converter
 actions:
   - action: package.install
     name: handbrake
