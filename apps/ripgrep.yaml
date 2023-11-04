@@ -1,0 +1,5 @@
+# rg - recursive file search
+# https://github.com/BurntSushi/ripgrep
+actions:
+  - action: package.install
+    name: ripgrep

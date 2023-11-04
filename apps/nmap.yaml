@@ -1,3 +1,4 @@
+# Port scan
 actions:
   - action: package.install
     name: nmap

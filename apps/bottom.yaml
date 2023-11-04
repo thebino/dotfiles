@@ -1,0 +1,5 @@
+# TUI process monitor
+# https://github.com/ClementTsang/bottom
+actions:
+  - action: package.install
+    name: bottom

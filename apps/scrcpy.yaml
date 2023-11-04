@@ -1,0 +1,6 @@
+# Display and control your Android device
+# https://github.com/Genymobile/scrcpy
+actions:
+  - action: package.install
+    where: os.name == "macos"
+    name: scrcpy

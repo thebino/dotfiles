@@ -1,3 +1,5 @@
+# directories as trees
+# https://mama.indstate.edu/users/ice/tree/
 actions:
   - action: package.install
     name: tree

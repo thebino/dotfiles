@@ -1,0 +1,41 @@
+actions:
+  - action: package.install
+    list:
+      - fzf
+      - zsh
+
+  # add zsh to default shells
+  - action: command.run
+    dir: "{{ user.home_dir }}"
+    sudo: true
+    command: echo  
+    args:
+    - "$(which zsh) >> /etc/shells"
+
+ - action: file.copy
+   from: zshrc
+   to: "{{ user.home_dir }}/.zshrc"
+
+  - action: command.run
+    dir: "{{ user.home_dir }}"
+    command: /bin/zsh
+
+  - action: command.run
+    dir: "{{ user.home_dir }}"
+    command: source
+    args:
+      - "{{ user.home_dir }}/.zshrc"
+
+  - action: file.copy
+    from: alias.zsh
+    to: "{{ user.home_dir }}/.zsh/alias.zsh
+
+  - action: command.run
+    dir: "{{ user.home_dir }}"
+    command: /bin/zsh
+
+ # - action: file.link
+   # from: 1password.zsh
+#    to: "{{ user.home_dir }}/.zsh/includes/1password.zsh"
+#    chmod: "644"
+

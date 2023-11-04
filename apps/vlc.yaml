@@ -1,3 +1,5 @@
+# VLC Media player
+# https://www.videolan.org/vlc/
 actions:
   - action: package.install
     name: vlc

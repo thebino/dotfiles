@@ -1,0 +1,5 @@
+# TUI du
+# https://github.com/bootandy/dust
+actions:
+  - action: package.install
+    name: dust

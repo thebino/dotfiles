@@ -1,6 +1,5 @@
-# Notes
-# https://obsidian.md/
+# Java Development kit
 actions:
   - action: package.install
     where: os.name == "macos"
-    name: obsidian
+    name: openjdk

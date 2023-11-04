@@ -1,3 +1,5 @@
+# sd - (s)earch & (d)isplace
+# https://github.com/chmln/sd
 actions:
   - action: package.install
     where: os.name == "macos"

@@ -1,0 +1,5 @@
+# TUI system monitor
+# https://nicolargo.github.io/glances/
+actions:
+  - action: package.install
+    name: glances

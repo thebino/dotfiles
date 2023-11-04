@@ -1,3 +1,4 @@
+# browser
 actions:
   - action: package.install
     name: firefox

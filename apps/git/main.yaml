@@ -6,6 +6,7 @@ actions:
     list:
       - git
       - git-crypt
+      - git-lfs
 
   - action: file.copy
     from: .gitconfig

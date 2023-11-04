@@ -1,3 +1,4 @@
+# Mac App Store command-line interface
 actions:
   - action: package.install
     where: os.name == "macos"
