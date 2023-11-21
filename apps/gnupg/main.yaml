@@ -1,4 +1,9 @@
 actions:
+  - action: file.copy
+    from: encrypted.gpg
+    to: /tmp/encrypted.gpg
+    chmod: 644
+    
   - action: package.install
     where: os.name == "macos"
     provider: brew
@@ -15,4 +20,4 @@ actions:
       - "--output"
       - "message.txt"
       - "--decrypt"
-      - "apps/gnupg/files/encrypted.gpg"
+      - "/tmp/encrypted.gpg"
