@@ -12,13 +12,9 @@ actions:
     args:
     - "$(which zsh) >> /etc/shells"
 
- - action: file.copy
-   from: zshrc
-   to: "{{ user.home_dir }}/.zshrc"
-
-  - action: command.run
-    dir: "{{ user.home_dir }}"
-    command: /bin/zsh
+  - action: file.copy
+    from: zshrc
+    to: "{{ user.home_dir }}/.zshrc"
 
   - action: command.run
     dir: "{{ user.home_dir }}"
@@ -28,7 +24,7 @@ actions:
 
   - action: file.copy
     from: alias.zsh
-    to: "{{ user.home_dir }}/.zsh/alias.zsh
+    to: "{{ user.home_dir }}/.zsh/alias.zsh"
 
   - action: command.run
     dir: "{{ user.home_dir }}"

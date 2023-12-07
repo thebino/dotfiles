@@ -1,0 +1,7 @@
+# Backup application for online & offline backup
+# arqbackup.com
+actions:
+  - action: package.install
+    where: os.name == "macos"
+    list:
+      - ouch

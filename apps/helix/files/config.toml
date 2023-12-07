@@ -3,13 +3,21 @@ theme = "onedark"
 [editor]
 line-number = "absolute"
 
+[editor.lsp]
+display-inlay-hints = true
+
 [editor.cursor-shape]
 insert = "block"
 normal = "bar"
 select = "underline"
 
+[editor.file-picker]
+hidden = false
+
 [keys.normal]
 C-r = ":sh cargo run"
+C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
 
 [editor.statusline]
 mode.normal = "NORMAL"

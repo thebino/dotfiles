@@ -1,7 +1,7 @@
 # LaTeX Editor
 # https://www.texifier.com/
 depends:
-- mas
+- apps.mas
 
 actions:
   - action: command.run

@@ -1,0 +1,12 @@
+# code formatter
+# https://dprint.dev
+actions:
+  - action: package.install
+    name: dprint
+
+  - action: command.run
+    command: dprint
+    args:
+      - "init"
+      - "--config"
+      - "{{ user.config_dir }}/dprint.json"

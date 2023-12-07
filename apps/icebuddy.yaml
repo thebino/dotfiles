@@ -1,6 +1,6 @@
 # ICE-Train companion
 depends:
-- mas
+- apps.mas
 
 actions:
   - action: command.run
