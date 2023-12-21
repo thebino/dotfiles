@@ -1,21 +1,23 @@
----
+depends:
+- fonts.nerdfonts
+
 actions:
   - action: package.install
     name: alacritty
 
   - action: file.copy
     where: os.name == "linux" || os.name == "macos"
-    from: alacritty.yaml
-    to: "{{ user.home_dir }}/.config/alacritty/alacritty.yaml"
+    from: alacritty.yml
+    to: "{{ user.home_dir }}/.config/alacritty/alacritty.yml"
 
   - action: file.copy
     where: os.name == "linux" || os.name == "macos"
-    from: colors.yaml
+    from: colors.yml
     template: true
-    to: "{{ user.home_dir }}/.config/alacritty/colors.yaml"
+    to: "{{ user.home_dir }}/.config/alacritty/colors.yml"
 
   - action: file.copy
     where: os.name == "linux" || os.name == "macos"
-    from: fonts.yaml
+    from: fonts.yml
     template: true
-    to: "{{ user.home_dir }}/.config/alacritty/fonts.yaml"
+    to: "{{ user.home_dir }}/.config/alacritty/fonts.yml"
