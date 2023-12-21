@@ -5,9 +5,9 @@ actions:
   - action: file.copy
     from: config.toml
     template: true
-    to: "{{ user.config_dir }}/helix/config.toml"
+    to: "{{ user.home_dir }}/.config/helix/config.toml"
 
   - action: file.copy
     from: languages.toml
     template: true
-    to: "{{ user.config_dir }}/helix/languages.toml"
+    to: "{{ user.home_dir }}/.config/helix/languages.toml"

@@ -9,4 +9,4 @@ actions:
     args:
       - "init"
       - "--config"
-      - "{{ user.config_dir }}/dprint.json"
+      - "{{ user.home_dir }}/.config/dprint.json"
