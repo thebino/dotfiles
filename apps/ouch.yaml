@@ -1,5 +1,5 @@
-# Backup application for online & offline backup
-# arqbackup.com
+# Compression & Decompression for files
+# tar, zip, gzip
 actions:
   - action: package.install
     where: os.name == "macos"
