@@ -1,10 +1,8 @@
 depends:
   - apps.gnupg
+  - apps.rustup
 
 actions:
-  - action: package.install
-    name: rustup-init
-
   - action: file.copy
     from: env
     to: "{{ user.home_dir }}/.cargo/env"
