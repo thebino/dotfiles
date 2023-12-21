@@ -1,0 +1,15 @@
+actions:
+  # JetBrainsMonoNerdFont
+  - action: command.run
+    command: sh
+    args:
+      - "-c"
+      - "cd ~/Library/Fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFont-Regular.ttf"
+
+  # HackNerdFont
+  - action: command.run
+    command: sh
+    args:
+      - "-c"
+      - "cd ~/Library/Fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf"
+  
