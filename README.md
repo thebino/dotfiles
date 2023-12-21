@@ -25,6 +25,10 @@ cargo build --release
 ```
 
 
+## ⚠️ Side-effects
+`{{ user.config_dir }}` on Mac is refering to `~/Library/Application Support/<appname>/` it might be necessary to use `{{ user.home_dir }}/.config` instead for some apps.
+
+
 ## Provisioning
 Provisioning **all** from repository
 ```shell

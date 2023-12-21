@@ -6,16 +6,16 @@ actions:
   - action: file.copy
     where: os.name == "linux" || os.name == "macos"
     from: alacritty.yaml
-    to: "{{ user.config_dir }}/alacritty/alacritty.yaml"
+    to: "{{ user.home_dir }}/.config/alacritty/alacritty.yaml"
 
   - action: file.copy
     where: os.name == "linux" || os.name == "macos"
     from: colors.yaml
     template: true
-    to: "{{ user.config_dir }}/alacritty/colors.yaml"
+    to: "{{ user.home_dir }}/.config/alacritty/colors.yaml"
 
   - action: file.copy
     where: os.name == "linux" || os.name == "macos"
     from: fonts.yaml
     template: true
-    to: "{{ user.config_dir }}/alacritty/fonts.yaml"
+    to: "{{ user.home_dir }}/.config/alacritty/fonts.yaml"
