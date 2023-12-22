@@ -1,0 +1,1 @@
+require("thebino.config.options")

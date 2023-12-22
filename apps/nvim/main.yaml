@@ -1,0 +1,55 @@
+---
+actions:
+  - action: package.install
+    name: neovim
+
+  # plugin manager
+  - action: command.run
+    where: os.name == "linux" || os.name == "macos"
+    command: sh
+    args:
+      - "-c"
+      - "git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
+
+  # remove defaults
+  - action: command.run
+    where: os.name == "linux" || os.name == "macos"
+    command: sh
+    args:
+      - "-c"
+      - "rm -rf ~/.config/nvim"
+
+  # init
+  - action: file.copy
+    from: init.lua
+    to: "{{ user.home_dir }}/.config/nvim/init.lua"
+
+  # options
+  - action: file.copy
+    from: config_options.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/thebino/config/options.lua"
+  # keymaps
+  # - action: file.copy
+  #   from: config_keymaps.lua
+  #   to: "{{ user.home_dir }}/.config/nvim/thebino/config/keymaps.lua"
+
+  # color
+  #  - action: file.copy
+    #  from: colorscheme.lua
+    #to: "{{ user.home_dir }}/.config/nvim/thebino/core/colorscheme.lua"
+
+
+
+  # plugins/telescope
+  # - action: file.copy
+  #   from: plugin_telescope.lua
+  #   to: "{{ user.home_dir }}/.config/nvim/thebino/plugins/telescope.lua"
+  # plugins/nvim-tree
+  # - action: file.copy
+  #   from: plugin_nvim-tree.lua
+  #   to: "{{ user.home_dir }}/.config/nvim/thebino/plugins/nvim-tree.lua"
+
+  # plugins-setup
+  # - action: file.copy
+    #  from: plugins-setup.lua
+    #to: "{{ user.home_dir }}/.config/nvim/thebino/plugins-setup.lua"
