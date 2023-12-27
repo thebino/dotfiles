@@ -1,0 +1,19 @@
+depends:
+- fonts.nerdfonts
+
+actions:
+  - action: package.install
+    where: os.name == "macos"
+    list:
+      - nushell
+      - oh-my-posh
+
+  # config.nu
+  - action: file.copy
+    from: config.nu
+    to: "{{ user.config_dir }}/nushell/config.nu"
+
+  # env.nu
+  - action: file.copy
+    from: env.nu
+    to: "{{ user.config_dir }}/nushell/env.nu"
