@@ -2,7 +2,7 @@ actions:
   - action: package.install
     name: zellij
 
-  - action: file.link
+  - action: file.copy
     from: config.kdl
     to: "{{ user.home_dir }}/.config/zellij/config.kdl"
     chmod: "644"
