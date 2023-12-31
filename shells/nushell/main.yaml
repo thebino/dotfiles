@@ -17,3 +17,9 @@ actions:
   - action: file.copy
     from: env.nu
     to: "{{ user.config_dir }}/nushell/env.nu"
+
+    
+  # aliases
+  - action: file.copy
+    from: aliases.nu
+    to: "{{ user.config_dir }}/nushell/aliases.nu"
