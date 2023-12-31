@@ -779,4 +779,4 @@ $env.config = {
     ]
 }
 source ~/.oh-my-posh.nu
-
+source `~/Library/Application Support/nushell/aliases.nu`

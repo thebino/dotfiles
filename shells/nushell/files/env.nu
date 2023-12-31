@@ -99,4 +99,7 @@ $env.NU_PLUGIN_DIRS = [
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
-oh-my-posh init nu
+
+
+# /opt/homebrew/opt/oh-my-posh = $(brew --prefix oh-my-posh)
+oh-my-posh init nu --config /opt/homebrew/opt/oh-my-posh/themes/M365Princess.omp.json
