@@ -1,5 +1,5 @@
-# Compression & Decompression for files
-# tar, zip, gzip
+# Compression & Decompression for files tar, zip, gzip
+# https://github.com/ouch-org/ouch
 actions:
   - action: package.install
     where: os.name == "macos"

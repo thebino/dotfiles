@@ -1,4 +1,5 @@
 # browser
+# https://www.mozilla.org/de/firefox
 actions:
   - action: package.install
     name: firefox

@@ -1,0 +1,5 @@
+# structural diff that understands syntax 
+# https://difftastic.wilfred.me.uk/
+actions:
+  - action: package.install
+    name: difftastic

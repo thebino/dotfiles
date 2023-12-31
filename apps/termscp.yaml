@@ -1,0 +1,5 @@
+# terminal UI for file transfer like SCP FTP and S3
+# https://termscp.veeso.dev/
+actions:
+  - action: package.install
+    name: termscp

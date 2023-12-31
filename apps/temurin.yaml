@@ -1,5 +1,5 @@
 # Java Development kit
+# https://adoptium.net/
 actions:
   - action: package.install
-    where: os.name == "macos"
-    name: openjdk
+    name: temurin
