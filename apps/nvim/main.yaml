@@ -3,53 +3,247 @@ actions:
   - action: package.install
     name: neovim
 
-  # plugin manager
-  - action: command.run
-    where: os.name == "linux" || os.name == "macos"
-    command: sh
-    args:
-      - "-c"
-      - "git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
-
-  # remove defaults
-  - action: command.run
-    where: os.name == "linux" || os.name == "macos"
-    command: sh
-    args:
-      - "-c"
-      - "rm -rf ~/.config/nvim"
+  # nuke defaults
+  # - action: command.run
+  #   where: os.name == "linux" || os.name == "macos"
+  #   command: sh
+  #   args:
+  #     - "-c"
+  #     - "rm -rf ~/.config/nvim ~/.local/share/nvim ~/.local/state/nvim"
 
   # init
   - action: file.copy
     from: init.lua
     to: "{{ user.home_dir }}/.config/nvim/init.lua"
 
+
+  # abbreviations
+  - action: file.copy
+    from: config/abbreviations.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/config/abbreviations.lua"
+  # autocmds
+  - action: file.copy
+    from: config/autocmds.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/config/autocmds.lua"
+  # keymaps
+  - action: file.copy
+    from: config/keymaps.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/config/keymaps.lua"
   # options
   - action: file.copy
-    from: config_options.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/thebino/config/options.lua"
-  # keymaps
+    from: config/options.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/config/options.lua"
+
+
+
+
+  # 
+  # Editing
+  # 
+  # auto closing parentheses / quotes etc
+  - action: file.copy
+    from: plugins/nvim-autopairs.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/nvim-autopairs.lua"
+
+  # "surroundings": parentheses, brackets, quotes
+  - action: file.copy
+    from: plugins/vim-surround.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/vim-surround.lua"
+
+  # Interactively align text
+  - action: file.copy
+    from: plugins/mini-align.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/mini-align.lua"
+
+  # Obsidian
+  - action: file.copy
+    from: plugins/obsidian.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/obsidian.lua"
+
+
+
+  # 
+  # Ui
+  # 
+  # Theme: tokyonight
+  - action: file.copy
+    from: plugins/tokyonight.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/tokyonight.lua"
+
+  # bottom status bar
+  - action: file.copy
+    from: plugins/lualine.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/lualine.lua"
+
+  # top tabbar
+  - action: file.copy
+    from: plugins/tabby.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/tabby.lua"
+
+  # font icons
+  - action: file.copy
+    from: plugins/nvim-web-devicons.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/nvim-web-devicons.lua"
+
+  # Key hints in a pop-up
+  - action: file.copy
+    from: plugins/which-key.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/which-key.lua"
+
+  # in-line git blame
+  - action: file.copy
+    from: plugins/gitsigns.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/gitsigns.lua"
+
+  # Markdown preview
+  - action: file.copy
+    from: plugins/glow.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/glow.lua"
+
+  # highlight cursor word && color current line number
+  - action: file.copy
+    from: plugins/cursorline.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/cursorline.lua"
+
+  # Dashboard after start
+  - action: file.copy
+    from: plugins/dashboard.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/dashboard.lua"
+
+
+  # 
+  # Navigation
+  # 
+  # Fuzzy finder
+  - action: file.copy
+    from: plugins/telescope.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/telescope.lua"
+
+  # Filesystem as Sidebar
+  - action: file.copy
+    from: plugins/neo-tree.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/neo-tree.lua"
+
+  # pretty list for showing diagnostics, references etc
+  - action: file.copy
+    from: plugins/trouble.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/trouble.lua"
+
+  # motion plugin
+  - action: file.copy
+    from: plugins/leap.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/leap.lua"
+
+
+
+
+  # 
+  # Syntax
+  # 
+  # collection of language packs
+  - action: file.copy
+    from: plugins/polyglot.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/polyglot.lua"
+
+  # plugins/nvim-lspconfig
+  - action: file.copy
+    from: plugins/lspconfig.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/lspconfig.lua"
+
+  # plugins/treesitter
+  - action: file.copy
+    from: plugins/treesitter.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/treesitter.lua"
+
+
+
+  #
+  # Misc
+  #
+  # Notifications
+  - action: file.copy
+    from: plugins/notify.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/notify.lua"
+
+  # Usage tracker
+  - action: file.copy
+    from: plugins/usage-tracker.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/usage-tracker.lua"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  # # plugins/dap
   # - action: file.copy
-  #   from: config_keymaps.lua
-  #   to: "{{ user.home_dir }}/.config/nvim/thebino/config/keymaps.lua"
-
-  # color
-  #  - action: file.copy
-    #  from: colorscheme.lua
-    #to: "{{ user.home_dir }}/.config/nvim/thebino/core/colorscheme.lua"
+  #   from: plugins_dap.lua
+  #   to: "{{ user.home_dir }}/.config/nvim/lua/plugins/dap.lua"
 
 
+  # install, clean and update lazy.nvim
+  # - action: command.run
+  #   where: os.name == "linux" || os.name == "macos"
+  #   command: sh
+  #   args:
+  #     - "-c"
+  #     - "nvim --headless '+Lazy! sync' +qa"
 
-  # plugins/telescope
+
+
+
+
+
+  # # install packer (plugin manager)
+  # - action: command.run
+  #   where: os.name == "linux" || os.name == "macos"
+  #   command: sh
+  #   args:
+  #     - "-c"
+  #     - "git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
+
+
+
+
+
+
+
+
+  # # plugins/treesitter
   # - action: file.copy
-  #   from: plugin_telescope.lua
-  #   to: "{{ user.home_dir }}/.config/nvim/thebino/plugins/telescope.lua"
-  # plugins/nvim-tree
-  # - action: file.copy
-  #   from: plugin_nvim-tree.lua
-  #   to: "{{ user.home_dir }}/.config/nvim/thebino/plugins/nvim-tree.lua"
+  #   from: plugins_treesitter.lua
+  #   to: "{{ user.home_dir }}/.config/nvim/lua/thebino/plugins/treesitter.lua"
 
-  # plugins-setup
+  # # plugins/rust-tools
   # - action: file.copy
-    #  from: plugins-setup.lua
-    #to: "{{ user.home_dir }}/.config/nvim/thebino/plugins-setup.lua"
+  #   from: plugins_rust-tools.lua
+  #   to: "{{ user.home_dir }}/.config/nvim/lua/thebino/plugins/rust-tools.lua"
+
+
+  # # plugins/nvim-cmp
+  # - action: file.copy
+  #   from: plugins_nvim-cmp.lua
+  #   to: "{{ user.home_dir }}/.config/nvim/lua/thebino/plugins/nvim-cmp.lua"
+
+  # # plugins/nvim-treesitter
+  # - action: file.copy
+  #   from: plugins_nvim-treesitter.lua
+  #   to: "{{ user.home_dir }}/.config/nvim/lua/thebino/plugins/nvim-treesitter.lua"
+
+
+
+
+  # # plugins/vimspector
+  # - action: file.copy
+  #   from: plugins_nvim-dap.lua
+  #   to: "{{ user.home_dir }}/.config/nvim/lua/thebino/plugins/nvim-dap.lua"
