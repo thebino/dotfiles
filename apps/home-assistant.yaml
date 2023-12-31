@@ -1,4 +1,5 @@
-# automation
+# home automation
+# https://www.home-assistant.io/
 actions:
   - action: package.install
     name: home-assistant

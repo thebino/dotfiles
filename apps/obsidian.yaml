@@ -2,5 +2,4 @@
 # https://obsidian.md/
 actions:
   - action: package.install
-    where: os.name == "macos"
     name: obsidian

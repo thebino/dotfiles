@@ -1,4 +1,5 @@
 # Adobe applications & services
+# https://www.adobe.com/de/creativecloud.html
 actions:
   - action: package.install
     where: os.name == "macos"

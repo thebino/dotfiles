@@ -1,5 +1,5 @@
 # Media system
+# https://jellyfin.org/
 actions:
   - action: package.install
-    where: os.name == "macos"
     name: jellyfin

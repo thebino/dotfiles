@@ -1,4 +1,5 @@
 # Mac App Store command-line interface
+# https://github.com/mas-cli/mas
 actions:
   - action: package.install
     where: os.name == "macos"

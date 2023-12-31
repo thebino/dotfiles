@@ -2,5 +2,4 @@
 # https://github.com/chmln/sd
 actions:
   - action: package.install
-    where: os.name == "macos"
     name: sd

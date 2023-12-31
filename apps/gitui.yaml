@@ -1,4 +1,5 @@
 # TUI git client
+# https://github.com/extrawurst/gitui
 actions:
   - action: package.install
     name: gitui

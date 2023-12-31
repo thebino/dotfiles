@@ -1,5 +1,5 @@
 # JetBrains application manager
+# https://www.jetbrains.com/lp/toolbox/
 actions:
   - action: package.install
-    where: os.name == "macos"
     name: jetbrains-toolbox

@@ -2,5 +2,4 @@
 # https://github.com/tbillington/kondo
 actions:
   - action: package.install
-    where: os.name == "macos"
     name: kondo
