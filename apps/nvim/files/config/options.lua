@@ -1,0 +1,57 @@
+local opt = vim.opt -- for conciseness
+
+-- don't creat swapfiles
+opt.swapfile = false
+
+
+-- line numbers
+opt.relativenumber = true -- show relative line numbers
+opt.number = true -- shows absolute line number on cursor line (when relative number is on)
+
+
+-- tabs & indentation
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true -- convert tab to spaces
+opt.autoindent = true -- re-use indentation from previous line
+
+
+-- line wrapping
+opt.wrap = false
+
+
+-- search settings
+opt.ignorecase = true -- case-insensitive search
+opt.smartcase = true -- use case-sensitive when camelCase search query
+
+
+-- cursor line
+opt.cursorline = true -- highlight current line
+
+
+-- appearance
+opt.termguicolors = true
+opt.background = "dark"
+opt.signcolumn = "yes"
+opt.showmode = false -- Dont show mode since we have a statusline
+opt.laststatus = 3 -- global statusline instead of a statusline per window
+
+
+-- clipboard
+opt.clipboard = 'unnamedplus'   -- use system clipboard 
+
+
+-- windows
+opt.splitright = true -- split vertical
+opt.splitbelow = true -- split horizontal
+
+
+-- Undo
+opt.undofile = true
+opt.undolevels = 10000
+
+
+-- additionals
+opt.iskeyword:append("-") -- consider "string-string" as whole word
+opt.confirm = true -- Confirm to save changes before exiting modified buffer
+
