@@ -1,0 +1,5 @@
+# print all system information
+# https://github.com/dylanaraps/neofetch
+actions:
+  - action: package.install
+    name: neofetch
