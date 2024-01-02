@@ -39,3 +39,10 @@ Provisioning a specific manifest or a subset
 ```shell
 comtrya -d https://github.com/thebino/dotfiles apply -m apps.git
 ```
+
+
+## Editor
+| nvim       | helix           |
+| ------------- |:-------------:|
+| ![nvim screen][docs/editor_nvim.png] | ![helix screen][docs/editor_hx.png] |
+
