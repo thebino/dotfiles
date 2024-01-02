@@ -1,6 +1,16 @@
 actions:
   - action: package.install
-    name: helix
+    list:
+      - helix
+      - llvm # lldb-vscode debugger is part of it
+
+  # nuke defaults
+  - action: command.run
+    where: os.name == "linux" || os.name == "macos"
+    command: sh
+    args:
+      - "-c"
+      - "rm -rf {{ user.home_dir }}/.config/helix"
 
   - action: file.copy
     from: config.toml

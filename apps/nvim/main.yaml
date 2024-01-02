@@ -9,7 +9,7 @@ actions:
     command: sh
     args:
       - "-c"
-      - "rm -rf ~/.config/nvim ~/.local/share/nvim ~/.local/state/nvim"
+      - "rm -rf {{ user.home_dir }}/.config/nvim {{ user.home_dir }}/.local/share/nvim {{ user.home_dir }}/.local/state/nvim"
 
   # init
   - action: file.copy

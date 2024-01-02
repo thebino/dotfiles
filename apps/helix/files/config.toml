@@ -1,7 +1,8 @@
-theme = "onedark"
+theme = "tokyonight"
 
 [editor]
 line-number = "absolute"
+bufferline = "always"
 
 [editor.lsp]
 display-inlay-hints = true
@@ -14,6 +15,12 @@ select = "underline"
 [editor.file-picker]
 hidden = false
 
+[editor.indent-guides]
+render = true
+character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+
 [keys.normal]
 C-r = ":sh cargo run"
 C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
@@ -23,3 +30,7 @@ C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_befor
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
 mode.select = "SELECT"
+left = ["mode", "version-control", "file-name", "spinner"]
+center = []
+right = ["file-type", "diagnostics", "selections", "position", "file-encoding", "file-line-ending"]
+separator = ""
