@@ -4,12 +4,12 @@ actions:
     name: neovim
 
   # nuke defaults
-  # - action: command.run
-  #   where: os.name == "linux" || os.name == "macos"
-  #   command: sh
-  #   args:
-  #     - "-c"
-  #     - "rm -rf ~/.config/nvim ~/.local/share/nvim ~/.local/state/nvim"
+  - action: command.run
+    where: os.name == "linux" || os.name == "macos"
+    command: sh
+    args:
+      - "-c"
+      - "rm -rf ~/.config/nvim ~/.local/share/nvim ~/.local/state/nvim"
 
   # init
   - action: file.copy
@@ -171,79 +171,14 @@ actions:
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/usage-tracker.lua"
 
 
+  # Auto completion
+  - action: file.copy
+    from: plugins/cmp.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/cmp.lua"
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  # # plugins/dap
-  # - action: file.copy
-  #   from: plugins_dap.lua
-  #   to: "{{ user.home_dir }}/.config/nvim/lua/plugins/dap.lua"
-
-
-  # install, clean and update lazy.nvim
-  # - action: command.run
-  #   where: os.name == "linux" || os.name == "macos"
-  #   command: sh
-  #   args:
-  #     - "-c"
-  #     - "nvim --headless '+Lazy! sync' +qa"
-
-
-
-
-
-
-  # # install packer (plugin manager)
-  # - action: command.run
-  #   where: os.name == "linux" || os.name == "macos"
-  #   command: sh
-  #   args:
-  #     - "-c"
-  #     - "git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
-
-
-
-
-
-
-
-
-  # # plugins/treesitter
-  # - action: file.copy
-  #   from: plugins_treesitter.lua
-  #   to: "{{ user.home_dir }}/.config/nvim/lua/thebino/plugins/treesitter.lua"
-
-  # # plugins/rust-tools
-  # - action: file.copy
-  #   from: plugins_rust-tools.lua
-  #   to: "{{ user.home_dir }}/.config/nvim/lua/thebino/plugins/rust-tools.lua"
-
-
-  # # plugins/nvim-cmp
-  # - action: file.copy
-  #   from: plugins_nvim-cmp.lua
-  #   to: "{{ user.home_dir }}/.config/nvim/lua/thebino/plugins/nvim-cmp.lua"
-
-  # # plugins/nvim-treesitter
-  # - action: file.copy
-  #   from: plugins_nvim-treesitter.lua
-  #   to: "{{ user.home_dir }}/.config/nvim/lua/thebino/plugins/nvim-treesitter.lua"
-
-
-
-
-  # # plugins/vimspector
-  # - action: file.copy
-  #   from: plugins_nvim-dap.lua
-  #   to: "{{ user.home_dir }}/.config/nvim/lua/thebino/plugins/nvim-dap.lua"
+  # DAP
+  - action: file.copy
+    from: plugins/dap.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/dap.lua"
