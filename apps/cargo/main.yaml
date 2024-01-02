@@ -23,3 +23,9 @@ actions:
     command: rm
     args:
       - "{{ user.home_dir }}/.cargo/credentials_encrypted.asc"
+
+  - action: command.run
+    command: cargo
+    args:
+      - "install"
+      - "cargo-watch"
