@@ -1,6 +1,6 @@
 local opt = vim.opt -- for conciseness
 
--- don't creat swapfiles
+-- don't create swapfiles
 opt.swapfile = false
 
 
@@ -23,16 +23,16 @@ opt.wrap = false
 -- search settings
 opt.ignorecase = true -- case-insensitive search
 opt.smartcase = true -- use case-sensitive when camelCase search query
-
+opt.hlsearch = false -- disable highlighing during search
 
 -- cursor line
 opt.cursorline = true -- highlight current line
 
 
 -- appearance
-opt.termguicolors = true
+opt.termguicolors = true -- use full colors
 opt.background = "dark"
-opt.signcolumn = "yes"
+opt.signcolumn = "yes" -- Keep sign column on
 opt.showmode = false -- Dont show mode since we have a statusline
 opt.laststatus = 3 -- global statusline instead of a statusline per window
 
@@ -46,7 +46,7 @@ opt.splitright = true -- split vertical
 opt.splitbelow = true -- split horizontal
 
 
--- Undo
+-- save undo history
 opt.undofile = true
 opt.undolevels = 10000
 

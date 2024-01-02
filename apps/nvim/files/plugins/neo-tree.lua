@@ -7,7 +7,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
-      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+      "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     enabled = true,
     lazy = false,
@@ -75,6 +75,7 @@ return {
             --               -- the current file is changed while the tree is open.
             leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
           },
+          -- hijack_netrw_behavior = "disabled", -- https://github.com/nvim-neo-tree/neo-tree.nvim/issues/135
         },
         buffers = {
           follow_current_file = {
@@ -94,7 +95,7 @@ return {
               ["gc"] = "git_commit",
               ["gp"] = "git_push",
               ["gg"] = "git_commit_and_push",
-              ["o"] = { "show_help", nowait=false, config = { title = "Order by", prefix_key = "o" }},
+              ["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" }},
               ["oc"] = { "order_by_created", nowait = false },
               ["od"] = { "order_by_diagnostics", nowait = false },
               ["om"] = { "order_by_modified", nowait = false },
