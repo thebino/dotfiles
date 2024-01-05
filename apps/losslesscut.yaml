@@ -1,0 +1,5 @@
+# GUI Front-End for FFmpeg
+# https://github.com/mifi/lossless-cut
+actions:
+  - action: package.install
+    name: losslesscut
