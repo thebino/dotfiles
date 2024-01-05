@@ -1,0 +1,26 @@
+[global]
+log-level = "info"
+#log-file = "~/.config/rustic/rustic.log"
+
+[repository]
+repository = "/Volumes/Data/Backups/rustic/workspace"
+password-file = "/Users/stuermer/Library/Application Support/rustic/password_workspace"
+no-cache = true
+
+[forget]
+keep-daily = 8
+keep-weekly = 5
+keep-monthly = 13
+keep-yearly = 10
+
+[backup]
+label = "workspace"
+git-ignore = false
+exclude-if-present = [".nobackup", "CACHEDIR.TAG"]
+
+#[[backup.sources]]
+#source = "/Users/stuermer/workspace/thebino/"
+
+[[backup.sources]]
+source = "/Users/stuermer/workspace/photos-network"
+
