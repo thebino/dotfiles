@@ -7,10 +7,14 @@ roots = ["Cargo.toml", "Cargo.lock"]
 auto-format = true
 comment-token = "//"
 indent = { tab-width = 4, unit = "  " }
+language-servers = ["rust-analyzer", "tailwindcss-ls"]
 
 [[grammar]]
 name = "rust"
 source = { git = "https://github.com/tree-sitter/tree-sitter-rust", rev = "a360da0a29a19c281d08295a35ecd0544d2da211" }
+
+[language-server.tailwindcss-ls]
+config = { userLanguages = { rust = "html", "*.rs" = "html" } }
 
 [language-server.rust-analyzer]
 command = "rust-analyzer"
@@ -29,11 +33,20 @@ inlayHints.typeHints.hideClosureInitialization = false
 [language-server.rust-analyzer.config.check]
 command = "clippy"
 
-
 [[language]]
 name = "markdown"
+file-types = ["md"]
+language-servers = ["mdpls"]
 formatter = { command = "dprint", args = ["fmt", "-c", "~/..config/dprint.json", "--stdin", "md"] }
 auto-format = true
+
+[language-server.mdpls]
+command = "~/.cargo/bin/mdpls"
+
+
+[language-server.mdpls.config]
+markdown.preview.auto = true
+markdown.preview.browser = "firefox"
 
 [[language]]
 name = "json"

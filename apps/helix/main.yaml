@@ -3,6 +3,7 @@ actions:
     list:
       - helix
       - llvm # lldb-vscode debugger is part of it
+      - node # tailwindcss/language-server
 
   # nuke defaults
   - action: command.run
@@ -11,6 +12,20 @@ actions:
     args:
       - "-c"
       - "rm -rf {{ user.home_dir }}/.config/helix"
+
+  # install markdown preview language server
+  - action: command.run
+    command: sh
+    args:
+      - "-c"
+      - "cargo install --git https://github.com/euclio/mdpls"
+
+  - action: command.run
+    command: sh
+    args:
+      - "-c"
+      - "npm i -g @tailwindcss/language-server"
+
 
   - action: file.copy
     from: config.toml
