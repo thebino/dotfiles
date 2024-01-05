@@ -2,6 +2,4 @@
 # arqbackup.com
 actions:
   - action: package.install
-    where: os.name == "macos"
-    list:
-      - arq
+    name: arq
