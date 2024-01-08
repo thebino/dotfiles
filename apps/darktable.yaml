@@ -1,0 +1,11 @@
+# Darktable - photography workflow application
+# https://www.darktable.org/
+actions:
+  - action: package.install
+    name: darktable
+
+  - action: command.run
+    command: sh
+    args:
+      - "-c"
+      - "xattr -dr com.apple.quarantine /Applications/darktable.app"
