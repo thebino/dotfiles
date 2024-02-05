@@ -1,0 +1,5 @@
+# LaTeX-like markup language
+# https://typst.app/
+actions:
+  - action: package.install
+    name: typst
