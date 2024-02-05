@@ -1,0 +1,5 @@
+# High performance editor
+# zed.dev
+actions:
+  - action: package.install
+    name: zed
