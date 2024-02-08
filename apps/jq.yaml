@@ -1,0 +1,5 @@
+# jq - JSON processor
+# https://github.com/jqlang/jqi
+actions:
+  - action: package.install
+    name: jq
