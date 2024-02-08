@@ -1,12 +1,24 @@
 theme = "tokyonight"
 
 [editor]
-line-number = "absolute"
-bufferline = "always"
+line-number = "relative"
+auto-completion = true
+auto-format=true
 auto-save = true
+bufferline = "always"
 color-modes = true
 
+[editor.statusline]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+left = ["mode", "version-control", "file-name", "spinner"]
+center = []
+right = ["file-type", "diagnostics", "selections", "position", "file-encoding", "file-line-ending"]
+separator = ""
+
 [editor.lsp]
+display-messages = true
 display-inlay-hints = true
 display-signature-help-docs = true
 
@@ -26,16 +38,5 @@ skip-levels = 1
 
 [keys.normal]
 C-r = ":sh cargo run"
-# move line down
 C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
-# move line up
 C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
-
-[editor.statusline]
-mode.normal = "NORMAL"
-mode.insert = "INSERT"
-mode.select = "SELECT"
-left = ["mode", "version-control", "file-name", "spinner"]
-center = []
-right = ["file-type", "diagnostics", "selections", "position", "file-encoding", "file-line-ending"]
-separator = ""
