@@ -1,12 +1,18 @@
 theme = "tokyonight"
 
 [editor]
+# use relative numbers
 line-number = "relative"
 auto-completion = true
 auto-format=true
 auto-save = true
+# show open buffers
 bufferline = "always"
 color-modes = true
+# hightlight all lines with a cursor
+cursorline = true
+# force theme to use colors
+true-color = true
 
 [editor.statusline]
 mode.normal = "NORMAL"
@@ -18,6 +24,7 @@ right = ["file-type", "diagnostics", "selections", "position", "file-encoding", 
 separator = ""
 
 [editor.lsp]
+# show lsp messages in bottom bar
 display-messages = true
 display-inlay-hints = true
 display-signature-help-docs = true
@@ -27,16 +34,54 @@ insert = "bar"
 normal = "block"
 select = "underline"
 
+# show just an indication but don't wrap
+[editor.soft-wrap]
+enable = true
+wrap-indicator = "↩ "
+
+# show whitespaces
+[editor.whitespace.render]
+space = "all"
+nbsp = "all"
+tab = "all"
+newline = "none"
+
+
+[editor.whitespace.characters]
+nbsp = "⍽"
+tab = "→"
+newline = "⏎"
+tabpad = "·"
+
 [editor.file-picker]
 hidden = false
 
 [editor.indent-guides]
 render = true
-character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
+character = "┊"
 skip-levels = 1
 
 
 [keys.normal]
 C-r = ":sh cargo run"
 C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+# save
+C-s = ":w!"
+# close current buffer
+C-w = ":buffer-close"
+# yank/copy to clipboard AND helix
+y = [":clipboard-yank", "yank"]
+C-v = [":clipboard-paste-before"]
+A-n = "goto_next_buffer"
+A-b = "goto_previous_buffer"
+
+[keys.insert]
+# save
+C-s = [":w!", "normal_mode"]
+
+[keys.select]
+# move selection down
+C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+# move selection up
 C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]

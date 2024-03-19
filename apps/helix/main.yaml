@@ -4,6 +4,7 @@ actions:
       - helix
       - llvm # lldb-vscode debugger is part of it
       - node # tailwindcss/language-server
+      - ruff # python linter
 
   # nuke defaults
   - action: command.run
