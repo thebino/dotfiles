@@ -1,0 +1,5 @@
+# parametric 2d/3d CAD
+# solvespace.com
+actions:
+  - action: package.install
+    name: solvespace

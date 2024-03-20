@@ -1,0 +1,4 @@
+# show keystrokes
+actions:
+  - action: package.install
+    name: keycastr

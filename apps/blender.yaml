@@ -1,0 +1,5 @@
+# 3D creation suite
+# https://www.blender.org/
+actions:
+  - action: package.install
+    name: blender
