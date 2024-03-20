@@ -59,21 +59,6 @@ video-to-gif() {
   echo '\n\noutput.gif created!'
 }
 
-# Enable color support of ls
-if [[ "$TERM" != 'dumb' ]]; then
-    if [[ -x `which dircolors` ]]; then
-        eval `dircolors -b`
-        alias 'ls=ls --color=auto'
-    fi
-fi
-
-setopt complete_aliases
-
-export GREP_OPTIONS='--color=auto' # removes color when piping
-export GREP_COLOR='1;31' # highlight matches in red
-type colordiff >/dev/null 2>&1 && alias diff='colordiff -u' || alias diff='diff -u'
-type colormake >/dev/null 2>&1 && alias make=colormake
-
 # return the bitrate of a given file. eg: # bitrate foo.avi
 # brew install libav
 function bitrate () {
@@ -83,4 +68,8 @@ function bitrate () {
 
 function google {
   open "https://www.google.com/#q=$1"
+}
+
+function rs {
+  open "https://doc.rust-lang.org/std/?search=$1"
 }
