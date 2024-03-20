@@ -1,0 +1,5 @@
+# Upscayl - AI Image Upscaler
+# https://apps.apple.com/us/app/upscayl/id6468265473
+actions:
+  - action: package.install
+    name: upscayl

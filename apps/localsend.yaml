@@ -1,0 +1,12 @@
+# ICE-Train companion
+# https://apps.apple.com/de/app/ice-buddy-for-your-menu-bar/id1595947689
+depends:
+- apps.mas
+
+actions:
+  - action: command.run
+    where: os.name == "macos"
+    command: mas
+    args:
+      - "install"
+      - "1661733229"
