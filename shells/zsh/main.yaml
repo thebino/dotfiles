@@ -3,6 +3,7 @@ actions:
     list:
       - fzf
       - zsh
+      - oh-my-posh
 
   # add zsh to default shells
   - action: command.run
@@ -16,22 +17,68 @@ actions:
     from: zshrc
     to: "{{ user.home_dir }}/.zshrc"
 
-  - action: command.run
-    dir: "{{ user.home_dir }}"
-    command: source
-    args:
-      - "{{ user.home_dir }}/.zshrc"
-
   - action: file.copy
     from: alias.zsh
     to: "{{ user.home_dir }}/.zsh/alias.zsh"
 
+  - action: file.copy
+    from: android.zsh
+    to: "{{ user.home_dir }}/.zsh/android.zsh"
+
+  - action: file.copy
+    from: color.zsh
+    to: "{{ user.home_dir }}/.zsh/color.zsh"
+
+
+  - action: file.copy
+    from: credentials.gpg
+    to: "{{ user.home_dir }}/.zsh/credentials.gpg"
+
+  - action: command.run
+    command: gpg
+    args:
+      - "--output"
+      - "{{ user.home_dir }}/.zsh/credentials.zsh"
+      - "--decrypt"
+      - "{{ user.home_dir }}/.zsh/credentials.gpg"
+
+  - action: command.run
+    command: rm
+    args:
+      - "{{ user.home_dir }}/.zsh/credentials.gpg"
+
+
+  - action: file.copy
+    from: enc.zsh
+    to: "{{ user.home_dir }}/.zsh/enc.zsh"
+
+  - action: file.copy
+    from: history.zsh
+    to: "{{ user.home_dir }}/.zsh/history.zsh"
+
+  - action: file.copy
+    from: java.zsh
+    to: "{{ user.home_dir }}/.zsh/java.zsh"
+
+  - action: file.copy
+    from: locale.zsh
+    to: "{{ user.home_dir }}/.zsh/locale.zsh"
+
+  - action: file.copy
+    from: options.zsh
+    to: "{{ user.home_dir }}/.zsh/options.zsh"
+
+  - action: file.copy
+    from: ssh.zsh
+    to: "{{ user.home_dir }}/.zsh/ssh.zsh"
+
+  - action: command.run
+    sudo: true
+    dir: "{{ user.home_dir }}"
+    command: source
+    args:
+      - ".zshrc"
+
   - action: command.run
     dir: "{{ user.home_dir }}"
     command: /bin/zsh
-
- # - action: file.link
-   # from: 1password.zsh
-#    to: "{{ user.home_dir }}/.zsh/includes/1password.zsh"
-#    chmod: "644"
-
