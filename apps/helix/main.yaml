@@ -1,8 +1,10 @@
+depends:
+  - apps.dprint
 actions:
   - action: package.install
     list:
       - helix
-      - llvm # lldb-vscode debugger is part of it
+      - llvm # lldb-vscode debugger
       - node # tailwindcss/language-server
       - ruff # python linter
 
@@ -26,7 +28,6 @@ actions:
     args:
       - "-c"
       - "npm i -g @tailwindcss/language-server"
-
 
   - action: file.copy
     from: config.toml
