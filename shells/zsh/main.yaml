@@ -26,8 +26,8 @@ actions:
     to: "{{ user.home_dir }}/.zsh/android.zsh"
 
   - action: file.copy
-    from: color.zsh
-    to: "{{ user.home_dir }}/.zsh/color.zsh"
+    from: colors.zsh
+    to: "{{ user.home_dir }}/.zsh/colors.zsh"
 
 
   - action: file.copy
@@ -49,8 +49,8 @@ actions:
 
 
   - action: file.copy
-    from: enc.zsh
-    to: "{{ user.home_dir }}/.zsh/enc.zsh"
+    from: env.zsh
+    to: "{{ user.home_dir }}/.zsh/env.zsh"
 
   - action: file.copy
     from: history.zsh
