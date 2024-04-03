@@ -6,9 +6,6 @@ ZSH_THEME="awesomepanda"
 # oh-my-posh
 eval "$(/opt/homebrew/bin/oh-my-posh init zsh --config /opt/homebrew/opt/oh-my-posh/themes/M365Princess.omp.json)"
 
-# zoxide
-eval "$(zoxide init zsh)"
-
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins#plugins
 plugins=(
   adb
@@ -27,7 +24,6 @@ plugins=(
   ripgrep
   rsync
   rust
-  zoxide
 )
 
 # Init script
@@ -44,3 +40,7 @@ source $HOME/.zsh/java.zsh
 source $HOME/.zsh/locale.zsh
 source $HOME/.zsh/options.zsh
 source $HOME/.zsh/ssh.zsh
+
+# zoxide
+eval "$(zoxide init zsh)"
+
