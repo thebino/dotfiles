@@ -1,0 +1,5 @@
+# network diagnostic tool 
+# https://github.com/fujiapple852/trippy
+actions:
+  - action: package.install
+    name: trippy
