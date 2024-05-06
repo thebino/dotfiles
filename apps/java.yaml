@@ -3,3 +3,5 @@
 actions:
   - action: package.install
     name: temurin
+  - action: package.install
+    name: temurin@11
