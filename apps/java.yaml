@@ -2,6 +2,6 @@
 # https://adoptium.net/
 actions:
   - action: package.install
-    name: temurin
-  - action: package.install
     name: temurin@11
+  - action: package.install
+    name: temurin@17
