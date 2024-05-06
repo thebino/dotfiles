@@ -72,6 +72,8 @@ C-s = ":w!"
 C-w = ":buffer-close"
 # yank/copy to clipboard AND helix
 y = [":clipboard-yank", "yank"]
+# git client
+C-l = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw"]
 C-v = [":clipboard-paste-before"]
 A-n = "goto_next_buffer"
 A-b = "goto_previous_buffer"
