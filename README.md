@@ -50,7 +50,14 @@ $ gpg --output output.txt --decrypt input.gpg
 ```
 
 
-## Editor
+# Editor
+To have the same look from NeoVim in Helix was a difference of 1.000 less lines of configurations.
+
+```
+nvim: 1187 loc configuration
+hx: 87 loc configuration
+```
+
 | nvim       | helix           |
 | ------------- |:-------------:|
 | ![nvim screen](docs/editor_nvim.png) | ![helix screen](docs/editor_hx.png) |
