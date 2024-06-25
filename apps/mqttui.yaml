@@ -1,0 +1,5 @@
+# MQTT TUI
+# https://github.com/EdJoPaTo/mqttui
+actions:
+  - action: package.install
+    name: mqttui
