@@ -1,0 +1,5 @@
+# GnuPG Tui
+# https://github.com/orhun/gpg-tui/
+actions:
+  - action: package.install
+    name: gpg-tui

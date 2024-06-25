@@ -1,0 +1,5 @@
+# Open source Bartender
+# https://icemenubar.app/
+actions:
+  - action: package.install
+    name: jordanbaird-ice

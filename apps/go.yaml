@@ -1,0 +1,5 @@
+# Go programming language
+# go.dev
+actions:
+  - action: package.install
+    name: go@1.21

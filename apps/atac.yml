@@ -1,0 +1,9 @@
+# TUI API Client
+# https://github.com/Julien-cpsn/ATAC
+actions:
+  - action: package.repository
+    provider: homebrew
+    name: julien-cpsn/atac
+
+  - action: package.install
+    name: atac

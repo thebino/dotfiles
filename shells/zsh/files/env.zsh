@@ -5,6 +5,7 @@ export PATH=${PATH}:~/bin
 export PATH=${PATH}:/usr/local/sbin
 export PATH=${PATH}:/usr/local/bin
 export PATH=${PATH}:/usr/local/texlive/2022/bin
+export PATH=${PATH}:/opt/homebrew/Cellar/go@1.21/
 export PATH=${PATH}:~/.cargo/bin
 export PATH=${PATH}:~/.fleet/bin
 
