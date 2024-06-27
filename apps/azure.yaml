@@ -1,0 +1,5 @@
+# Microsoft Azure CLI 2.0
+# https://docs.microsoft.com/cli/azure/overview
+actions:
+  - action: package.install
+    name: azure-cli
