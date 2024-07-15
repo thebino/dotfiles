@@ -1,3 +1,8 @@
+#
+#
+# Rust
+#
+#
 [[language]]
 name = "rust"
 scope = "source.rust"
@@ -26,12 +31,59 @@ inlayHints.discriminantHints.enable = "fieldless"
 inlayHints.lifetimeElisionHints.enable = "skip_trivial"
 inlayHints.typeHints.hideClosureInitialization = false
 
-
-# If this doesn't work, you might be on a older release version which handles this differently.
-# Try using [language.config.check] instead of [language-server.rust-analyzer.config.check]
 [language-server.rust-analyzer.config.check]
 command = "clippy"
 
+[language.debugger]
+name = "lldb-dap"
+transport = "stdio"
+command = "lldb-dap"
+
+[[language.debugger.templates]]
+name = "binary"
+request = "launch"
+completion = [ { name = "binary", completion = "filename" } ]
+args = { program = "{0}" }
+
+[[language.debugger.templates]]
+name = "binary (terminal)"
+request = "launch"
+completion = [ { name = "binary", completion = "filename" } ]
+args = { program = "{0}", runInTerminal = true }
+
+[[language.debugger.templates]]
+name = "attach"
+request = "attach"
+completion = [ "pid" ]
+args = { pid = "{0}" }
+
+[[language.debugger.templates]]
+name = "gdbserver attach"
+request = "attach"
+completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ]
+args = { attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] }
+
+#
+#
+# Go
+#
+#
+[[language]]
+name = "go"
+roots = ["go.work", "go.mod"]
+auto-format = true
+comment-token = "//"
+language-servers = [ "gopls"]
+
+[language-server.gopls]
+command = "gopls"
+config = { "gofumpt" = true, "local" = "goimports", "semanticTokens" = true, "staticcheck" = true, "verboseOutput" = true, "analyses" = { "fieldalignment" = true, "nilness" = true, unusedparams = true, unusedwrite = true, useany = true }, usePlaceholders = true, completeUnimported = true, hints = { "assignVariableType" = true, "compositeLiteralFields" = true, "compositeLiteralTypes" = true, "constantValues" = true, "functionTypeParameters" = true, "parameterNames" = true, "rangeVariableTypes" = true } }
+
+#
+#
+# Markdown
+#
+# 
 [[language]]
 name = "markdown"
 file-types = ["md"]
@@ -72,3 +124,4 @@ auto-format = true
 
 [language-server.ruff-lsp]
 command = "ruff-lsp"
+

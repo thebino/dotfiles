@@ -1,0 +1,5 @@
+# ruby scripting language
+# https://www.ruby-lang.org/
+actions:
+  - action: package.install
+    name: ruby
