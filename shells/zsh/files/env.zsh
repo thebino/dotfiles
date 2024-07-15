@@ -5,9 +5,11 @@ export PATH=${PATH}:~/bin
 export PATH=${PATH}:/usr/local/sbin
 export PATH=${PATH}:/usr/local/bin
 export PATH=${PATH}:/usr/local/texlive/2022/bin
-export PATH=${PATH}:/opt/homebrew/Cellar/go@1.21/
 export PATH=${PATH}:~/.cargo/bin
 export PATH=${PATH}:~/.fleet/bin
+export PATH=${PATH}:/opt/homebrew/opt/ruby/bin/ruby
+export PATH=${PATH}:/opt/homebrew/opt/go@1.21/bin
+export PATH=${PATH}:/opt/homebrew/opt/llvm/bin
 
 # gradle
 export GRADLE_HOME=$HOME/.gradle/wrapper/dists/gradle-8.0-all/a2o1xoguejy6msdh0lk99lxza/gradle-8.0/
