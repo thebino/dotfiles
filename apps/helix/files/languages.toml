@@ -74,6 +74,7 @@ roots = ["go.work", "go.mod"]
 auto-format = true
 comment-token = "//"
 language-servers = [ "gopls"]
+formatter = { command = "goimports" }
 
 [language-server.gopls]
 command = "gopls"
