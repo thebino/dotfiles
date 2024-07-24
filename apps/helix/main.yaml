@@ -1,5 +1,6 @@
 depends:
   - apps.dprint
+  - apps.go
 actions:
   - action: package.install
     list:

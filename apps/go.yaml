@@ -2,4 +2,19 @@
 # go.dev
 actions:
   - action: package.install
-    name: go@1.21
+    list: 
+    - go
+    - gopls # Go language server
+    - delve # debugger
+
+  - action: command.run
+    command: go
+    args:
+      - install
+      - golang.org/x/tools/cmd/goimports@latest 
+
+  - action: command.run
+    command: go
+    args:
+      - install
+      - github.com/nametake/golangci-lint-langserver@latest
