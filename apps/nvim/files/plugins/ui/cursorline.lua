@@ -1,4 +1,4 @@
--- LSP Diagnostics Options Setup 
+-- Highlight current word and line 
 return {
   {
     "yamatsum/nvim-cursorline",

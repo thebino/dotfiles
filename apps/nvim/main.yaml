@@ -38,147 +38,116 @@ actions:
 
 
   # 
-  # Editing
-  # 
-  # auto closing parentheses / quotes etc
-  - action: file.copy
-    from: plugins/nvim-autopairs.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/nvim-autopairs.lua"
-
-  # "surroundings": parentheses, brackets, quotes
-  - action: file.copy
-    from: plugins/vim-surround.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/vim-surround.lua"
-
-  # Interactively align text
-  - action: file.copy
-    from: plugins/mini-align.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/mini-align.lua"
-
-  # Obsidian
-  - action: file.copy
-    from: plugins/obsidian.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/obsidian.lua"
-
-
-
-  # 
   # Ui
   # 
   # Theme: tokyonight
   - action: file.copy
-    from: plugins/tokyonight.lua
+    from: plugins/ui/tokyonight.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/tokyonight.lua"
-
-  # bottom status bar
+    
+  # plugins/treesitter
   - action: file.copy
-    from: plugins/lualine.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/lualine.lua"
+    from: plugins/ui/treesitter.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/treesitter.lua"
 
   # top tabbar
   - action: file.copy
-    from: plugins/tabby.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/tabby.lua"
+    from: plugins/ui/barbar.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/barbar.lua"
 
-  # font icons
+  # bottom status bar
   - action: file.copy
-    from: plugins/nvim-web-devicons.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/nvim-web-devicons.lua"
-
-  # Key hints in a pop-up
-  - action: file.copy
-    from: plugins/which-key.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/which-key.lua"
+    from: plugins/ui/lualine.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/lualine.lua"
 
   # in-line git blame
   - action: file.copy
-    from: plugins/gitsigns.lua
+    from: plugins/ui/gitsigns.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/gitsigns.lua"
-
-  # Markdown preview
-  - action: file.copy
-    from: plugins/glow.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/glow.lua"
 
   # highlight cursor word && color current line number
   - action: file.copy
-    from: plugins/cursorline.lua
+    from: plugins/ui/cursorline.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/cursorline.lua"
 
-  # Dashboard after start
+  # Key hints in a pop-up
   - action: file.copy
-    from: plugins/dashboard.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/dashboard.lua"
+    from: plugins/ui/which-key.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/which-key.lua"
+
+
 
 
   # 
-  # Navigation
+  # Files
   # 
-  # Fuzzy finder
-  - action: file.copy
-    from: plugins/telescope.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/telescope.lua"
-
   # Filesystem as Sidebar
   - action: file.copy
-    from: plugins/neo-tree.lua
+    from: plugins/files/neo-tree.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/neo-tree.lua"
 
-  # pretty list for showing diagnostics, references etc
+  # Fuzzy finder
   - action: file.copy
-    from: plugins/trouble.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/trouble.lua"
+    from: plugins/files/telescope.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/telescope.lua"
 
+
+
+
+  # 
+  # Typing
+  # 
+  # auto closing parentheses / quotes etc
+  - action: file.copy
+    from: plugins/typing/nvim-autopairs.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/nvim-autopairs.lua"
+
+  # "surroundings": parentheses, brackets, quotes
+  - action: file.copy
+    from: plugins/typing/vim-surround.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/vim-surround.lua"
+    
   # motion plugin
   - action: file.copy
-    from: plugins/leap.lua
+    from: plugins/typing/leap.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/leap.lua"
 
+  # Auto completion
+  - action: file.copy
+    from: plugins/typing/cmp.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/cmp.lua"
 
 
 
   # 
-  # Syntax
+  # Languages
   # 
-  # collection of language packs
+  # Debug adapters
   - action: file.copy
-    from: plugins/polyglot.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/polyglot.lua"
+    from: plugins/languages/dap.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/dap.lua"
 
-  # plugins/nvim-lspconfig
+  # Markdown preview
   - action: file.copy
-    from: plugins/lspconfig.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/lspconfig.lua"
+    from: plugins/languages/markdown.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/markdown.lua"
 
-  # plugins/treesitter
+  # Go language
   - action: file.copy
-    from: plugins/treesitter.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/treesitter.lua"
+    from: plugins/languages/go.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/go.lua"
 
+  # Rust language
+  - action: file.copy
+    from: plugins/languages/rust.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/rust.lua"
 
 
   #
-  # Misc
+  # miscellaneous
   #
-  # Notifications
-  - action: file.copy
-    from: plugins/notify.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/notify.lua"
-
   # Usage tracker
   - action: file.copy
     from: plugins/usage-tracker.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/usage-tracker.lua"
 
-
-  # Auto completion
-  - action: file.copy
-    from: plugins/cmp.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/cmp.lua"
-
-
-
-  # DAP
-  - action: file.copy
-    from: plugins/dap.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/dap.lua"
