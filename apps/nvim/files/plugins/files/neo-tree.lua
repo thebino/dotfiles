@@ -108,5 +108,9 @@ return {
       }
     end,
     
+  },
+  {
+    vim.keymap.set('n', '<leader>tt', "<CMD>:Neotree toggle<cr>", { desc = "Neotree browser" }, {silent = true, noremap = true }),
+    vim.keymap.set('n', '<leader>tf', "<CMD>:Neotree focus<cr>", { desc = "Neotree focus" }, {silent = true, noremap = true })
   }
 }

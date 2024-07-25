@@ -64,7 +64,7 @@ return {
         matching = { disallow_prefix_unmatching = true },
         sources = {
           { name = "nvim_lsp" },
-          { name = "luasnip", option = { show_autosnippets = true } },
+          -- { name = "luasnip", option = { show_autosnippets = true } },
           { name = "neorg", ft = "norg" },
           { name = "buffer", keyword_length = 2 },
           -- { name = "copilot", max_item_count = 2 },
@@ -88,3 +88,4 @@ return {
     end,
   }
 }
+

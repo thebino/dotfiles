@@ -23,6 +23,10 @@ require("config.autocmds")
 require("config.keymaps")
 require("config.options")
 
+if vim.lsp.inlay_hint then
+  vim.lsp.inlay_hint.enable(true, { 0 })
+end
+
 require("lazy").setup({
     spec = "plugins",
     defaults = { lazy = true },

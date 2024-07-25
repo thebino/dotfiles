@@ -51,13 +51,47 @@ $ gpg --output output.txt --decrypt input.gpg
 
 
 # Editor
-To have the same look from NeoVim in Helix was a difference of 1.000 less lines of configurations.
+To have the same look from NeoVim in Helix, needed ~900 less lines of configurations.
 
 ```
-nvim: 1187 loc configuration
-hx: 87 loc configuration
+nvim: 1055 loc configuration
+hx: 150 loc configuration
 ```
 
 | nvim       | helix           |
 | ------------- |:-------------:|
 | ![nvim screen](docs/editor_nvim.png) | ![helix screen](docs/editor_hx.png) |
+
+## neovim
+### Ui
+ - **Theme** [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
+ - **Syntax Highlighting** [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+ - **Tabbar** at the top [barbar.nvim](https://github.com/nanozuki/tabby.nvim/) `_bn` next buffer, `_bp` prev buffer
+ - **Status** at the bottom [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+ - **Git blame** inline [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+ - **Cursor Highlighting** [cursorline](https://github.com/yamatsum/nvim-cursorline)
+ - **Keybingings popup** [which-key.nvim](https://github.com/folke/which-key.nvim) `<leader>` shows popup with keybingings
+
+
+### Files
+ - **File Browser** [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim) `_tt` open/close, `_tf` focus
+ - **Fuzy Finder** [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) `_ff` for files, `_fb` for buffers
+
+
+### Typing
+ - **Autopairs** [nvim-autopairs](https://github.com/windwp/nvim-autopairs) adds matching brachets
+ - **Change parenthesses** [vim-surround](https://github.com/tpope/vim-surround) `cs '"` inside a \"
+ - **Fast motion** [leap.nvim](https://github.com/ggandor/leap.nvim) Fast motion press `s` and any character
+ - **Autocompletion** [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) auto-completion
+
+
+### Languages
+ - **Debug adapters** [nvim-dap](https://github.com/mfussenegger/nvim-dap) Debug adapter `Space + d`
+ - **Go** [go.nvim](https://github.com/ray-x/go.nvim) Go language features
+ - **Rust** [rustaceanvim](https://github.com/mrcjkb/rustaceanvim) Rust tools
+ - **Markdown** [glow.nvim](https://github.com/ellisonleao/glow.nvim) Markdown Preview
+
+
+### Misc
+ - **Autocompletion** [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) auto-completion during typing
+ - **Startup** [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim) List of recent files and projects

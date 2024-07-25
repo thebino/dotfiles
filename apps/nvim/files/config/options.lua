@@ -5,7 +5,7 @@ opt.swapfile = false
 
 
 -- line numbers
-opt.relativenumber = true -- show relative line numbers
+opt.relativenumber = false -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 
 
