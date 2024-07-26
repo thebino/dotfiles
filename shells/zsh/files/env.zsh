@@ -12,6 +12,9 @@ export PATH=${PATH}:/opt/homebrew/opt/go/bin
 export PATH=${PATH}:/opt/homebrew/opt/llvm/bin
 export PATH=${PATH}:$(go env GOPATH)/bin
 
+# Go
+export GOPATH=$(go env GOPATH)
+
 # gradle
 export GRADLE_HOME=$HOME/.gradle/wrapper/dists/gradle-8.0-all/a2o1xoguejy6msdh0lk99lxza/gradle-8.0/
 export PATH=${PATH}:$GRADLE_HOME/bin
