@@ -91,6 +91,10 @@ actions:
     from: plugins/files/telescope.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/telescope.lua"
 
+  # Lazygit
+  - action: file.copy
+    from: plugins/files/git.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/git.lua"
 
 
 
