@@ -76,7 +76,7 @@ hx: 150 loc configuration
 ### Files
  - **File Browser** [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim) `_tt` open/close, `_tf` focus
  - **Fuzy Finder** [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) `_ff` for files, `_fb` for buffers
-
+ - **Git** [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) `_lg` lazygit in a floating window
 
 ### Typing
  - **Autopairs** [nvim-autopairs](https://github.com/windwp/nvim-autopairs) adds matching brachets
