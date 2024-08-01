@@ -1,10 +1,15 @@
 return {
 {
     "mrcjkb/rustaceanvim",
-    version = '^4',
+    version = '^5',
     init = function()
       -- Configure rustaceanvim here
       vim.g.rustaceanvim = {
+        require("neotest").setup({
+          adapters = {
+            require("rustaceanvim.neotest"),
+          },
+        })
         -- Plugin configuration
         tools = {
             autoSetHints = true,
@@ -43,6 +48,9 @@ return {
         },
       }
     end,
+    keys = {
+        { "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Code action" } }
+    },
     lazy = false,
 }
 }
