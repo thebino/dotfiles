@@ -21,6 +21,7 @@ return {
           	'gpg', 'hurl', 'http', 'xml',
           	'vim', 'vimdoc', 'query', 'lua', 'luadoc', 'luap', 'regex', 
           	'markdown', 'markdown_inline',
+            'rust'
         },
         auto_install = true,
         highlight = {

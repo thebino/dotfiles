@@ -1,6 +1,9 @@
 return {
 {
     "mrcjkb/rustaceanvim",
+    dependencies = {  -- optional packages
+        "nvim-neotest/neotest",
+    },
     version = '^5',
     init = function()
       -- Configure rustaceanvim here
@@ -9,7 +12,7 @@ return {
           adapters = {
             require("rustaceanvim.neotest"),
           },
-        })
+        }),
         -- Plugin configuration
         tools = {
             autoSetHints = true,
