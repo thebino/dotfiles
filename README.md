@@ -81,7 +81,7 @@ hx: 150 loc configuration
 ### Typing
  - **Autopairs** [nvim-autopairs](https://github.com/windwp/nvim-autopairs) adds matching brachets
  - **Change parenthesses** [vim-surround](https://github.com/tpope/vim-surround) `cs '"` inside a \"
- - **Fast motion** [leap.nvim](https://github.com/ggandor/leap.nvim) Fast motion press `s` and any character
+ - **Character motion** [flash.nvim](https://github.com/folke/flash.nvim) Press `s` and any characters
  - **Autocompletion** [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) auto-completion
 
 

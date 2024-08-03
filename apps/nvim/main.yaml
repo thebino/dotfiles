@@ -113,8 +113,8 @@ actions:
     
   # motion plugin
   - action: file.copy
-    from: plugins/typing/leap.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/leap.lua"
+    from: plugins/typing/motion.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/motion.lua"
 
   # Auto completion
   - action: file.copy
