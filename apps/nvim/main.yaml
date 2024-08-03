@@ -49,6 +49,11 @@ actions:
   - action: file.copy
     from: plugins/ui/treesitter.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/treesitter.lua"
+    
+  # plugins/focus
+  - action: file.copy
+    from: plugins/ui/focus.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/focus.lua"
 
   # top tabbar
   - action: file.copy
