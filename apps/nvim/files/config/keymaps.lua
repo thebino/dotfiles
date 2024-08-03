@@ -72,6 +72,4 @@ vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = tr
 vim.keymap.set("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
 vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
 vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
-vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
-vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
 
