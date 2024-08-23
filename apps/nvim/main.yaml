@@ -101,6 +101,11 @@ actions:
     from: plugins/files/git.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/git.lua"
 
+  # Harpoon
+  - action: file.copy
+    from: plugins/files/harpoon.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/harpoon.lua"
+
 
 
   # 

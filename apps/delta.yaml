@@ -1,5 +1,0 @@
-# git diff
-# https://github.com/dandavison/delta
-actions:
-  - action: package.install
-    name: git-delta
