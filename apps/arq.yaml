@@ -1,5 +1,0 @@
-# Backup application for online & offline backup
-# arqbackup.com
-actions:
-  - action: package.install
-    name: arq

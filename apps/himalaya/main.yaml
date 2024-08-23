@@ -1,5 +1,0 @@
-# CLI email client
-# pimalaya.org/himalaya
-actions:
-  - action: package.install
-    name: himalaya
