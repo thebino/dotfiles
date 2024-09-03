@@ -16,6 +16,12 @@ return {
       "onsails/lspkind.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
+    opts = {
+        performance = {
+        debounce = 0, -- default is 60ms
+        throttle = 0, -- default is 30ms
+      },
+    },
     config = function()
       local cmp = require("cmp")
       local lspkind = require("lspkind")
