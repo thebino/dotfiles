@@ -7,9 +7,12 @@ actions:
   - action: directory.create
     path: "{{ user.home_dir }}/esp"
 
-  - action: git.clone
-    repository: https://github.com/espressif/esp-idf.git
-    directory: "{{ user.home_dir }}/esp/esp-idf"
+  - action: command.run
+    dir: "{{ user.home_dir }}/esp/esp-idf"
+    command: git
+    args:
+      - clone
+      - https://github.com/espressif/esp-idf.git
 
   - action: command.run
     command: git
