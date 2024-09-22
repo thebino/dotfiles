@@ -77,8 +77,6 @@ $ gpg --output output.txt --decrypt input.gpg
  - **Debug adapters** [nvim-dap](https://github.com/mfussenegger/nvim-dap) Debug adapter `Space + d`
  - **Go** [go.nvim](https://github.com/ray-x/go.nvim) Go language features
  - **Rust** [rustaceanvim](https://github.com/mrcjkb/rustaceanvim) Rust tools
+ - **Rust** [crates.nvim](https://github.com/Saecki/crates.nvim) Manage crates.io dependencies
  - **Markdown** [glow.nvim](https://github.com/ellisonleao/glow.nvim) Markdown Preview
 
-
-### Misc
- - **Autocompletion** [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) auto-completion during typing
