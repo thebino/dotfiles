@@ -1,0 +1,6 @@
+# TUI git client
+# https://github.com/jesseduffield/lazygit
+actions:
+  - action: package.install
+    name: lazygit
+
