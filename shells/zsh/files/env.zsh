@@ -10,7 +10,9 @@ export PATH=${PATH}:~/.fleet/bin
 export PATH=${PATH}:/opt/homebrew/opt/ruby/bin/ruby
 export PATH=${PATH}:/opt/homebrew/opt/go/bin
 export PATH=${PATH}:/opt/homebrew/opt/llvm/bin
+export PATH=${PATH}:/opt/homebrew/bin
 export PATH=${PATH}:$(go env GOPATH)/bin
+export PATH=${PATH}:/usr/local/texlive/2022/bin/universal-darwin
 
 # Go
 export GOPATH=$(go env GOPATH)

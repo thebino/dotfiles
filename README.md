@@ -79,4 +79,5 @@ $ gpg --output output.txt --decrypt input.gpg
  - **Rust** [rustaceanvim](https://github.com/mrcjkb/rustaceanvim) Rust tools
  - **Rust** [crates.nvim](https://github.com/Saecki/crates.nvim) Manage crates.io dependencies
  - **Markdown** [glow.nvim](https://github.com/ellisonleao/glow.nvim) Markdown Preview
+ - **Latex** [vimtex](https://github.com/lervag/vimtex) Software system for typesetting
 
