@@ -1,0 +1,18 @@
+# latex system for typesetting
+actions:
+  - action: package.install
+    list:
+      - mactex # compiler for vimtex
+      - sioyek # pdf viewer for vim
+
+  - action: command.run
+    command: echo
+    args: 
+      - "launch"
+      - "Tex Live Utility"
+#
+#    Launch TeX Live Utility
+#    Search for latexmk in the filter
+#    Check whether latexmk is installed in the package tab (for me it shows not installed)
+#    Install it with right click and type latexmk terminal to check
+

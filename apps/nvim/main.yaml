@@ -1,4 +1,6 @@
----
+depends:
+  - apps.latex
+
 actions:
   - action: package.install
     name: neovim
@@ -151,10 +153,15 @@ actions:
     from: plugins/languages/go.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/go.lua"
 
-  # Rust language
+  # rust language
   - action: file.copy
     from: plugins/languages/rust.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/rust.lua"
+
+  # latex language
+  - action: file.copy
+    from: plugins/languages/latex.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/latex.lua"
 
 
   #
