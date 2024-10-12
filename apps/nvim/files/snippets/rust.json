@@ -1,0 +1,15 @@
+{
+    "tracing": {
+        "prefix": "info",
+        "body": [
+            "tracing::info!(\"${1}\");"
+        ],
+        "description": "tracing::info!(…)"
+        "luasnip": {
+            "priority": 2000,
+            "autotrigger": true,
+            "wordTrig": false
+        }
+    }
+}
+

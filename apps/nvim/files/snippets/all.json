@@ -1,0 +1,14 @@
+{
+    "signature": {
+        "prefix": "signature",
+        "body": [
+            "Stürmer, Benjamin"
+        ],
+        "luasnip": {
+            "priority": 2000,
+            "autotrigger": true,
+            "wordTrig": false
+        }
+    }
+}
+
