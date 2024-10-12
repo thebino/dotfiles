@@ -7,7 +7,9 @@ local keymap = vim.keymap -- for conciseness
 
 -- new file
 vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
-vim.keymap.set("n", "<leader>fj", "<cmd>%!jq .<cr>", { desc = "json format" })
+
+-- pretty format json file
+vim.keymap.set("n", "<leader>gj", "<cmd>%!jq .<cr>", { desc = "pretty json" })
 
 -- Move to window using the <ctrl> hjkl keys
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
@@ -33,7 +35,6 @@ vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 -- Debug
 vim.keymap.set("n", "<leader>dd", "<cmd>GoDebug test<cr>", { desc = "Debug test" })
 
-vim.keymap.set("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Code actions" })
 vim.keymap.set("n", "<leader>gk", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "Code hover" })
 vim.keymap.set("n", "<leader>gg", "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "Rename references" })
 

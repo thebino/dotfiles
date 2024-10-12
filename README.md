@@ -53,7 +53,7 @@ $ gpg --output output.txt --decrypt input.gpg
 ### Ui
  - **Theme** [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
  - **Syntax Highlighting** [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
- - **Tabbar** at the top [barbar.nvim](https://github.com/nanozuki/tabby.nvim/) `_bn` next buffer, `_bp` prev buffer
+ - **Tabbar** at the top [barbar.nvim](https://github.com/nanozuki/tabby.nvim/) 
  - **Status** at the bottom [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
  - **Git blame** inline [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
  - **Cursor Highlighting** [cursorline](https://github.com/yamatsum/nvim-cursorline)
@@ -61,16 +61,16 @@ $ gpg --output output.txt --decrypt input.gpg
 
 
 ### Files
- - **File Browser** [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim) `_tt` open/close, `_tf` focus
- - **Fuzy Finder** [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) `_ff` for files, `_fb` for buffers
- - **Git** [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) `_lg` lazygit in a floating window
+ - **File Browser** [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim) `_fe` open/close, `_e` focus
+ - **Fuzy Finder** [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) `_ff` for files, `_fg` for live grep
+ - **Git** [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) `_gl` lazygit in a floating window
  - **File Pinning** [harpoon](https://github.com/ThePrimeagen/harpoon/tree/harpoon2) `_ba` mark a file, `_bb` show marked files
 
 ### Typing
  - **Autopairs** [nvim-autopairs](https://github.com/windwp/nvim-autopairs) adds matching brachets
  - **Change parenthesses** [vim-surround](https://github.com/tpope/vim-surround) `cs '"` inside a \"
  - **Character motion** [flash.nvim](https://github.com/folke/flash.nvim) Press `s` and any characters
- - **Autocompletion** [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) auto-completion
+ - **Autocompletion** [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) auto-completion `_s` shows popup with snippets
 
 
 ### Languages
@@ -79,5 +79,5 @@ $ gpg --output output.txt --decrypt input.gpg
  - **Rust** [rustaceanvim](https://github.com/mrcjkb/rustaceanvim) Rust tools
  - **Rust** [crates.nvim](https://github.com/Saecki/crates.nvim) Manage crates.io dependencies
  - **Markdown** [glow.nvim](https://github.com/ellisonleao/glow.nvim) Markdown Preview
- - **Latex** [vimtex](https://github.com/lervag/vimtex) Software system for typesetting
+ - **Latex** [vimtex](https://github.com/lervag/vimtex) Software system for typesetting `_ll` start compile, `_lv` view pdf 
 

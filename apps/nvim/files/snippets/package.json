@@ -1,0 +1,23 @@
+{
+  "name": "bino-snippets",
+  "description": "A package.json for VSCode style snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "all",
+        "path": "./all.json"
+      },
+      {
+        "language": "rust",
+        "path": "./rust.json"
+      },
+      {
+        "language": [
+          "plaintex",
+          "tex"
+        ],
+        "path": "./latex.json"
+      }
+    ]
+  }
+}

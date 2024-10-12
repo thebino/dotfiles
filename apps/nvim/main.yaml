@@ -19,6 +19,14 @@ actions:
     to: "{{ user.home_dir }}/.config/nvim/init.lua"
 
 
+    
+  # custom snippets
+  - action: directory.copy
+    from: snippets
+    to: "{{ user.home_dir }}/.config/nvim"
+
+
+
   # abbreviations
   - action: file.copy
     from: config/abbreviations.lua
