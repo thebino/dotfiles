@@ -1,0 +1,19 @@
+actions:
+  - action: command.run
+    command: cargo
+    args:
+      - "install"
+      - "rustic-rs"
+
+  - action: file.copy
+    from: rustic_encrypted.gpg
+    to: "{{ user.config_dir }}/rustic/rustic_encrypted.gpg"
+
+  - action: command.run
+    command: gpg
+    args:
+      - "--output"
+      - "{{ user.config_dir }}/rustic/rustic.toml"
+      - "--decrypt"
+      - "{{ user.config_dir }}/rustic/rustic_encrypted.gpg"
+
