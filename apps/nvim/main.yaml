@@ -27,6 +27,20 @@ actions:
 
 
 
+  # copy spell check files
+  # source: https://ftp.nluug.nl/pub/vim/runtime/spell/
+  - action: file.copy
+    from: spell/de.utf-8.spl
+    to: "{{ user.home_dir }}/.config/nvim/spell/de.utf-8.spl"
+
+  - action: file.copy
+    from: spell/de.utf-8.sug
+    to: "{{ user.home_dir }}/.config/nvim/spell/de.utf-8.sug"
+
+
+
+
+
   # abbreviations
   - action: file.copy
     from: config/abbreviations.lua
