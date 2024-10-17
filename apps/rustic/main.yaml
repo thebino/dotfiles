@@ -3,7 +3,47 @@ actions:
     command: cargo
     args:
       - "install"
+      - "--locked"
       - "rustic-rs"
+
+  - action: file.copy
+    from: aws_encrypted.gpg
+    to: "{{ user.config_dir }}/rustic/aws_encrypted.gpg"
+
+  - action: command.run
+    command: gpg
+    args:
+      - "--output"
+      - "{{ user.config_dir }}/rustic/aws.toml"
+      - "--decrypt"
+      - "{{ user.config_dir }}/rustic/aws_encrypted.gpg"
+
+
+  - action: file.copy
+    from: local_encrypted.gpg
+    to: "{{ user.config_dir }}/rustic/local_encrypted.gpg"
+
+  - action: command.run
+    command: gpg
+    args:
+      - "--output"
+      - "{{ user.config_dir }}/rustic/local.toml"
+      - "--decrypt"
+      - "{{ user.config_dir }}/rustic/local_encrypted.gpg"
+
+
+  - action: file.copy
+    from: nas_encrypted.gpg
+    to: "{{ user.config_dir }}/rustic/nas_encrypted.gpg"
+
+  - action: command.run
+    command: gpg
+    args:
+      - "--output"
+      - "{{ user.config_dir }}/rustic/nas.toml"
+      - "--decrypt"
+      - "{{ user.config_dir }}/rustic/nas_encrypted.gpg"
+
 
   - action: file.copy
     from: rustic_encrypted.gpg
@@ -16,4 +56,5 @@ actions:
       - "{{ user.config_dir }}/rustic/rustic.toml"
       - "--decrypt"
       - "{{ user.config_dir }}/rustic/rustic_encrypted.gpg"
+
 
