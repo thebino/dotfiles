@@ -1,0 +1,9 @@
+# Sioyek is a PDF viewer with a focus on technical books and research papers
+actions:
+  - action: package.install
+    name: sioyek
+
+  - action: file.copy
+    from: prefs_user.config
+    to: "{{ user.config_dir }}/sioyek/prefs_user.config"
+ 
