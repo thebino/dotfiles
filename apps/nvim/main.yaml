@@ -182,6 +182,12 @@ actions:
     from: plugins/languages/latex.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/latex.lua"
 
+  # jwt
+  - action: file.copy
+    from: plugins/languages/jwt.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/jwt.lua"
+
+
 
   #
   # miscellaneous

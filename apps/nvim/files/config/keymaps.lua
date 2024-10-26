@@ -9,7 +9,7 @@ local keymap = vim.keymap -- for conciseness
 vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 
 -- pretty format json file
-vim.keymap.set("n", "<leader>gj", "<cmd>%!jq .<cr>", { desc = "pretty json" })
+vim.keymap.set("n", "<leader>gp", "<cmd>%!jq .<cr>", { desc = "pretty json" })
 
 -- Move to window using the <ctrl> hjkl keys
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
@@ -53,7 +53,7 @@ local diagnostic_goto = function(next, severity)
     go({ severity = severity })
   end
 end
-vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+-- vim.keymap.set("n", "<leader>ed", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 vim.keymap.set("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
 vim.keymap.set("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
 vim.keymap.set("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })

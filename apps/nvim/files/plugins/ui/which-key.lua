@@ -13,8 +13,8 @@ return {
           { "<leader>f", group = "File" }, -- group
           { "<leader>d", group = "Debug" }, -- group
           { "<leader>l", group = "Latex" }, -- group
-          { "<leader>g", group = "Code" }, -- group
-          { "<leader>c", group = "Diagnostics" }, -- group
+          { "<leader>g", group = "Goto" }, -- group
+          { "<leader>e", group = "Error Diagnostics" }, -- group
           { "<leader>b", group = "Buffers" }, -- group
           { "<leader>q", group = "Quit" }, -- group
           { "<leader>w", group = "Window" }, -- group

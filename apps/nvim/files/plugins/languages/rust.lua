@@ -52,8 +52,8 @@ return {
             }
         end,
         keys = {
-            { "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code action" },
-            { "<leader>t", "<cmd>lua vim.cmd.RustLsp('testables')<CR>", desc = "Rust test" },
+            { "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code actions" },
+            { "<leader>t", "<cmd>lua vim.cmd.RustLsp('testables')<CR>", desc = "Testing" },
         },
         lazy = false,
     },
