@@ -1,0 +1,9 @@
+# Kubernetes
+# https://azure.github.io/kubelogin/install.html
+actions:
+  - action: package.install
+    name: Azure/kubelogin/kubelogin
+
+  - action: package.install
+    name: kubetui
+
