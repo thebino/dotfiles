@@ -35,7 +35,7 @@ return {
                 {"<leader>ba", function() harpoon:list():add() end, desc ="Harpoon file"},
 
                 -- Use Telescope as Harpoon user interface.
-                {"<leader>bb", function() toggle_telescope(harpoon:list() )end, desc ="Open Harpoon"},
+                {"<leader>bh", function() toggle_telescope(harpoon:list() )end, desc ="Open Harpoon"},
             }
         end,
 
