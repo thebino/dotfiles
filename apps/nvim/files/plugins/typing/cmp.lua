@@ -88,14 +88,14 @@ return {
                         maxwidth = 50,
                         ellipsis_char = "…",
                         menu = {
-                            buffer = "[Buf]",
-                            cmdline = "[Cmd]",
+                            buffer = "[Buf]", -- buffer
+                            cmdline = "[Cmd]", -- command line suggestions
                             nvim_lsp = "[LSP]",
                             luasnip = "[Snip]",
                             neorg = "[Norg]",
                             -- copilot = "[GHC]",
-                            path = "[Path]",
-                            rg = "[RG]",
+                            path = "[Path]", -- Filesystem path
+                            rg = "[RG]", -- RipGrep results
                         },
                     }),
                 },
@@ -104,7 +104,7 @@ return {
                     { name = "nvim_lsp" },
                     { name = "luasnip", option = { show_autosnippets = true } },
                     { name = "neorg", ft = "norg" },
-                    { name = "buffer", keyword_length = 2 },
+                    -- { name = "buffer", keyword_length = 2 },
                     -- { name = "copilot", max_item_count = 2 },
                     { name = "path", keyword_length = 2 },
                     { name = "rg", keyword_length = 3 },
