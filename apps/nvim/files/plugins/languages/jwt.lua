@@ -14,7 +14,7 @@ return {
                 jwtui:toggle()
             end
 
-            vim.api.nvim_set_keymap("n", "<leader>x", "<cmd>lua _jwtui_toggle()<CR>", {noremap = true, silent = true})
+            vim.api.nvim_set_keymap("n", "<leader>j", "<cmd>lua _jwtui_toggle()<CR>", {noremap = true, silent = true})
         end,
     }
 }
