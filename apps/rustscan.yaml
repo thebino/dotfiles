@@ -1,0 +1,5 @@
+# Password manager
+# 1password.com
+actions:
+  - action: package.install
+    name: 1password
