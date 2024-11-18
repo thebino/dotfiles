@@ -1,5 +1,6 @@
 depends:
 - fonts.nerdfonts
+- fonts.mono
 
 actions:
   - action: package.install
