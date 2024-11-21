@@ -2,17 +2,15 @@ actions:
   - action: package.install
     list:
       - fzf
-      - zsh
       - oh-my-posh
 
-  # add zsh to default shells
   - action: command.run
     dir: "{{ user.home_dir }}"
-    sudo: true
-    command: echo  
+    command: sh  
     args:
     - "$(which zsh) >> /etc/shells"
-
+    - "sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""
+ 
   - action: file.copy
     from: zshrc
     to: "{{ user.home_dir }}/.zshrc"
@@ -77,7 +75,7 @@ actions:
     dir: "{{ user.home_dir }}"
     command: source
     args:
-      - ".zshrc"
+      - "~/.zshrc"
 
   - action: command.run
     dir: "{{ user.home_dir }}"
