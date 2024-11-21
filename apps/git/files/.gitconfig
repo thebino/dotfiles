@@ -5,7 +5,7 @@
     signingkey = 121AA72AB89DCDC2FEEAA5CD2525AE02D55B53E9
 
 [core]
-    editor = hx
+    editor = nvim
     excludesfile = ~/.gitignore_global
 
 [gpg]
@@ -16,6 +16,10 @@
 
 [init]
     defaultBranch = main
+
+# force ssh over https
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
 
 [fetch]
     prune = true
