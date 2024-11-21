@@ -1,19 +1,15 @@
 depends:
 - fonts.nerdfonts
-- fonts.mono
 
 actions:
   - action: package.install
     name: alacritty
 
   - action: file.copy
-    where: os.name == "linux" || os.name == "macos"
     from: alacritty.toml
     to: "{{ user.home_dir }}/.config/alacritty/alacritty.toml"
 
   - action: file.copy
-    where: os.name == "linux" || os.name == "macos"
     from: colors.toml
-    template: true
     to: "{{ user.home_dir }}/.config/alacritty/colors.toml"
 

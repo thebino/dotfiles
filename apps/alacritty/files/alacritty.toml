@@ -1,31 +1,29 @@
 [general]
-live_config_reload = true
 import = ["/Users/stuermer/.config/alacritty/colors.toml"]
+live_config_reload = true
 
 [env]
 TERM = "alacritty"
 
 [window]
-decorations = "full"
-opacity = 0.8
-startup_mode = "Maximized"
-title = "Terminal"
-
-[window.padding]
-x = 5
-y = 5
+padding = { x = 5, y = 5 }
+decorations = "None"
+opacity = 0.7
+startup_mode = "Windowed"
 
 [scrolling]
 history = 10000
 multiplier = 3
 
 [font]
+size = 14
 normal = { family = "JetbrainsMono Nerd Font", style = "Regular" }
 bold = { family = "JetBrainsMono Nerd Font", style = "Bold"}
 italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
 bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
 
 [colors]
+# see colors.toml
 draw_bold_text_with_bright_colors = true
 
 [bell]
@@ -34,8 +32,8 @@ color = "#ffffff"
 duration = 300
 
 [selection]
-save_to_clipboard = true
 semantic_escape_chars = ''',│`|:"' ()[]{}<>	'''
+save_to_clipboard = true
 
 [cursor.style]
 blinking = "Off"
