@@ -152,6 +152,13 @@ actions:
     from: plugins/typing/cmp.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/cmp.lua"
 
+  # Artificial intelligence
+  - action: file.copy
+    from: plugins/typing/ai.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/ai.lua"
+
+
+
 
 
   # 
