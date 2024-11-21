@@ -8,7 +8,6 @@ eval "$(/opt/homebrew/bin/oh-my-posh init zsh --config /opt/homebrew/opt/oh-my-p
 
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins#plugins
 plugins=(
-  adb
   brew
   colorize
   docker
@@ -21,7 +20,6 @@ plugins=(
   gradle
   history-substring-search
   jira
-  ripgrep
   rsync
   rust
 )
