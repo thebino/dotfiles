@@ -8,17 +8,12 @@ actions:
 
   - action: file.copy
     where: os.name == "linux" || os.name == "macos"
-    from: alacritty.yml
-    to: "{{ user.home_dir }}/.config/alacritty/alacritty.yml"
+    from: alacritty.toml
+    to: "{{ user.home_dir }}/.config/alacritty/alacritty.toml"
 
   - action: file.copy
     where: os.name == "linux" || os.name == "macos"
-    from: colors.yml
+    from: colors.toml
     template: true
-    to: "{{ user.home_dir }}/.config/alacritty/colors.yml"
+    to: "{{ user.home_dir }}/.config/alacritty/colors.toml"
 
-  - action: file.copy
-    where: os.name == "linux" || os.name == "macos"
-    from: fonts.yml
-    template: true
-    to: "{{ user.home_dir }}/.config/alacritty/fonts.yml"
