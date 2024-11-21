@@ -1,0 +1,7 @@
+# Android tools
+actions:
+  - action: package.install
+    list:
+      - android-platform-tools
+      - adb-enhanced # Swiss-army knife for Android testing and development
+      - android-file-transfer # File transfer
