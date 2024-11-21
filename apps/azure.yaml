@@ -1,5 +1,10 @@
 # Microsoft Azure CLI 2.0
 # https://docs.microsoft.com/cli/azure/overview
+depends:
+  - apps.k8s
+
 actions:
   - action: package.install
-    name: azure-cli
+    list:
+      - azure-cli
+
