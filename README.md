@@ -24,6 +24,20 @@ Provisioning **all** manifests from the repository
 comtrya -d https://github.com/thebino/dotfiles apply
 ```
 
+### 🍏 from Scratch
+
+To install a system from scratch, some prerequisites are required to start the provisioning.
+```shell
+xcode-select --install
+```
+Install [Homebrew](https://brew.sh/) on the system.
+
+Install GnuPG and import the private key
+```shell
+comtrya -d https://github.com/thebino/dotfiles apply -m apps.gnupg
+/opt/homebrew/bin/gpg --import private_key.asc
+export GPG_TTY=$(tty)
+```
 
 
 ## ⚠️ Configuration
