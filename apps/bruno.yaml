@@ -1,0 +1,5 @@
+# Opensource IDE for exploring and testing api's
+# https://www.usebruno.com/
+actions:
+  - action: package.install
+    name: bruno
