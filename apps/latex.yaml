@@ -1,13 +1,28 @@
 # latex system for typesetting
 depends:
-  - apps.nvim
   - apps.sioyek
 
 actions:
   - action: package.install
     list:
-      - mactex # compiler for vimtex
+      # - mactex # compiler for vimtex
       - sioyek # pdf viewer for vim
+
+  # install mactex from website: https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg
+  # https://tex.stackexchange.com/a/642352
+  - action: command.run
+    command: curl
+    args:
+      - "-O"
+      - "https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg"
+
+  # install basictext from website
+  # a small subset of mactext
+  - action: command.run
+    command: curl
+    args:
+      - "-O"
+      - "https://tug.org/mactex/morepackages.html"
 
   - action: command.run
     command: echo

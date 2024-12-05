@@ -3,12 +3,15 @@ actions:
     list: 
       - esptool
       - espflash
+      - cmake
+      - ninja
+      - dfu-util
 
   - action: directory.create
     path: "{{ user.home_dir }}/esp"
 
   - action: command.run
-    dir: "{{ user.home_dir }}/esp/esp-idf"
+    dir: "{{ user.home_dir }}/esp"
     command: git
     args:
       - clone

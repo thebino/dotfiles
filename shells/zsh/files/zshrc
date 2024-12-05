@@ -42,3 +42,6 @@ source $HOME/.zsh/ssh.zsh
 # zoxide
 eval "$(zoxide init zsh)"
 
+# mc fly
+eval "$(mcfly init zsh)"
+
