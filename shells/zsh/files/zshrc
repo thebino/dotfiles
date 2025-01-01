@@ -45,3 +45,5 @@ eval "$(zoxide init zsh)"
 # mc fly
 eval "$(mcfly init zsh)"
 
+# fzf
+eval "$(fzf --zsh)"
