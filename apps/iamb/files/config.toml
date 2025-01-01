@@ -1,0 +1,5 @@
+default_profile = "thebino"
+
+[profiles.thebino]
+user_id = "@thebino:matrix.org"
+
