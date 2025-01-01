@@ -1,0 +1,11 @@
+# tui matrix client
+# https://iamb.chat/
+actions:
+  - action: package.install
+    name: iamb
+
+  - action: file.copy
+    from: config.toml
+    to: /tmp/encrypted.gpg
+    to: "{{ user.config_dir }}/iamb/config.toml"
+
