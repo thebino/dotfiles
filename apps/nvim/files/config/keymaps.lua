@@ -8,6 +8,9 @@ local keymap = vim.keymap -- for conciseness
 -- new file
 vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 
+-- unbind space so that <leader><p> does not shift your paste
+vim.keymap.set({ "n", "x" }, " ", "<nop>")
+
 -- pretty format json file
 vim.keymap.set("n", "<leader>gp", "<cmd>%!jq .<cr>", { desc = "pretty json" })
 
