@@ -21,7 +21,7 @@ opt.wrap = false
 
 -- folding
 opt.foldmethod = "indent" -- fold code by indentation
-opt.foldlevelstart = 4 -- code with an indentation higher than $1 are closed by default
+opt.foldlevelstart = 8 -- code with an indentation higher than $1 are closed by default
 
 -- search settings
 opt.ignorecase = true -- case-insensitive search
