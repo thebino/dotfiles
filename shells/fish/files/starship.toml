@@ -1,0 +1,60 @@
+# Disable the blank line at the start of the prompt
+add_newline = false
+continuation_prompt = "[▸▹ ](dimmed white)"
+
+format = """
+$git_branch\
+$git_commit\
+$git_metrics\
+$git_status\
+$directory\
+[](fg:#16B1AC bg:#1D2230)\
+$time\
+[](fg:#1D2230)\
+$character\
+"""
+
+
+[git_branch]
+symbol = " "
+style = "bg:#769ff0"
+format = '[[ $symbol $branch](fg:#000000 bg:#769ff0)]($style)'
+
+[git_status]
+style = "bg:#394260"
+conflicted = " =${count}"
+untracked = " ?${count}"
+stashed = " \\$${count}"
+modified = " !${count}"
+staged = " +${count}"
+renamed = " »${count}"
+deleted = " ✘${count}"
+ahead = '⇡${count}'
+behind = '⇣${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+format = '[ ](fg:#000000 bg:#769ff0)[[($all_status$ahead_behind )](fg:#000000 bg:#769ff0)]($style)'
+
+[git_metrics]
+added_style = 'fg:#000000 bg:#16B1AC'
+deleted_style = 'fg:#000000 bg:#16B1AC'
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+
+[character]
+format=	'$symbol '
+success_symbol = '[➜](bold green) '
+error_symbol = '[✗](bold red) '
+vimcmd_symbol = '[V](bold green) '
+
+[directory]
+truncation_length = 5
+truncate_to_repo = true
+style = "italic bg:#16B1AC fg:#000000"
+format = "[ $path ]($style)"
+truncation_symbol = "…/"
+home_symbol	= ' '
+
+[time]
+disabled = false
+time_format = "%T" # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[[  $time ](fg:#ffffff bg:#1D2230)]($style)'

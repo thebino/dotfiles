@@ -1,10 +1,11 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    set -g fish_greeting ""
 end
 
-# promt theme engine
-# https://ohmyposh.dev/
-oh-my-posh init fish | source
+# prompt engine
+# https://starship.rs/
+starship init fish | source
 
 # command-line fuzzy finder 
 # https://github.com/junegunn/fzf
@@ -19,4 +20,7 @@ abbr --add update-submodules 'git submodule sync; git submodule update --init'
 abbr --add mp3 "yt-dlp -i --extract-audio --audio-format mp3 $1"
 abbr --add scpresume "rsync --partial --progress "
 abbr --add reload exec fish
+
+source ~/.config/fish/path.fish
+source ~/.config/fish/tokyonight_night.fish
 

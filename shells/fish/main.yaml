@@ -2,7 +2,8 @@ actions:
   - action: package.install
     list:
       - fisher
-      - oh-my-posh
+      # - oh-my-posh
+      - starship
       - fish
       - fzf
       - fd
@@ -12,6 +13,16 @@ actions:
   - action: file.copy
     from: config.fish
     to: "{{ user.home_dir }}/.config/fish/config.fish"
+
+  # path
+  - action: file.copy
+    from: path.fish
+    to: "{{ user.home_dir }}/.config/fish/path.fish"
+
+  # starship config
+  - action: file.copy
+    from: starship.toml
+    to: "{{ user.home_dir }}/.config/starship.toml"
 
   # tokyonight_night theme
   - action: file.copy
