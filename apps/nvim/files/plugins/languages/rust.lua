@@ -54,6 +54,7 @@ return {
         keys = {
             { "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code actions" },
             { "<leader>t", "<cmd>lua vim.cmd.RustLsp('testables')<CR>", desc = "Testing" },
+            { "<leader>gR", "<cmd> lua vim.lsp.buf.references()<CR>", desc = "Reference List" },
         },
         lazy = false,
     },
