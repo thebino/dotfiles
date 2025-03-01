@@ -1,0 +1,25 @@
+actions:
+  - action: package.install
+    list:
+      - fisher
+      - oh-my-posh
+      - fish
+      - fzf
+      - fd
+      - bat
+
+  # config.nu
+  - action: file.copy
+    from: config.fish
+    to: "{{ user.home_dir }}/.config/fish/config.fish"
+
+  # tokyonight_night theme
+  - action: file.copy
+    from: tokyonight_night.fish
+    to: "{{ user.home_dir }}/.config/fish/tokyonight_night.fish"
+
+
+  # # aliases
+  # - action: file.copy
+  #   from: aliases.nu
+  #   to: "{{ user.config_dir }}/nushell/aliases.nu"
