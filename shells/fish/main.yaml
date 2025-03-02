@@ -19,6 +19,11 @@ actions:
     from: path.fish
     to: "{{ user.home_dir }}/.config/fish/path.fish"
 
+  # path
+  - action: file.copy
+    from: git.fish
+    to: "{{ user.home_dir }}/.config/fish/git.fish"
+
   # starship config
   - action: file.copy
     from: starship.toml

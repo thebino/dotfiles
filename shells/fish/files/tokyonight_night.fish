@@ -1,4 +1,4 @@
-#https://github.com/folke/tokyonight.nvim/blob/main/extras/fish/tokyonight_night.fish
+# https://github.com/folke/tokyonight.nvim/blob/main/extras/fish/tokyonight_night.fish
     # TokyoNight Color Palette
     set -l foreground c0caf5
     set -l selection 283457
