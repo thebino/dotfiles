@@ -15,6 +15,9 @@ fzf --fish | source
 # https://github.com/cantino/mcfly
 mcfly init fish | source
 
+# set the TTY for GnuPG
+set -gx GPG_TTY (tty)
+
 abbr --add get_idf '. $HOME/esp/esp-idf/export.sh'
 abbr --add update-submodules 'git submodule sync; git submodule update --init'
 abbr --add mp3 "yt-dlp -i --extract-audio --audio-format mp3 $1"
