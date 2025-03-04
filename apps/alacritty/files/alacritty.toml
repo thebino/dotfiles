@@ -41,5 +41,5 @@ blinking = "Off"
 shape = "Beam"
 
 [terminal.shell]
-program = "/bin/zsh"
+program = "/opt/homebrew/bin/fish"
 
