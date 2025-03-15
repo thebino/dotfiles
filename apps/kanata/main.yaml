@@ -1,0 +1,18 @@
+# Cross-platform software keyboard remapper
+actions:
+  - action: package.install
+    name: kanata
+
+  - action: file.copy
+    from: kanata.kbd
+    to: "{{ user.config_dir }}/kanata/kanata.kbd"
+ 
+    # install Karabiner VirtualHIDDevice
+    # https://github.com/pqrs-org/Karabiner-DriverKit-VirtualHIDDevice/blob/main/dist/Karabiner-DriverKit-VirtualHIDDevice-5.0.0.pkg
+
+    # activate
+    # /Applications/.Karabiner-VirtualHIDDevice-Manager.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Manager activate
+
+    # start daemon
+    # sudo '/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon'
+
