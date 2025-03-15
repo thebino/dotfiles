@@ -1,0 +1,43 @@
+;; Configuration Guide
+;; https://github.com/jtroo/kanata/blob/main/docs/config.adoc
+
+;; global options
+(defcfg
+  process-unmapped-keys   yes
+)
+
+;; source keys it expects to map
+(defsrc
+  q w e r t y u i o p
+  a s d f g h j k l ;
+  z x c v b n m
+  lalt spc ralt
+)
+
+;; default layer
+(deflayer default
+  _ _ f p g j l u y ;
+  @a @r @s @t d _ @n @e @i @o
+  _ _ _ _ _ k _
+  @lower _ _
+)
+
+;; vars to be used below
+(defvar
+      tap-time 200
+      hold-time 250
+)
+
+(defalias
+  a (tap-hold $tap-time $hold-time a lalt)
+  r (tap-hold $tap-time $hold-time r lsft)
+  s (tap-hold $tap-time $hold-time s lctl)
+  t (tap-hold $tap-time $hold-time t lmet)
+  n (tap-hold $tap-time $hold-time n rmet)
+  e (tap-hold $tap-time $hold-time e rctl)
+  i (tap-hold $tap-time $hold-time i rsft)
+  o (tap-hold $tap-time $hold-time o ralt)
+  lower (tap-hold-press $tap-time $hold-time a b)
+  cap (tap-hold-press 200 200 caps lctl)
+)
+
