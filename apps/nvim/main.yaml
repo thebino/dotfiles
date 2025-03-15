@@ -194,13 +194,3 @@ actions:
     from: plugins/languages/jwt.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/jwt.lua"
 
-
-
-  #
-  # miscellaneous
-  #
-  # Usage tracker
-  - action: file.copy
-    from: plugins/usage-tracker.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/usage-tracker.lua"
-
