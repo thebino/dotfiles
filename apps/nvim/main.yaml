@@ -101,6 +101,12 @@ actions:
     from: plugins/ui/which-key.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/which-key.lua"
 
+  # Establish good command workflow and quit bad habit
+  - action: file.copy
+    from: plugins/ui/hardtime.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/hardtime.lua"
+
+
 
 
 
