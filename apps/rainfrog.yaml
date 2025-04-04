@@ -1,0 +1,5 @@
+# database management tui for postgres
+# https://github.com/achristmascarl/rainfrog
+actions:
+  - action: package.install
+    name: rainfrog
