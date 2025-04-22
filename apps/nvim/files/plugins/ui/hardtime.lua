@@ -6,7 +6,7 @@ return {
         lazy = true,
         dependencies = { "MunifTanjim/nui.nvim" },
         opts = {
-            disable_mouse = true,
+            disable_mouse = false,
             disabled_keys = {
                 ["<Up>"] = {},
                 ["<Down>"] = {},
