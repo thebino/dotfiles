@@ -104,8 +104,8 @@ return {
         sections = process_sections {
           lualine_a = { 'mode' },
           lualine_b = {
-            'branch',
-            'diff',
+            -- 'branch',
+            -- 'diff',
             {
               'diagnostics',
               symbols = {
@@ -124,7 +124,12 @@ return {
               sections = { 'warn' },
               diagnostics_color = { warn = { bg = colors.orange, fg = colors.white } },
             },
-            { 'filename', file_status = false, path = 1 },
+            { 
+              'buffers',
+              show_filename_only = true, 
+              hide_filename_extension = false, 
+              show_modified_status = true
+            },
             { modified, color = { bg = colors.red } },
             {
               '%w',
@@ -146,7 +151,9 @@ return {
             },
           },
           lualine_c = {},
-          lualine_x = {},
+          lualine_x = {
+            { 'filename', file_status = false, path = 1 },
+          },
           lualine_y = { search_result, 'filetype' },
           lualine_z = { '%l:%c', '%p%%/%L' },
         },
