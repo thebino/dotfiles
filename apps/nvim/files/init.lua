@@ -18,7 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 -- this codepoint will cause the previous character to always be selected from the emoji table.
 local force_emoji = '\u{FE0F}'
 
-require("config.abbreviations")
+-- require("config.abbreviations")
 require("config.autocmds")
 require("config.keymaps")
 require("config.options")

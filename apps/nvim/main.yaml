@@ -38,10 +38,6 @@ actions:
 
 
 
-  # abbreviations
-  - action: file.copy
-    from: config/abbreviations.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/config/abbreviations.lua"
   # autocmds
   - action: file.copy
     from: config/autocmds.lua

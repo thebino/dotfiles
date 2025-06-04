@@ -1,16 +1,16 @@
 return {
-    {
-        "David-Kunz/gen.nvim",
-        enabled = true,
-        lazy = false,
-        opts = {
-            model = "mistral", -- https://ollama.com/library
-            host = "localhost", -- The host running the Ollama service.
-            port = "11434", -- The port on which the Ollama service is listening.
-            display_mode = "float", -- The display mode. Can be "float" or "split" or "horizontal-split".
-            show_prompt = true -- Shows the prompt submitted to Ollama.
-        }
-    },
+    -- {
+    --     "David-Kunz/gen.nvim",
+    --     enabled = true,
+    --     lazy = false,
+    --     opts = {
+    --         model = "mistral", -- https://ollama.com/library
+    --         host = "localhost", -- The host running the Ollama service.
+    --         port = "11434", -- The port on which the Ollama service is listening.
+    --         display_mode = "float", -- The display mode. Can be "float" or "split" or "horizontal-split".
+    --         show_prompt = true -- Shows the prompt submitted to Ollama.
+    --     }
+    -- },
     {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
@@ -43,6 +43,11 @@ return {
         -- },
         copilot = {
           model = "gpt-4o",
+        },
+        ollama = {
+          model = "mistral",
+          endpoint = "http://localhost:11434"
+          -- model = "qwq:32b",
         }
       },
       -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
