@@ -15,6 +15,13 @@ fzf --fish | source
 # https://github.com/cantino/mcfly
 mcfly init fish | source
 
+# smarter cd command
+# https://github.com/ajeetdsouza/zoxide
+zoxide init fish | source
+alias cd="z"
+
+alias ls="eza --icons=always"
+
 # set the TTY for GnuPG
 set -gx GPG_TTY (tty)
 
