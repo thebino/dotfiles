@@ -35,6 +35,9 @@ vim.keymap.set("n", "<leader>dd", "<cmd>GoDebug test<cr>", { desc = "Debug test"
 vim.keymap.set("n", "<leader>gk", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "Code hover" })
 vim.keymap.set("n", "<leader>gg", "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "Rename references" })
 
+-- open quickfix list with diagnostics
+vim.keymap.set("n", "<leader>qf", function() vim.diagnostic.setqflist({ open = true }) end)
+
 -- Clear search with <esc>
 -- vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 

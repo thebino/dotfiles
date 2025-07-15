@@ -54,145 +54,66 @@ actions:
 
 
 
-  # 
-  # Ui
-  # 
-  # Theme: tokyonight
-  - action: file.copy
-    from: plugins/ui/tokyonight.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/tokyonight.lua"
-    
-  # plugins/treesitter
-  - action: file.copy
-    from: plugins/ui/treesitter.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/treesitter.lua"
-    
-  # plugins/focus
-  - action: file.copy
-    from: plugins/ui/focus.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/focus.lua"
-
-  # top tabbar
-  - action: file.copy
-    from: plugins/ui/barbar.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/barbar.lua"
-
-  # bottom status bar
-  - action: file.copy
-    from: plugins/ui/lualine.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/lualine.lua"
-
-  # in-line git blame
-  - action: file.copy
-    from: plugins/ui/gitsigns.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/gitsigns.lua"
-
-  # highlight cursor word && color current line number
-  - action: file.copy
-    from: plugins/ui/cursorline.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/cursorline.lua"
-
-  # Key hints in a pop-up
-  - action: file.copy
-    from: plugins/ui/which-key.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/which-key.lua"
-
-  # Establish good command workflow and quit bad habit
-  - action: file.copy
-    from: plugins/ui/hardtime.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/hardtime.lua"
-
-
-
-
-
-  # 
-  # Files
-  # 
-  # Filesystem as Sidebar
-  - action: file.copy
-    from: plugins/files/neo-tree.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/neo-tree.lua"
-
-  # Fuzzy finder
-  - action: file.copy
-    from: plugins/files/telescope.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/telescope.lua"
-
-  # Lazygit
-  - action: file.copy
-    from: plugins/files/git.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/git.lua"
-
-  # Harpoon
-  - action: file.copy
-    from: plugins/files/harpoon.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/harpoon.lua"
-
-
-
-  # 
-  # Typing
-  # 
-  # auto closing parentheses / quotes etc
-  - action: file.copy
-    from: plugins/typing/nvim-autopairs.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/nvim-autopairs.lua"
-
-  # "surroundings": parentheses, brackets, quotes
-  - action: file.copy
-    from: plugins/typing/vim-surround.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/vim-surround.lua"
-    
-  # motion plugin
-  - action: file.copy
-    from: plugins/typing/motion.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/motion.lua"
-
-  # Auto completion
-  - action: file.copy
-    from: plugins/typing/cmp.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/cmp.lua"
 
   # Artificial intelligence
   - action: file.copy
-    from: plugins/typing/ai.lua
+    from: plugins/ai.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/ai.lua"
 
+  # Auto completion
+  - action: file.copy
+    from: plugins/cmp.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/cmp.lua"
 
-
-
-
-  # 
-  # Languages
-  # 
   # Debug adapters
   - action: file.copy
-    from: plugins/languages/dap.lua
+    from: plugins/dap.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/dap.lua"
 
-  # Markdown preview
+  # in-line git blame
   - action: file.copy
-    from: plugins/languages/markdown.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/markdown.lua"
+    from: plugins/gitsigns.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/gitsigns.lua"
 
-  # Go language
+    # Establish good command workflow and quit bad habit
   - action: file.copy
-    from: plugins/languages/go.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/go.lua"
+    from: plugins/hardtime.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/hardtime.lua"
+
+  # jump
+  - action: file.copy
+    from: plugins/harpoon.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/harpoon.lua"
+
+# latex language
+  - action: file.copy
+    from: plugins/latex.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/latex.lua"
+
+  # Language Server Protocol 
+  - action: file.copy
+    from: plugins/lsp.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/lsp.lua"
 
   # rust language
   - action: file.copy
-    from: plugins/languages/rust.lua
+    from: plugins/rust.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/rust.lua"
 
-  # latex language
+  # snacks
   - action: file.copy
-    from: plugins/languages/latex.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/latex.lua"
+    from: plugins/snacks.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/snacks.lua"
 
-  # jwt
+  # Theme: tokyonight
   - action: file.copy
-    from: plugins/languages/jwt.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/jwt.lua"
+    from: plugins/tokyonight.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/tokyonight.lua"
+
+  # Key hints in a pop-up
+  - action: file.copy
+    from: plugins/which-key.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/which-key.lua"
+
+
 
