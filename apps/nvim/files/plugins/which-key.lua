@@ -13,7 +13,7 @@ return {
                 -- https://www.nerdfonts.com/cheat-sheet
                 { "<leader>a", group = "Code actions", icon = "" },
                 { "<leader>b", group = "Buffers", icon = "󰪶" },
-                { "<leader>e", group = "Error Diagnostics", icon = "" },
+                -- { "<leader>e", group = "Error Diagnostics", icon = "" },
                 { "<leader>j", group = "JWT Token", icon = "󰯅" },
                 { "<leader>f", group = "File", icon = "" },
                 { "<leader>d", group = "Debug", icon = "" },

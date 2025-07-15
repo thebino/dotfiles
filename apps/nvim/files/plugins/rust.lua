@@ -1,10 +1,31 @@
 return {
     {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-neotest/nvim-nio",
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter"
+        },
+        keys = {
+            { "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code actions" },
+            { "<leader>t", "<cmd>lua vim.cmd.RustLsp('testables')<CR>", desc = "Testing" },
+            { "<leader>gR", "<cmd> lua vim.lsp.buf.references()<CR>", desc = "Reference List" },
+        },
+        config = function()
+            require("neotest").setup {
+                adapters = {
+                    require("rustaceanvim.neotest"),
+                }
+            }
+        end
+    },
+    {
         "mrcjkb/rustaceanvim",
         dependencies = {  -- optional packages
             "nvim-neotest/neotest",
         },
-        version = '^5',
+        version = '^6',
         init = function()
             -- Configure rustaceanvim here
             vim.g.rustaceanvim = {
@@ -52,9 +73,10 @@ return {
             }
         end,
         keys = {
-            { "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code actions" },
+            { "<leader><space>", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code actions" },
             { "<leader>t", "<cmd>lua vim.cmd.RustLsp('testables')<CR>", desc = "Testing" },
-            { "<leader>gR", "<cmd> lua vim.lsp.buf.references()<CR>", desc = "Reference List" },
+            { "<leader>gR", "<cmd>lua vim.cmd.RustLsp('expandMacro')<CR>", desc = "Expand Macro" },
+            { "<leader>me", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "Reference List" },
         },
         lazy = false,
     },
