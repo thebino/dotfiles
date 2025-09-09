@@ -1,0 +1,15 @@
+depends:
+- fonts.nerdfonts
+
+actions:
+  - action: package.install
+    name: alacritty
+
+  - action: file.copy
+    from: alacritty.toml
+    to: "{{ user.home_dir }}/.config/alacritty/alacritty.toml"
+
+  - action: file.copy
+    from: colors.toml
+    to: "{{ user.home_dir }}/.config/alacritty/colors.toml"
+
