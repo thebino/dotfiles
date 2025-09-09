@@ -1,0 +1,42 @@
+actions:
+  - action: package.repository
+    provider: homebrew
+    name: nikitabobko/tap
+
+  - action: package.install
+    list:
+      - aerospace
+
+  - action: file.copy
+    from: aerospace.toml
+    to: "{{ user.home_dir }}/.config/aerospace/aerospace.toml"
+    chmod: "644"
+
+  # mission control workaround
+  - action: command.run
+    command: defaults
+    args:
+      - "write"
+      - "com.apple.dock"
+      - "expose-group-apps"
+      - "-bool"
+      - "true"
+  - action: command.run
+    command: killall 
+    args:
+      - "Dock"
+
+  # Disable "Displays have separate Spaces"
+  - action: command.run
+    command: defaults
+    args:
+      - "write"
+      - "com.apple.spaces"
+      - "spans-displays"
+      - "-bool"
+      - "true"
+  - action: command.run
+    command: killall 
+    args:
+      - "SystemUIServer"
+
