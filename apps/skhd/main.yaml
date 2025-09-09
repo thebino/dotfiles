@@ -1,0 +1,19 @@
+actions:
+  - action: package.repository
+    provider: homebrew
+    name: koekeishiya/formulae
+
+  - action: package.install
+    provider: homebrew
+    name: skhd
+
+  - action: file.copy
+    from: skhdrc
+    to: "{{ user.home_dir }}/.config/skhd/skhdrc"
+    chmod: "644"
+
+  - action: command.run
+    command: skhd
+    args:
+      - "--install-service"
+
