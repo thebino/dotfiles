@@ -1,0 +1,5 @@
+# serve files or directories via HTTP
+# https://github.com/svenstaro/miniserve
+actions:
+  - action: package.install
+    name: miniserve
