@@ -1,0 +1,11 @@
+depends:
+- fonts.nerdfonts
+
+actions:
+  - action: package.install
+    name: wezterm
+
+  - action: file.copy
+    from: wezterm.lua
+    to: "{{ user.home_dir }}/.wezterm.lua"
+
