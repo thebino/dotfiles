@@ -84,6 +84,12 @@ return {
                         max_completion_tokens = 32768, -- remember to increase this value, otherwise it will stop generating halfway
                     }
                 },
+                xai = {
+                    __inherited_from = "openai",
+                    endpoint = "https://api.x.ai/v1",
+                    model = "grok-code-fast-1",
+                    api_key_name = "AVANTE_XAI_API_KEY",
+                },
             }
         },
         build = "make",
