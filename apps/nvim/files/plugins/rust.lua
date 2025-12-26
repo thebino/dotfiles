@@ -1,93 +1,82 @@
+-- Set rustaceanvim global config early (before plugin load)
+vim.g.rustaceanvim = {
+    tools = {
+        autoSetHints = true,
+        inlay_hints = {
+            show_parameter_hints = true,
+            parameter_hints_prefix = "<- ",
+            other_hints_prefix = "=> ",
+        },
+    },
+    server = {
+        on_attach = function(client, bufnr)
+            -- Basic LSP keymaps
+            local opts = { buffer = bufnr }
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+            vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+            vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        end,
+        default_settings = {
+            ["rust-analyzer"] = {
+                cargo = { targetDir = true, allFeatures = true },
+                diagnostics = { disabled = { "macro-error" } },
+                procMacro = { enable = true },
+                checkOnSave = true,
+                check = {
+                    allTargets = true,
+                },
+                inlayHints = {
+                    enable = true,
+                    showParameterNames = true,
+                    parameterHintsPrefix = "<- ",
+                    otherHintsPrefix = "=> ",
+                },
+            },
+        },
+    },
+}
+
 return {
+    {
+        "mrcjkb/rustaceanvim",
+        version = '^6',
+        event = { "BufReadPre *.rs" },
+        lazy = false,
+        dependencies = {
+            "nvim-neotest/neotest",
+        },
+        keys = {
+            { "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code actions" },
+            { "<leader>gR", "<cmd>lua vim.cmd.RustLsp('expandMacro')<CR>", desc = "Expand Macro" },
+        },
+    },
     {
         "nvim-neotest/neotest",
         dependencies = {
             "nvim-neotest/nvim-nio",
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
-            "nvim-treesitter/nvim-treesitter"
-        },
-        keys = {
-            { "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code actions" },
-            { "<leader>t", "<cmd>lua vim.cmd.RustLsp('testables')<CR>", desc = "Testing" },
-            { "<leader>gR", "<cmd> lua vim.lsp.buf.references()<CR>", desc = "Reference List" },
+            "nvim-treesitter/nvim-treesitter",
         },
         config = function()
             require("neotest").setup {
                 adapters = {
                     require("rustaceanvim.neotest"),
-                }
-            }
-        end
-    },
-    {
-        "mrcjkb/rustaceanvim",
-        dependencies = {  -- optional packages
-            "nvim-neotest/neotest",
-        },
-        version = '^6',
-        init = function()
-            -- Configure rustaceanvim here
-            vim.g.rustaceanvim = {
-                require("neotest").setup({
-                    adapters = {
-                        require("rustaceanvim.neotest"),
-                    },
-                }),
-                -- Plugin configuration
-                tools = {
-                    autoSetHints = true,
-                    inlay_hints = {
-                        show_parameter_hints = true,
-                        parameter_hints_prefix = "<- ",
-                        other_hints_prefix = "=> ",
-                    },
-                },
-                -- LSP configuration
-                server = {
-                    on_attach = on_attach,
-                    default_settings = {
-                        -- rust-analyzer language server configuration
-                        ['rust-analyzer'] = {
-                            cargo = {
-                                allFeatures = true,
-                            },
-                            diagnostics = {
-                                disabled = { "macro-error" },
-                            },
-                            procMacro = {
-                                enable = true,
-                            },
-                            checkOnSave = {
-                                command = "clippy",
-                            },
-                            inlayHints = {
-                                enable = true,
-                                showParameterNames = true,
-                                parameterHintsPrefix = "<- ",
-                                otherHintsPrefix = "=> ",
-                            },
-                        },
-                    },
                 },
             }
         end,
         keys = {
-            { "<leader><space>", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code actions" },
-            { "<leader>t", "<cmd>lua vim.cmd.RustLsp('testables')<CR>", desc = "Testing" },
-            { "<leader>gR", "<cmd>lua vim.cmd.RustLsp('expandMacro')<CR>", desc = "Expand Macro" },
-            { "<leader>me", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "Reference List" },
+            { "<leader>t", "<cmd>lua require('neotest').run.run()<CR>", desc = "Run nearest test" },
+            -- { "<leader>ta", "<cmd>lua require('neotest').run.attach()<CR>", desc = "Attach to test" },
         },
-        lazy = false,
     },
     {
         "saecki/crates.nvim",
-        tag = 'stable',
-        requires = { 'nvim-lua/plenary.nvim' },
+        tag = "stable",
         event = { "BufRead Cargo.toml" },
+        dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             require("crates").setup {
-                -- auto completion and code actions
                 lsp = {
                     enabled = true,
                     actions = true,
@@ -95,7 +84,6 @@ return {
                     hover = true,
                 },
             }
-        end
-    }
+        end,
+    },
 }
-
