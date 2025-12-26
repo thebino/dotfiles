@@ -34,3 +34,17 @@ actions:
     from: tokyonight_night.fish
     to: "{{ user.home_dir }}/.config/fish/tokyonight_night.fish"
 
+  # credentials
+  - action: file.copy
+    from: credentials.gpg
+    to: "{{ user.home_dir }}/.config/fish/credentials.gpg"
+
+  - action: command.run
+    command: gpg
+    args:
+      - "--output"
+      - "{{ user.home_dir }}/.config/credentials.fish"
+      - "--decrypt"
+      - "{{ user.home_dir }}/.config/credentials.gpg"
+
+
