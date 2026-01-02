@@ -30,6 +30,7 @@ abbr --add update-submodules 'git submodule sync; git submodule update --init'
 abbr --add mp3 "yt-dlp -i --extract-audio --audio-format mp3 $1"
 abbr --add scpresume "rsync --partial --progress "
 abbr --add reload exec fish
+abbr --add ducks "du -cks -- * | sort -rn | head"
 
 source ~/.config/fish/git.fish
 source ~/.config/fish/path.fish
