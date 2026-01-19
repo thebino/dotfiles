@@ -70,7 +70,6 @@ curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux-ar
 tar xzf nvim-linux-arm64.tar.gz
 sudo mv nvim-linux-arm64 /opt/nvim
 sudo ln -sf /opt/nvim/bin/nvim /usr/local/bin/nvim
-nvim --version
 ```
 
 ### Ui
@@ -104,3 +103,18 @@ nvim --version
  - **Markdown** [glow.nvim](https://github.com/ellisonleao/glow.nvim) Markdown Preview
  - **Latex** [vimtex](https://github.com/lervag/vimtex) Software system for typesetting `_ll` start compile, `_lv` view pdf 
 
+
+## Minimal
+~/.config/nvim/init.vim
+```
+colorscheme slate
+set termguicolors
+set number relativenumber
+set scrolloff=8
+set showmatch
+set nowrap
+set list
+set listchars=tab:┈\ ,leadmultispace:·,extends:»,precedes:«
+set laststatus=2
+set statusline=[%n]\ %<%F\ %m%r%h%w\ %=%-15.(%l,%c%V%)\ %p%%
+```
