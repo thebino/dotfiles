@@ -64,6 +64,15 @@ $ gpg --output output.txt --decrypt input.gpg
 
 ![nvim screen](docs/editor_nvim.png)
 
+```sh
+sudo apt remove --purge neovim
+curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux-arm64.tar.gz
+tar xzf nvim-linux-arm64.tar.gz
+sudo mv nvim-linux-arm64 /opt/nvim
+sudo ln -sf /opt/nvim/bin/nvim /usr/local/bin/nvim
+nvim --version
+```
+
 ### Ui
  - **Theme** [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
  - **Syntax Highlighting** [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
