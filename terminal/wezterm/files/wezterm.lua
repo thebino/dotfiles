@@ -4,6 +4,10 @@ local wezterm = require 'wezterm'
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+-- get the most application support out of wezterm
+-- https://wezterm.org/config/lua/config/term.html
+config.term = 'wezterm'
+
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono") 
 
 -- Colors & Appearance
