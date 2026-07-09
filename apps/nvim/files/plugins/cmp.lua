@@ -5,27 +5,52 @@ return {
         enabled = true,
         lazy = false,
         dependencies = {
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-cmdline",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-path",
-            "lukas-reineke/cmp-rg",
-            -- "L3MON4D3/LuaSnip",
-            -- "saadparwaiz1/cmp_luasnip",
-            "onsails/lspkind.nvim",
+            "hrsh7th/cmp-nvim-lsp", -- src: built-in lsp
+            "hrsh7th/cmp-buffer",   -- src: buffer words
+            "hrsh7th/cmp-path",     -- src: paths of files and folders
+
+            'L3MON4D3/LuaSnip', -- snippet engine
+            'saadparwaiz1/cmp_luasnip', -- snippet source for cmp
+            "rafamadriz/friendly-snippets", -- Snippets collection
+
+            -- "hrsh7th/cmp-path",
+            "lukas-reineke/cmp-rg", -- src: ripgrep
+
+            "onsails/lspkind.nvim", -- adds icons to completions
             "nvim-treesitter/nvim-treesitter",
-        },
-        opts = {
-            performance = {
-                debounce = 0, -- default is 60ms
-                throttle = 0, -- default is 30ms
-            },
         },
         config = function()
             local cmp = require("cmp")
             local lspkind = require("lspkind")
+            local luasnip = require("luasnip")
+
+            -- Load friendly snippets
+            require("luasnip.loaders.from_vscode").lazy_load()
+            -- Load ~/.config/nvim/snippets/
+            require("luasnip.loaders.from_vscode").lazy_load({
+                paths = { vim.fn.stdpath("config") .. "/snippets" },
+            })
+
+
+            luasnip.config.setup({
+                history = true,
+                updateevents = "TextChanged,TextChangedI",
+                enable_autosnippets = true,
+            })
 
             cmp.setup({
+                snippet = {
+                    expand = function(args)
+                        luasnip.lsp_expand(args.body)
+                    end,
+                },
+                performance = {
+                    debounce = 0, -- default is 60ms
+                    throttle = 0, -- default is 30ms
+                },
+                sorting = {
+                    priority_weight = 2.0,  -- Global source order boost
+                },
                 mapping = cmp.mapping.preset.insert({
                     -- Tab selects next completion item
                     ['<Tab>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
@@ -34,23 +59,19 @@ return {
 
                     -- Enter key confirms completion item
                     ['<CR>'] = cmp.mapping.confirm({select = false}),
-
-                    -- Ctrl + space triggers completion menu
-                    ['<C-Space>'] = cmp.mapping.complete(),
-
-                    -- Ctrl + d/f scrolls through documentation
-                    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-                    ['<C-f>'] = cmp.mapping.scroll_docs(4),
                 }),
                 sources = {
-                    -- keyword_length = 2 // MAX length of inp8t
-                    { name = "nvim_lsp", priority = 1, priority_weight = 3 }, -- hrsh7th/nvim-cmp
-                    -- { name = "buffer",   keyword_length = 2, priority_weight = 2 }, -- hrsh7th/cmp-buffer  for buffer words
-                    -- { name = "luasnip",  keyword_length = 2, priority_weight = 1, option = { show_autosnippets = false } },
-                    -- { name = "neorg", ft = "norg" },
-                    -- { name = "copilot.lua", max_item_count = 2 },
-                    -- { name = "path", keyword_length = 2 }, -- hrsh7th/cmp-path   paths of files and folders
-                    -- { name = "rg", keyword_length = 3 }, -- lukas-reineke/cmp-rg   ripgrep results
+                    { name = "luasnip",  keyword_length = 1, priority_weight = 10, option = { show_autosnippets = true } }, -- L3MON4D3/LuaSnip  &  saadparwaiz1/cmp_luasnip
+                    { name = "nvim_lsp", priority_weight = 4 }, -- hrsh7th/nvim-cmp
+                    { name = "rg", keyword_length = 5, priority_weight = 1}, -- lukas-reineke/cmp-rg
+                    -- { name = "buffer",   keyword_length = 2, priority_weight = 1 }, -- hrsh7th/cmp-buffer
+                    -- { name = "path", keyword_length = 2, priority_weight = 1 }, -- hrsh7th/cmp-path
+                },
+                formatting = {
+                    format = lspkind.cmp_format({
+                        mode = 'symbol_text',  -- Icons + text
+                        maxwidth = 50,
+                    }),
                 },
             })
         end,

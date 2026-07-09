@@ -1,6 +1,10 @@
 actions:
   - action: package.install
-    name: neovim
+    list:
+      - neovim
+      - tree-sitter-cli
+      - kotlin-language-server
+
 
   # nuke defaults
   - action: command.run
@@ -14,7 +18,6 @@ actions:
   - action: file.copy
     from: init.lua
     to: "{{ user.home_dir }}/.config/nvim/init.lua"
-
 
     
   # custom snippets
@@ -36,8 +39,6 @@ actions:
 
 
 
-
-
   # autocmds
   - action: file.copy
     from: config/autocmds.lua
@@ -53,13 +54,6 @@ actions:
 
 
 
-
-
-  # Artificial intelligence
-  - action: file.copy
-    from: plugins/ai.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/ai.lua"
-
   # Auto completion
   - action: file.copy
     from: plugins/cmp.lua
@@ -67,53 +61,66 @@ actions:
 
   # Debug adapters
   - action: file.copy
-    from: plugins/dap.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/dap.lua"
+    from: plugins/tokyonight.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/tokyonight.lua"
 
   # in-line git blame
   - action: file.copy
     from: plugins/gitsigns.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/gitsigns.lua"
 
-    # Establish good command workflow and quit bad habit
-  - action: file.copy
-    from: plugins/hardtime.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/hardtime.lua"
-
   # jump
-  - action: file.copy
-    from: plugins/harpoon.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/harpoon.lua"
+  # - action: file.copy
+  #   from: plugins/harpoon.lua
+  #   to: "{{ user.home_dir }}/.config/nvim/lua/plugins/harpoon.lua"
 
-# latex language
+  # parsing / syntax highlighting
   - action: file.copy
-    from: plugins/latex.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/latex.lua"
+    from: plugins/treesitter.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/treesitter.lua"
+
+  # Fuzy finder
+  - action: file.copy
+    from: plugins/telescope.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/telescope.lua"
 
   # Language Server Protocol 
   - action: file.copy
     from: plugins/lsp.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/lsp.lua"
 
-  # rust language
+  # Auto completion
+  - action: file.copy
+    from: plugins/cmp.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/cmp.lua"
+
+  # file browser
+  - action: file.copy
+    from: plugins/files.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/files.lua"
+
+  # latex language
+  - action: file.copy
+    from: plugins/latex.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/latex.lua"
+
+  # rust 
   - action: file.copy
     from: plugins/rust.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/rust.lua"
 
-  # snacks
-  - action: file.copy
-    from: plugins/snacks.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/snacks.lua"
 
-  # Theme: tokyonight
+  # Artificial intelligence
   - action: file.copy
-    from: plugins/tokyonight.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/tokyonight.lua"
+    from: plugins/ai.lua
+    to: "{{ user.home_dir }}/.config/nvim/lua/plugins/ai.lua"
+
+  # Debug adapters
+  # - action: file.copy
+  #   from: plugins/dap.lua
+  #   to: "{{ user.home_dir }}/.config/nvim/lua/plugins/dap.lua"
 
   # Key hints in a pop-up
   - action: file.copy
     from: plugins/which-key.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/which-key.lua"
-
-
-
