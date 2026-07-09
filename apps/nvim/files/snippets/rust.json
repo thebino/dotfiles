@@ -1,15 +1,18 @@
 {
     "tracing": {
         "prefix": "info",
-        "body": [
-            "tracing::info!(\"${1}\");"
-        ],
+        "body": [ "tracing::info!(\"${1}\");" ],
         "description": "tracing::info!(…)"
-        "luasnip": {
-            "priority": 2000,
-            "autotrigger": true,
-            "wordTrig": false
-        }
+    },
+    "vin": {
+        "prefix": "vin",
+        "body": [ "oxide::types::vin!(\"${1}\");" ],
+        "description": "vin macro"
+    },
+    "vinn": {
+        "prefix": "vinn",
+        "body": [ "WAUZZZ00000000001" ],
+        "description": "fake vin"
     }
 }
 

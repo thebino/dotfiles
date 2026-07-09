@@ -1,17 +1,35 @@
 return {
+    -- avante uses copilot plugin if provider is set
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        config = function()
+            require("copilot").setup({
+                suggestion = { enabled = true },
+                panel = { enabled = false },
+            })
+            -- Force auth check
+            vim.schedule(function()
+                vim.cmd("Copilot auth")
+            end)
+        end,
+    },
     {
         "yetone/avante.nvim",
         event = "VeryLazy",
+        enabled = true,
         version = false, -- Never set this value to "*"! Never!
         opts = {
-            input = {
-                provider = "snacks",
-            },
-            selector = {
-                provider = "snacks",
-                provider_opts = {},
-            },
-            auto_suggestions_provider = "copilot",
+            debug = true,
+            mode = "legacy",
+
+            -- provider = "copilot",
+            -- cursor_applying_provider = "copilot",
+            -- auto_suggestions_provider = "copilot",
+            provider = "ollama",
+            cursor_applying_provider = "ollama",
+            auto_suggestions_provider = "ollama",
+
             behaviour = {
                 -- auto_suggestions = true,
                 jump_result_buffer_on_finish = true,
@@ -24,12 +42,11 @@ return {
                     close_from_input = { normal = "q", insert = "<C-d>" },
                 },
             },
-            provider = "copilot",
-            cursor_applying_provider = "copilot",
             providers = {
                 ollama = {
-                    ezqndpoint = "http://localhost:11434",
-                    model = "mistral",
+                    endpoint = "http://localhost:11434",
+                    model = "qwen3.5:9",
+                    -- model = "mistral",
                     -- model = "qwq:32b",
                     timeout = 30000, -- Timeout in milliseconds
                     extra_request_body = {
@@ -49,7 +66,14 @@ return {
                     }
                 },
                 copilot = {
-                    model = "gpt-4o",
+                    -- model = "gpt-4o-2024-08-06",
+                    model = "claude-opus-4.6",
+                    timeout = 30000,
+                    extra_request_body = {
+                        max_tokens = 65536,
+                        temperature = 0.1,
+                    },
+                    disable_tools = true,
                 },
                 gemini = {
                     endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
@@ -65,24 +89,15 @@ return {
                 },
                 claude = {
                     endpoint = "https://api.anthropic.com",
-                    model = "claude-opus-4-20250514",
+                    model = "claude-opus-4-6",
                     timeout = 30000, -- Timeout in milliseconds
                     disable_tools = true, -- disable tools!
                     context_window = 1048576,
                     use_ReAct_prompt = true,
                     extra_request_body = {
                         temperature = 0.75,
-                        max_tokens = 4096,
+                        max_tokens = 20480,
                     },
-                },
-                groq = {
-                    endpoint = 'https://api.groq.com/openai/v1/',
-                    model = 'llama-3.3-70b-versatile',
-                    disable_tools = true,
-                    extra_request_body = {
-                        temperature = 1,
-                        max_completion_tokens = 32768, -- remember to increase this value, otherwise it will stop generating halfway
-                    }
                 },
                 xai = {
                     __inherited_from = "openai",
@@ -94,6 +109,7 @@ return {
         },
         build = "make",
         dependencies = {
+            "zbirenbaum/copilot.lua", -- for providers='copilot'
             "nvim-treesitter/nvim-treesitter",
             "stevearc/dressing.nvim",
             "nvim-lua/plenary.nvim",
@@ -104,7 +120,6 @@ return {
             "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
             "ibhagwan/fzf-lua", -- for file_selector provider fzf
             "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-            "zbirenbaum/copilot.lua", -- for providers='copilot'
             {
                 -- support for image pasting
                 "HakonHarnes/img-clip.nvim",

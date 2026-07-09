@@ -1,7 +1,7 @@
 vim.opt.swapfile = false -- don't create swapfiles
 
 -- line numbers
-vim.opt.relativenumber = false -- show relative line numbers
+vim.opt.relativenumber = true -- show relative line numbers
 vim.opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 
 -- tabs & indentation
@@ -13,8 +13,8 @@ vim.opt.autoindent = true -- re-use indentation from previous line
 vim.opt.wrap = false -- line wrapping
 
 -- folding
-vim.opt.foldmethod = "indent" -- fold code by indentation
-vim.opt.foldlevelstart = 8 -- code with an indentation higher than $1 are closed by default
+-- vim.opt.foldmethod = "indent" -- fold code by indentation
+-- vim.opt.foldlevelstart = 8 -- code with an indentation higher than $1 are closed by default
 
 -- search settings
 vim.opt.ignorecase = true -- case-insensitive search
