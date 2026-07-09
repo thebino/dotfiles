@@ -3,13 +3,30 @@ depends:
 
 actions:
   - action: package.install
-    name: alacritty
+    list:
+      - tmux
+      - git
+      - fzf       # required by tmux-fzf and tmux-sessionx
+      - zoxide    # optional: enables sessionx zoxide-mode
+      - bat       # optional: sessionx previews
 
   - action: file.copy
-    from: alacritty.toml
-    to: "{{ user.home_dir }}/.config/alacritty/alacritty.toml"
+    from: .tmux.conf
+    to: "{{ user.home_dir }}/.tmux.conf"
 
-  - action: file.copy
-    from: colors.toml
-    to: "{{ user.home_dir }}/.config/alacritty/colors.toml"
+  - action: git.clone
+    repo_url: https://github.com/tmux-plugins/tmux-resurrect
+    directory: "{{ user.home_dir }}/.local/share/tmux/plugins/tmux-resurrect"
 
+  - action: git.clone
+    repo_url: https://github.com/tmux-plugins/tmux-continuum
+    directory: "{{ user.home_dir }}/.local/share/tmux/plugins/tmux-continuum"
+
+  - action: git.clone
+    repo_url: https://github.com/sainnhe/tmux-fzf
+    directory: "{{ user.home_dir }}/.local/share/tmux/plugins/tmux-fzf"
+
+  - action: git.clone
+    repo_url: https://github.com/omerxx/tmux-sessionx
+    directory: "{{ user.home_dir }}/.local/share/tmux/plugins/tmux-sessionx"
+    
