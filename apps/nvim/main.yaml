@@ -69,11 +69,6 @@ actions:
     from: plugins/gitsigns.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/plugins/gitsigns.lua"
 
-  # jump
-  # - action: file.copy
-  #   from: plugins/harpoon.lua
-  #   to: "{{ user.home_dir }}/.config/nvim/lua/plugins/harpoon.lua"
-
   # parsing / syntax highlighting
   - action: file.copy
     from: plugins/treesitter.lua
