@@ -30,7 +30,7 @@ end
 require("lazy").setup({
     spec = "plugins",
     defaults = { lazy = true },
-    checker = { enabled = true },
+    checker = { enabled = true, notify = false },
     change_detection = { notify = false },
     performance = {
         rtp = {
