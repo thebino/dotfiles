@@ -42,6 +42,24 @@ vim.opt.splitbelow = true -- split horizontal
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
 
+-- floats without an explicit border (lsp hover, code actions, diagnostic
+-- popups) pick this up; telescope, which-key and cmp draw their own
+vim.o.winborder = "rounded"
+
+-- diagnostics
+vim.diagnostic.config({
+  severity_sort = true,       -- errors before warnings before hints
+  underline = true,
+  update_in_insert = false,   -- don't churn while typing
+  signs = true,
+  virtual_text = { spacing = 2, prefix = "●" },
+  float = { source = true },  -- name the server that reported it
+})
+
+-- spell checking (dictionaries live in ~/.config/nvim/spell/)
+vim.opt.spelllang = { "de", "en" }
+vim.opt.spelloptions:append("camel") -- treat camelCase parts as separate words
+
 -- additionals
 vim.opt.iskeyword:append("-") -- consider "string-string" as whole word
 vim.opt.confirm = true -- Confirm to save changes before exiting modified buffer
