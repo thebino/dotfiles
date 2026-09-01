@@ -1,22 +1,24 @@
--- Install lazy.vim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+-- Plugins are managed by the built-in package manager `vim.pack` (Neovim 0.12+).
+-- `lua/plugins.lua` declares every plugin in a single `vim.pack.add()` call and
+-- configures them right away; there is no lazy loading.
+-- See `lua/config/pack.lua` for update/remove commands.
+
+-- system-wide plugins (linux packaging puts runtime files here)
+if vim.uv.fs_stat("/usr/lib/nvim") then
+    vim.opt.rtp:append("/usr/lib/nvim")
 end
-vim.opt.rtp:prepend(lazypath)
 
+-- disable unused built-in plugins
+vim.g.loaded_gzip = 1
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_tohtml = 1
+vim.g.loaded_tutor_mode_plugin = 1
+vim.g.loaded_zipPlugin = 1
 
--- Unicode has variants of the same glyph in multiple tables. Early pictographic symbols are an example
--- of them being duplicated in the emoji list. (think: b&w smiley face vs full-color version.) Appending
--- this codepoint will cause the previous character to always be selected from the emoji table.
-local force_emoji = '\u{FE0F}'
+-- must come before any `vim.pack.add()` so build hooks fire on first install
+require("config.pack")
 
 -- require("config.abbreviations")
 require("config.autocmds")
@@ -24,42 +26,15 @@ require("config.keymaps")
 require("config.options")
 
 if vim.lsp.inlay_hint then
-  vim.lsp.inlay_hint.enable(true, { 0 })
+    vim.lsp.inlay_hint.enable(true, { 0 })
 end
 
-require("lazy").setup({
-    spec = "plugins",
-    defaults = { lazy = true },
-    checker = { enabled = true, notify = false },
-    change_detection = { notify = false },
-    performance = {
-        rtp = {
-            paths = { "/usr/lib/nvim" },
-            disabled_plugins = {
-                "gzip",
-                "netrwPlugin",
-                "tarPlugin",
-                "tohtml",
-                "tutor",
-                "zipPlugin",
-            }
-        },
-    },
-    ui = {
-        icons = {
-            cmd = "⌘" .. force_emoji,
-            config = "🛠" .. force_emoji,
-            event = "📅",
-            ft = "📂",
-            init = "⚙" .. force_emoji,
-            keys = "🗝" .. force_emoji,
-            plugin = "🔌",
-            runtime = "💻" .. force_emoji,
-            source = "📄",
-            start = "🚀",
-            task = "📌",
-            lazy = "💤 ",
-        },
-        border = "rounded",
-    }
-})
+-- every plugin and its configuration lives in `lua/plugins.lua`
+local ok, err = pcall(require, "plugins")
+if not ok then
+    -- reported after startup: notifications raised while the config is still
+    -- being sourced scroll past before the UI can show them
+    vim.schedule(function()
+        vim.notify("failed to load plugins: " .. err, vim.log.levels.ERROR)
+    end)
+end
