@@ -1,8 +1,0 @@
-{
-    "underline": {
-        "prefix": ["underline", "\\underline", "__"],
-        "body": "\\underline{${1:${TM_SELECTED_TEXT:text}}}",
-        "description": "Underline text"
-    },
-}
-

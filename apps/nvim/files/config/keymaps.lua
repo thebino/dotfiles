@@ -8,12 +8,6 @@ vim.keymap.set({ "n", "x" }, " ", "<nop>")
 -- pretty format json file
 vim.keymap.set("n", "<leader>gp", "<cmd>%!jq .<cr>", { desc = "pretty json" })
 
--- Move to window using the <ctrl> hjkl keys
--- vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
--- vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
--- vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
--- vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
-
 -- Move Lines
 vim.keymap.set("n", "<C-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 vim.keymap.set("n", "<C-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
@@ -24,23 +18,24 @@ vim.keymap.set("v", "<C-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- buffers
 vim.keymap.set("n", "<leader>bc", "<cmd>bprevious<bar>bd #<cr>", { desc = "Close buffer" })
--- vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
--- vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
-
 
 -- open quickfix list with diagnostics
-
--- Clear search with <esc>
--- vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+vim.keymap.set("n", "<leader>qf", function()
+	vim.diagnostic.setqflist({ open = true })
+end, { desc = "Diagnostics to quickfix" })
 
 -- better indenting
-vim.keymap.set("v", "<", "<gv", { desc = "increase indenting" })
-vim.keymap.set("v", ">", ">gv", { desc = "decrease indenting" })
+vim.keymap.set("v", "<", "<gv", { desc = "decrease indenting" })
+vim.keymap.set("v", ">", ">gv", { desc = "increase indenting" })
 
 -- diagnostic
 local diagnostic_goto = function(next, severity)
+	local count = next and 1 or -1
+	severity = vim.diagnostic.severity[severity]
+	return function()
+		vim.diagnostic.jump({ count = count, severity = severity })
+	end
 end
--- vim.keymap.set("n", "<leader>ed", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 vim.keymap.set("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
 vim.keymap.set("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
 vim.keymap.set("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
@@ -48,8 +43,6 @@ vim.keymap.set("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning
 
 -- quit
 vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
-
--- highlights under cursor
 
 -- windows
 vim.keymap.set("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
