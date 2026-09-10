@@ -75,30 +75,19 @@ sudo mv "nvim-linux-$ARCH" /opt/nvim
 ```
 
 ## Plugins
-### Ui
- - **Theme** [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
- - **Syntax Highlighting** [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
- - **Git blame** inline [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
- - **Keybingings popup** [which-key.nvim](https://github.com/folke/which-key.nvim) `<leader>` shows popup with keybingings
-
-### Typing
- - **Autocompletion** [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) auto-completion `_s` shows popup with snippets
- - **Snippets** [LuaSnip](https://github.com/L3MON4D3/LuaSnip) provides
-   automatic expansion for templates
-
-### Files
-   - **Fuzy Finder** [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) `_ff` for files, `_fg` for live grep
- - **File Browser** [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim) `_fe` open/close, `_e` focus
-
-### Languages
- - **Rust** [crates.nvim](https://github.com/Saecki/crates.nvim) Manage crates.io dependencies
- - **Latex** [vimtex](https://github.com/lervag/vimtex) Software system for typesetting `_ll` start compile, `_lv` view pdf 
-
+ 1. **Syntax Highlighting** [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+ 2. **Autocompletion** [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) auto-completion `_s` shows popup with snippets
+ 3. **Fuzy Finder** [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) `_ff` for files, `_fg` for live grep
+ 4. **File Browser** [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) `_e` open/close
+ 5. **Git blame** inline [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+ 6. **Rust** [crates.nvim](https://github.com/Saecki/crates.nvim) Manage crates.io dependencies
+ 7. **Latex** [vimtex](https://github.com/lervag/vimtex) Software system for typesetting `,ll` start compile, `,lv` view pdf 
+ 8. **Cursor** [conform.nvim](https://github.com/stevearc/conform.nvim) Animated cursor effect
 
 ## Minimal
 ~/.config/nvim/init.vim
 ```
-colorscheme slate
+colorscheme habamax
 set termguicolors
 set number relativenumber
 set scrolloff=8

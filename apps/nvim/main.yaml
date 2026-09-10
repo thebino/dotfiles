@@ -7,8 +7,6 @@ actions:
       - stylua
       - taplo
       - yamlfmt
-
-
   # nuke defaults
   - action: command.run
     where: os.name == "linux" || os.name == "macos"
@@ -16,37 +14,10 @@ actions:
     args:
       - "-c"
       - "rm -rf {{ user.home_dir }}/.config/nvim {{ user.home_dir }}/.local/share/nvim {{ user.home_dir }}/.local/state/nvim"
-
   # init
   - action: file.copy
     from: init.lua
     to: "{{ user.home_dir }}/.config/nvim/init.lua"
-
-    
-  # custom snippets
-  - action: directory.copy
-    from: snippets
-    to: "{{ user.home_dir }}/.config/nvim"
-
-
-
-  # copy spell check files
-  # source: https://ftp.nluug.nl/pub/vim/runtime/spell/
-  - action: file.copy
-    from: spell/de.utf-8.spl
-    to: "{{ user.home_dir }}/.config/nvim/spell/de.utf-8.spl"
-
-  - action: file.copy
-    from: spell/de.utf-8.sug
-    to: "{{ user.home_dir }}/.config/nvim/spell/de.utf-8.sug"
-
-
-
-  # plugin manager helpers (vim.pack)
-  - action: file.copy
-    from: config/pack.lua
-    to: "{{ user.home_dir }}/.config/nvim/lua/config/pack.lua"
-
   # autocmds
   - action: file.copy
     from: config/autocmds.lua
@@ -59,9 +30,6 @@ actions:
   - action: file.copy
     from: config/options.lua
     to: "{{ user.home_dir }}/.config/nvim/lua/config/options.lua"
-
-
-
   # plugins and their configuration
   - action: file.copy
     from: plugins.lua

@@ -1,34 +1,16 @@
--- Every plugin this config uses, installed by the built-in |vim.pack|.
--- See `lua/config/pack.lua` for the update/remove commands and the cleanup
--- that runs before the first install.
-
-local pack = require("config.pack")
-
--- vimtex is configured through global variables, which have to be set before
--- its `plugin/` files are sourced (which happens right after `init.lua`).
-vim.g.vimtex_view_method = "sioyek"
-vim.g.vimtex_compiler_progname = "latexmk"
-
--- One `add()` call means one install batch: everything clones in parallel and
--- the progress counter runs 1..n once, instead of restarting per module.
-pack.add({
-	-- colorscheme
-	"https://github.com/folke/tokyonight.nvim",
-
+-- plugins & dependencies (vim.pack resolves no deps)
+vim.pack.add({
 	-- parser generator: syntax highlighting and indentation
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 
-	-- completion engine, its sources and the snippet engine behind them
+	-- completion engine and its sources
 	"https://github.com/hrsh7th/nvim-cmp", -- completion engine
-	"https://github.com/hrsh7th/cmp-nvim-lsp", -- (dep) cmp source: lsp + client capabilities
-	"https://github.com/lukas-reineke/cmp-rg", -- (dep) cmp source: ripgrep
-	"https://github.com/L3MON4D3/LuaSnip", -- snippet engine, loads ~/.config/nvim/snippets
-	"https://github.com/saadparwaiz1/cmp_luasnip", -- (dep) cmp source: LuaSnip
-	"https://github.com/rafamadriz/friendly-snippets", -- (dep) community snippet collection for LuaSnip
+	"https://github.com/hrsh7th/cmp-nvim-lsp", -- (dep)
+	"https://github.com/lukas-reineke/cmp-rg", -- (dep)
 
 	-- fuzzy finder over files, buffers, marks, grep and lsp results
 	"https://github.com/nvim-telescope/telescope.nvim",
-	"https://github.com/nvim-lua/plenary.nvim", -- (dep) lua stdlib, also used by crates.nvim
+	"https://github.com/nvim-lua/plenary.nvim", -- (dep)
 
 	-- file explorer sidebar
 	"https://github.com/nvim-tree/nvim-tree.lua",
@@ -36,10 +18,7 @@ pack.add({
 	-- git status in the sign column and in-line blame
 	"https://github.com/lewis6991/gitsigns.nvim",
 
-	-- pop-up listing the mappings behind a prefix key
-	"https://github.com/folke/which-key.nvim",
-
-	-- one icon set for which-key, the file tree and the completion menu
+	-- one icon set for the file tree and the completion menu
 	"https://github.com/echasnovski/mini.icons",
 
 	-- rust: crate versions and actions inside Cargo.toml
@@ -50,18 +29,14 @@ pack.add({
 
 	-- runs external formatters on save, falls back to the language server
 	"https://github.com/stevearc/conform.nvim",
-})
 
--- ---------------------------------------------------------------- colorscheme
-vim.cmd.colorscheme("tokyonight-night")
+	-- animated cursor with a smear effect
+	"https://github.com/sphamba/smear-cursor.nvim",
+}, { confirm = false }) -- install without the y/N prompt
 
--- ---------------------------------------------------------------------- icons
 require("mini.icons").setup()
--- answers as `nvim-web-devicons` so nvim-tree finds the icons it asks for
 MiniIcons.mock_nvim_web_devicons()
 
--- ----------------------------------------------------------------- treesitter
--- nvim-treesitter `main` only installs parsers, starting them is up to us
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("treesitter_start", { clear = true }),
 	callback = function(ev)
@@ -72,51 +47,29 @@ vim.api.nvim_create_autocmd("FileType", {
 
 require("nvim-treesitter")
 	.install({
-		"arduino",
-		"c",
-		"cpp",
+		-- "cpp",
 		"dockerfile",
 		"fsh",
 		"helm",
 		"json",
 		"latex",
-		"lua",
 		"markdown",
 		"regex",
 		"rust",
-		"sql",
+		-- "sql",
 		"ssh_config",
 		"terraform",
 		"toml",
 		"yaml",
 	})
-	:wait(300000) -- wait max. 5 minutes
+	:wait(300000) -- blocks first run only; a no-op once parsers are installed
 
--- parsers compiled just now are invisible to the cached runtime path scan,
--- which would leave the first session after an install without highlighting
-vim.o.runtimepath = vim.o.runtimepath
-
--- ----------------------------------------------------------------- completion
 local cmp = require("cmp")
-local luasnip = require("luasnip")
-
--- Load friendly snippets
-require("luasnip.loaders.from_vscode").lazy_load()
--- Load ~/.config/nvim/snippets/
-require("luasnip.loaders.from_vscode").lazy_load({
-	paths = { vim.fn.stdpath("config") .. "/snippets" },
-})
-
-luasnip.config.setup({
-	history = true,
-	updateevents = "TextChanged,TextChangedI",
-	enable_autosnippets = true,
-})
-
 cmp.setup({
 	snippet = {
+		-- vim.snippet is built in since 0.10, no snippet plugin needed
 		expand = function(args)
-			luasnip.lsp_expand(args.body)
+			vim.snippet.expand(args.body)
 		end,
 	},
 	performance = {
@@ -136,7 +89,6 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
 	}),
 	sources = {
-		{ name = "luasnip", keyword_length = 1, priority_weight = 10, option = { show_autosnippets = true } }, -- L3MON4D3/LuaSnip  &  saadparwaiz1/cmp_luasnip
 		{ name = "nvim_lsp", priority_weight = 4 }, -- hrsh7th/nvim-cmp
 		{ name = "rg", keyword_length = 5, priority_weight = 1 }, -- lukas-reineke/cmp-rg
 	},
@@ -152,15 +104,8 @@ cmp.setup({
 	},
 })
 
--- ------------------------------------------------------------------------ lsp
--- No nvim-lspconfig: the server below is configured by hand, and everything
--- needed for that is core since neovim 0.11 (|vim.lsp.config|).
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- `rust-analyzer` on $PATH is a rustup shim resolving against the *default*
--- toolchain. With a custom default (like `esp`) it exits with "not installed
--- for the custom toolchain", the server never attaches, and every LspAttach
--- mapping silently goes missing. Use the stable toolchain's binary directly.
 local function rust_analyzer_cmd()
 	local stable =
 		vim.fn.glob(vim.fs.joinpath(vim.env.HOME, ".rustup/toolchains/stable-*/bin/rust-analyzer"), false, true)
@@ -174,61 +119,13 @@ vim.lsp.config("rust_analyzer", {
 	capabilities = capabilities,
 	settings = {
 		["rust-analyzer"] = {
-			cargo = { targetDir = true, allFeatures = true },
+			-- keeps cargo check off the shared Cargo.lock
+			cargo = { targetDir = true },
 			diagnostics = { disabled = { "macro-error" } },
-			procMacro = { enable = true },
-			checkOnSave = true,
-			check = {
-				allTargets = true,
-			},
-			inlayHints = {
-				enable = true,
-				showParameterNames = true,
-				parameterHintsPrefix = "<- ",
-				otherHintsPrefix = "=> ",
-			},
 		},
 	},
 })
 vim.lsp.enable("rust_analyzer")
-
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(args)
-		local opts = { buffer = args.buf, remap = false }
-
-		-- vim.keymap.set(
-		-- 	"n",
-		-- 	"<leader>gd",
-		-- 	"<cmd>Telescope lsp_definitions<cr>",
-		-- 	vim.tbl_extend("force", opts, { desc = "Goto definition" })
-		-- )
-		-- vim.keymap.set(
-		-- 	"n",
-		-- 	"<leader>grr",
-		-- 	"<cmd>Telescope lsp_references<cr>",
-		-- 	vim.tbl_extend("force", opts, { desc = "Goto references" })
-		-- )
-		-- vim.keymap.set(
-		-- 	"n",
-		-- 	"<leader>gD",
-		-- 	"<cmd>Telescope diagnostics<cr>",
-		-- 	vim.tbl_extend("force", opts, { desc = "Diagnostics" })
-		-- )
-		-- vim.keymap.set("n", "<leader>gk", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Code hover" }))
-		-- vim.keymap.set(
-		-- 	"n",
-		-- 	"<leader>gg",
-		-- 	vim.lsp.buf.rename,
-		-- 	vim.tbl_extend("force", opts, { desc = "Rename reference" })
-		-- )
-		-- vim.keymap.set(
-		-- 	"n",
-		-- 	"<leader>a",
-		-- 	vim.lsp.buf.code_action,
-		-- 	vim.tbl_extend("force", opts, { desc = "Code action" })
-		-- )
-	end,
-})
 
 -- --------------------------------------------------------------------- finder
 require("telescope").setup({
@@ -249,123 +146,32 @@ vim.keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Previ
 vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live Grep" })
 vim.keymap.set("n", "<leader>gl", "<cmd>Telescope git_files<cr>", { desc = "Git Files" })
 vim.keymap.set("n", "<leader>m", "<cmd>Telescope marks<cr>", { desc = "Show marks" })
-
--- --------------------------------------------------------------- file browser
--- change color for arrows in tree to light blue
-vim.cmd.highlight("NvimTreeFolderArrowClosed guifg=#3FC5FF")
-vim.cmd.highlight("NvimTreeFolderArrowOpen guifg=#3FC5FF")
+vim.keymap.set("n", "<leader>?", "<cmd>Telescope keymaps<cr>", { desc = "Search keymaps" })
 
 require("nvim-tree").setup({
-	view = {
-		number = true,
-		relativenumber = true,
-		signcolumn = "auto",
-		width = {
-			min = 40,
-		},
-	},
-	renderer = {
-		highlight_git = "all",
-		highlight_opened_files = "name",
-		highlight_diagnostics = "name",
-		hidden_display = "all",
-		icons = {
-			git_placement = "signcolumn",
-			bookmarks_placement = "before",
-			symlink_arrow = " -> ",
-			show = {
-				folder = false,
-				folder_arrow = false,
-			},
-			glyphs = {
-				git = {
-					unstaged = "×",
-					staged = "",
-					unmerged = "󰧾",
-					untracked = "",
-					renamed = "",
-					deleted = "",
-					ignored = "∅",
-				},
-			},
-		},
-		indent_markers = {
-			enable = true,
-		},
-	},
 	hijack_directories = { enable = false },
-	diagnostics = {
-		enable = true,
-		show_on_dirs = true,
-		show_on_open_dirs = false,
-	},
-	modified = {
-		enable = true,
-	},
-	ui = {
-		confirm = {
-			default_yes = true,
-		},
-	},
 })
 
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "File explorer" })
 
--- ------------------------------------------------------------------ git signs
 require("gitsigns").setup({
-	signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-	numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
-	linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
-	word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
-	current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
-	current_line_blame_opts = {
-		virt_text = true,
-		virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
-		delay = 1000,
-		ignore_whitespace = false,
-		virt_text_priority = 100,
-	},
+	-- everything else gitsigns already defaults to; blame is the one opt-in
+	current_line_blame = true,
 	current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
 })
 
--- ------------------------------------------------------------------ which-key
-vim.o.timeout = true
-vim.o.timeoutlen = 300
-
-require("which-key").add({
-	-- https://www.nerdfonts.com/cheat-sheet
-	{ "<leader>b", group = "Buffer", icon = "󰕸" },
-	{ "<leader>f", group = "File", icon = "󰈔" },
-	{ "<leader>l", group = "Latex (use ,l)", icon = "" },
-	{ "<leader>c", group = "Code", icon = "󰅩" },
-	{ "<leader>g", group = "Goto", icon = "󱣱" },
-	{ "<leader>q", group = "Quit", icon = "󰩈" },
-	{ "<leader>w", group = "Window", icon = "" },
-	{ "<leader> ", group = "Grep", icon = "󱝩" },
-	-- { "<leader>u", group = "Ui", icon = "󱥈" },
-	-- { "<leader>s", group = "Snippets", icon = "" },
-	-- { "<leader>t", group = "Testing", icon = "󰱑" },
-})
-
--- ----------------------------------------------------------------------- rust
--- crates.nvim attaches itself to Cargo.toml buffers
 require("crates").setup({
+	-- in-process language server; every one of these defaults to false
 	lsp = {
 		enabled = true,
-		actions = true,
+		actions = true, -- codeActionProvider
 		completion = true,
 		hover = true,
 	},
 })
 
--- ---------------------------------------------------------------------- latex
--- vim.keymap.set("n", "<leader>ll", "<cmd>VimtexCompile<CR>", { desc = "Start continuous compilation" })
--- vim.keymap.set("n", "<leader>lx", "<cmd>VimtexStop<CR>", { desc = "Stop continuous compilation" })
--- vim.keymap.set("n", "<leader>lv", "<cmd>VimtexView<CR>", { desc = "View latex" })
--- vim.keymap.set("n", "<leader>lt", "<cmd>VimtexTocToggle<CR>", { desc = "TOC latex" })
--- vim.keymap.set("n", "<leader>ls", "<cmd>VimtexStatus<CR>", { desc = "Show latex status" })
+require("smear_cursor").setup({})
 
--- ----------------------------------------------------------------- formatting
 require("conform").setup({
 	formatters_by_ft = {
 		rust = { "rustfmt" },
@@ -376,22 +182,10 @@ require("conform").setup({
 		yaml = { "yamlfmt" },
 	},
 	-- fall back to the language server when no formatter above is installed
-	default_format_opts = {
-		lsp_format = "fallback",
-	},
-	format_on_save = function(bufnr)
-		if vim.b[bufnr].autoformat == false or vim.g.autoformat == false then
-			return
-		end
-		return { timeout_ms = 3000 }
-	end,
+	default_format_opts = { lsp_format = "fallback" },
+	format_on_save = { timeout_ms = 3000 },
 })
 
 vim.keymap.set({ "n", "v" }, "<leader>cf", function()
 	require("conform").format({ async = true })
 end, { desc = "Format buffer" })
-
-vim.keymap.set("n", "<leader>uf", function()
-	vim.g.autoformat = vim.g.autoformat == false
-	vim.notify("format on save " .. (vim.g.autoformat == false and "off" or "on"))
-end, { desc = "Toggle format on save" })
