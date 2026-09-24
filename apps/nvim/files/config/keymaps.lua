@@ -8,6 +8,14 @@ vim.keymap.set({ "n", "x" }, " ", "<nop>")
 -- pretty format json file
 vim.keymap.set("n", "<leader>gp", "<cmd>%!jq .<cr>", { desc = "pretty json" })
 
+-- pretty format yaml file, keeping single blank lines
+vim.keymap.set(
+	"n",
+	"<leader>gy",
+	"<cmd>%!yamlfmt -formatter retain_line_breaks_single=true -in<cr>",
+	{ desc = "pretty yaml" }
+)
+
 -- Move Lines
 vim.keymap.set("n", "<C-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 vim.keymap.set("n", "<C-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })

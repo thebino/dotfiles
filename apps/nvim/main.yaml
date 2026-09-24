@@ -1,11 +1,12 @@
+depends:
+  - apps.jq
+
 actions:
   - action: package.install
     list:
       - neovim
       - tree-sitter-cli
-      # formatters driven by conform.nvim
-      - stylua
-      - taplo
+      # standalone formatter, run from the cli
       - yamlfmt
   # nuke defaults
   - action: command.run

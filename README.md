@@ -82,7 +82,7 @@ sudo mv "nvim-linux-$ARCH" /opt/nvim
  5. **Git blame** inline [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
  6. **Rust** [crates.nvim](https://github.com/Saecki/crates.nvim) Manage crates.io dependencies
  7. **Latex** [vimtex](https://github.com/lervag/vimtex) Software system for typesetting `,ll` start compile, `,lv` view pdf 
- 8. **Cursor** [conform.nvim](https://github.com/stevearc/conform.nvim) Animated cursor effect
+ 8. **Cursor** [smear-cursor.nvim](https://github.com/sphamba/smear-cursor.nvim) Animated cursor effect
 
 ## Minimal
 ~/.config/nvim/init.vim

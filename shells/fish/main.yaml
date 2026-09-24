@@ -40,6 +40,6 @@ actions:
       - "--decrypt"
       - "{{ user.home_dir }}/.config/fish/credentials_encrypted.asc"
   - action: command.run
-      command: rm
-      args:
-        - "{{ user.home_dir }}/.config/fish/credentials_encrypted.asc"
+    command: rm
+    args:
+      - "{{ user.home_dir }}/.config/fish/credentials_encrypted.asc"

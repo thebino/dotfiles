@@ -27,9 +27,6 @@ vim.pack.add({
 	-- latex: compile, view and navigate documents
 	"https://github.com/lervag/vimtex",
 
-	-- runs external formatters on save, falls back to the language server
-	"https://github.com/stevearc/conform.nvim",
-
 	-- animated cursor with a smear effect
 	"https://github.com/sphamba/smear-cursor.nvim",
 }, { confirm = false }) -- install without the y/N prompt
@@ -171,21 +168,3 @@ require("crates").setup({
 })
 
 require("smear_cursor").setup({})
-
-require("conform").setup({
-	formatters_by_ft = {
-		rust = { "rustfmt" },
-		lua = { "stylua" },
-		json = { "jq" },
-		toml = { "taplo" },
-		tex = { "latexindent" },
-		yaml = { "yamlfmt" },
-	},
-	-- fall back to the language server when no formatter above is installed
-	default_format_opts = { lsp_format = "fallback" },
-	format_on_save = { timeout_ms = 3000 },
-})
-
-vim.keymap.set({ "n", "v" }, "<leader>cf", function()
-	require("conform").format({ async = true })
-end, { desc = "Format buffer" })
