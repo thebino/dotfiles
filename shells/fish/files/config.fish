@@ -36,8 +36,8 @@ abbr --add ducks "du -cks -- * | sort -rn | head"
 # Port Forwarding
 #
 # used when no port forwarding is possible on the router
-# forward 'localhost:8080' to '172.22.5.1:9092'
-abbr --add forward "ssh home -L localhost:9090:172.22.5.1:8989"
+# example: forward localhost:9090 to 192.168.1.2:8989 through the 'home' host
+abbr --add forward "ssh home -L localhost:9090:192.168.1.2:8989"
 
 
 # Reverse Port Forwarding
@@ -69,6 +69,9 @@ abbr --add socks "ssh home -fNC -D 9090"
 abbr --add tunnel "ssh home -fNC -R 9000:localhost:80"
 
 
+
+# decrypted during provisioning; absent on machines that skipped that step
+test -f ~/.config/fish/credentials.fish; and source ~/.config/fish/credentials.fish
 
 source ~/.config/fish/git.fish
 source ~/.config/fish/path.fish

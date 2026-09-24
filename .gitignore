@@ -1,13 +1,12 @@
 .DS_Store
 
 # Plaintext output of the provisioning decrypt steps. Manifests write these
-# to $HOME, but a stray `comtrya apply` from the repo root has put one here
-# before (message.txt, committed in 920e52d).
+# to $HOME, but a stray `comtrya apply` from the repo root has landed one here
+# before, so keep the backstop.
 message.txt
 *.decrypted
 
 credentials.toml
-credentials.zsh
 credentials.fish
 
 # rustic configs carry backup repository passwords and AWS credentials

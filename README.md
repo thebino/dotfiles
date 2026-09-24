@@ -48,14 +48,19 @@ export GPG_TTY=$(tty)
 ## 🔐 Encryption
 Instead of the build-in encryption with [age](https://crates.io/crates/age) some configuration files are encrypted using GPG and are decrypted during the provisioning.
 
+Every blob in this repository is encrypted to the **ML-KEM-1024 + X448** subkey `91874374077F0523`.
+This requires **GnuPG >= 2.5**: the subkey is a v5 packet
+
 Encryption
 ```shell
-$ gpg --output input.gpg --encrypt --armor input.txt
+$ gpg --require-pqc-encryption --encrypt --armor \
+      --recipient '91874374077F0523!' \
+      --output input_encrypted.asc input.txt
 ```
 
 Decryption
 ```shell
-$ gpg --output output.txt --decrypt input.gpg
+$ gpg --output output.txt --decrypt input_encrypted.asc
 ```
 
 
