@@ -22,6 +22,3 @@ export GRADLE_HOME=$HOME/.gradle/wrapper/dists/gradle-8.0-all/a2o1xoguejy6msdh0l
 export PATH=${PATH}:$GRADLE_HOME/bin
 export GRADLE_OPTS="-Dorg.gradle.parallel=true -Dorg.gradle.caching=true -Dorg.gradle.daemon=true -Xmx4096m"
 
-
-# sublime
-export PATH=${PATH}:/Applications/Sublime\ Text.app/Contents/SharedSupport/bin

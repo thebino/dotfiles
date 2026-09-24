@@ -31,7 +31,6 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh/alias.zsh
 source $HOME/.zsh/android.zsh
 source $HOME/.zsh/colors.zsh
-source $HOME/.zsh/credentials.zsh
 source $HOME/.zsh/env.zsh
 source $HOME/.zsh/history.zsh
 source $HOME/.zsh/java.zsh

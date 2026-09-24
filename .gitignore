@@ -1,0 +1,30 @@
+.DS_Store
+
+# Plaintext output of the provisioning decrypt steps. Manifests write these
+# to $HOME, but a stray `comtrya apply` from the repo root has put one here
+# before (message.txt, committed in 920e52d).
+message.txt
+*.decrypted
+
+credentials.toml
+credentials.zsh
+credentials.fish
+
+# rustic configs carry backup repository passwords and AWS credentials
+nas.toml
+local.toml
+rustic.toml
+
+known_hosts
+
+# SSH private keys, but keep the encrypted artifacts that belong in the repo
+id_*
+!id_*_encrypted.asc
+!id_*_encrypted.gpg
+
+# GPG key backups must never live in the repo -- keep them on offline media.
+# These patterns are a backstop, not the plan.
+privkey*.asc
+*secret*.asc
+otrust.txt
+*.rev

@@ -1,16 +1,11 @@
 depends:
   - apps.gnupg
   - apps.rustup
-
 actions:
-  - action: file.copy
-    from: env
-    to: "{{ user.home_dir }}/.cargo/env"
-
+  # credentials.toml
   - action: file.copy
     from: credentials_encrypted.asc
     to: "{{ user.home_dir }}/.cargo/credentials_encrypted.asc"
-
   - action: command.run
     command: gpg
     args:
@@ -18,12 +13,10 @@ actions:
       - "{{ user.home_dir }}/.cargo/credentials.toml"
       - "--decrypt"
       - "{{ user.home_dir }}/.cargo/credentials_encrypted.asc"
-
   - action: command.run
     command: rm
     args:
       - "{{ user.home_dir }}/.cargo/credentials_encrypted.asc"
-
   - action: command.run
     command: cargo
     args:

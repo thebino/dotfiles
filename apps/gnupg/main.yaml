@@ -1,22 +1,26 @@
 actions:
-  - action: file.copy
-    from: encrypted.gpg
-    to: /tmp/encrypted.gpg
-   
   - action: package.install
     where: os.name == "macos"
     provider: brew
     name: gnupg
-
   - action: package.install
     where: os.name == "linux"
     provider: apt
     name: gnupg
-  
+  # smoke test
+  - action: file.copy
+    from: encrypted.asc
+    to: /tmp/encrypted.asc
   - action: command.run
     command: gpg
     args:
       - "--output"
-      - "message.txt"
+      - "/tmp/gnupg_smoketest.txt"
       - "--decrypt"
-      - "/tmp/encrypted.gpg"
+      - "/tmp/encrypted.asc"
+  - action: command.run
+    command: rm
+    args:
+      - "-f"
+      - "/tmp/encrypted.asc"
+      - "/tmp/gnupg_smoketest.txt"

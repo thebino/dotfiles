@@ -8,43 +8,38 @@ actions:
       - fzf
       - fd
       - bat
-
   # config.fish
   - action: file.copy
     from: config.fish
     to: "{{ user.home_dir }}/.config/fish/config.fish"
-
   # path
   - action: file.copy
     from: path.fish
     to: "{{ user.home_dir }}/.config/fish/path.fish"
-
   # path
   - action: file.copy
     from: git.fish
     to: "{{ user.home_dir }}/.config/fish/git.fish"
-
   # starship config
   - action: file.copy
     from: starship.toml
     to: "{{ user.home_dir }}/.config/starship.toml"
-
   # tokyonight_night theme
   - action: file.copy
     from: tokyonight_night.fish
     to: "{{ user.home_dir }}/.config/fish/tokyonight_night.fish"
-
   # credentials
   - action: file.copy
-    from: credentials.gpg
-    to: "{{ user.home_dir }}/.config/fish/credentials.gpg"
-
+    from: credentials_encrypted.asc
+    to: "{{ user.home_dir }}/.config/fish/credentials_encrypted.asc"
   - action: command.run
     command: gpg
     args:
       - "--output"
-      - "{{ user.home_dir }}/.config/credentials.fish"
+      - "{{ user.home_dir }}/.config/fish/credentials.fish"
       - "--decrypt"
-      - "{{ user.home_dir }}/.config/credentials.gpg"
-
-
+      - "{{ user.home_dir }}/.config/fish/credentials_encrypted.asc"
+  - action: command.run
+      command: rm
+      args:
+        - "{{ user.home_dir }}/.config/fish/credentials_encrypted.asc"

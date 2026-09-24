@@ -5,56 +5,36 @@ actions:
       - "install"
       - "--locked"
       - "rustic-rs"
-
+  # local
   - action: file.copy
-    from: aws_encrypted.gpg
-    to: "{{ user.config_dir }}/rustic/aws_encrypted.gpg"
-
-  - action: command.run
-    command: gpg
-    args:
-      - "--output"
-      - "{{ user.config_dir }}/rustic/aws.toml"
-      - "--decrypt"
-      - "{{ user.config_dir }}/rustic/aws_encrypted.gpg"
-
-
-  - action: file.copy
-    from: local_encrypted.gpg
-    to: "{{ user.config_dir }}/rustic/local_encrypted.gpg"
-
+    from: local_encrypted.asc
+    to: "{{ user.config_dir }}/rustic/local_encrypted.asc"
   - action: command.run
     command: gpg
     args:
       - "--output"
       - "{{ user.config_dir }}/rustic/local.toml"
       - "--decrypt"
-      - "{{ user.config_dir }}/rustic/local_encrypted.gpg"
-
-
+      - "{{ user.config_dir }}/rustic/local_encrypted.asc"
+  # nas
   - action: file.copy
-    from: nas_encrypted.gpg
-    to: "{{ user.config_dir }}/rustic/nas_encrypted.gpg"
-
+    from: nas_encrypted.asc
+    to: "{{ user.config_dir }}/rustic/nas_encrypted.asc"
   - action: command.run
     command: gpg
     args:
       - "--output"
       - "{{ user.config_dir }}/rustic/nas.toml"
       - "--decrypt"
-      - "{{ user.config_dir }}/rustic/nas_encrypted.gpg"
-
-
+      - "{{ user.config_dir }}/rustic/nas_encrypted.asc"
+  # rustic
   - action: file.copy
-    from: rustic_encrypted.gpg
-    to: "{{ user.config_dir }}/rustic/rustic_encrypted.gpg"
-
+    from: rustic_encrypted.asc
+    to: "{{ user.config_dir }}/rustic/rustic_encrypted.asc"
   - action: command.run
     command: gpg
     args:
       - "--output"
       - "{{ user.config_dir }}/rustic/rustic.toml"
       - "--decrypt"
-      - "{{ user.config_dir }}/rustic/rustic_encrypted.gpg"
-
-
+      - "{{ user.config_dir }}/rustic/rustic_encrypted.asc"

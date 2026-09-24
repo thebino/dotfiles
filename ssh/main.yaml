@@ -1,12 +1,10 @@
 depends:
   - apps.gnupg
-
 actions:
   # ~/.ssh/config
   - action: file.copy
     from: config_encrypted.asc
     to: "{{ user.home_dir }}/.ssh/config_encrypted.asc"
-  
   - action: command.run
     command: gpg
     args:
@@ -14,17 +12,14 @@ actions:
       - "{{ user.home_dir }}/.ssh/config"
       - "--decrypt"
       - "{{ user.home_dir }}/.ssh/config_encrypted.asc"
-
   - action: command.run
     command: rm
     args:
       - "{{ user.home_dir }}/.ssh/config_encrypted.asc"
-
   # ~/.ssh/id_github
   - action: file.copy
     from: id_github_encrypted.asc
     to: "{{ user.home_dir }}/.ssh/id_github_encrypted.asc"
-    
   - action: command.run
     command: gpg
     args:
@@ -32,53 +27,14 @@ actions:
       - "{{ user.home_dir }}/.ssh/id_github"
       - "--decrypt"
       - "{{ user.home_dir }}/.ssh/id_github_encrypted.asc"
-
   - action: command.run
     command: rm
     args:
       - "{{ user.home_dir }}/.ssh/id_github_encrypted.asc"
-
-  # ~/.ssh/id_k8
-  - action: file.copy
-    from: id_k8_encrypted.asc
-    to: "{{ user.home_dir }}/.ssh/id_k8_encrypted.asc"
-    
-  - action: command.run
-    command: gpg
-    args:
-      - "--output"
-      - "{{ user.home_dir }}/.ssh/id_k8"
-      - "--decrypt"
-      - "{{ user.home_dir }}/.ssh/id_k8_encrypted.asc"
-
-  - action: command.run
-    command: rm
-    args:
-      - "{{ user.home_dir }}/.ssh/id_k8_encrypted.asc"
-
-  # ~/.ssh/id_gitlab
-  - action: file.copy
-    from: id_gitlab_encrypted.asc
-    to: "{{ user.home_dir }}/.ssh/id_gitlab_encrypted.asc"
-
-  - action: command.run
-    command: gpg
-    args:
-      - "--output"
-      - "{{ user.home_dir }}/.ssh/id_gitlab"
-      - "--decrypt"
-      - "{{ user.home_dir }}/.ssh/id_gitlab_encrypted.asc"
-
-  - action: command.run
-    command: rm
-    args:
-      - "{{ user.home_dir }}/.ssh/id_gitlab_encrypted.asc"
-
   # ~/.ssh/id_gitlab_qm
   - action: file.copy
     from: id_gitlab_qm_encrypted.asc
     to: "{{ user.home_dir }}/.ssh/id_gitlab_qm_encrypted.asc"
-
   - action: command.run
     command: gpg
     args:
@@ -86,17 +42,14 @@ actions:
       - "{{ user.home_dir }}/.ssh/id_gitlab_qm"
       - "--decrypt"
       - "{{ user.home_dir }}/.ssh/id_gitlab_qm_encrypted.asc"
-
   - action: command.run
     command: rm
     args:
       - "{{ user.home_dir }}/.ssh/id_gitlab_qm_encrypted.asc"
-
   # ~/.ssh/known_hosts
   - action: file.copy
     from: known_hosts_encrypted.asc
     to: "{{ user.home_dir }}/.ssh/known_hosts_encrypted.asc"
-
   - action: command.run
     command: gpg
     args:
@@ -104,7 +57,6 @@ actions:
       - "{{ user.home_dir }}/.ssh/known_hosts"
       - "--decrypt"
       - "{{ user.home_dir }}/.ssh/known_hosts_encrypted.asc"
-
   - action: command.run
     command: rm
     args:
