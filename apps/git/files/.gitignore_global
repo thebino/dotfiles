@@ -7,3 +7,6 @@
 Thumbs.db
 .idea
 !.gitkeep
+
+# latex build artifacts (vimtex aux_dir)
+.build/

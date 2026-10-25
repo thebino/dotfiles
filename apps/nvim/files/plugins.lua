@@ -1,3 +1,24 @@
+-- vimtex has no setup(); it reads these globals when the plugin loads, 
+-- so they have to be set before vim.pack.add, not after it
+vim.g.vimtex_view_method = "sioyek"
+
+-- fontspec and any system font require xetex or luatex; pdflatex cannot load them
+vim.g.vimtex_compiler_latexmk_engines = { _ = "-lualatex" }
+vim.g.vimtex_compiler_latexmk = {
+	-- .aux, .fls, .log and .fdb_latexmk go here; vimtex creates the directory and
+	-- passes -emulate_aux, which TeX Live needs since -aux-directory is MiKTeX-only
+	aux_dir = ".build",
+	out_dir = "", -- the pdf itself stays next to the .tex
+	options = {
+		"-synctex=1", -- forward search from nvim into sioyek
+		"-file-line-error",
+		"-interaction=nonstopmode",
+	},
+}
+
+-- warnings alone are noise; the quickfix list still opens on real errors
+vim.g.vimtex_quickfix_open_on_warning = 0
+
 -- plugins & dependencies (vim.pack resolves no deps)
 vim.pack.add({
 	-- parser generator: syntax highlighting and indentation
@@ -19,7 +40,7 @@ vim.pack.add({
 	"https://github.com/lewis6991/gitsigns.nvim",
 
 	-- one icon set for the file tree and the completion menu
-	"https://github.com/echasnovski/mini.icons",
+	"https://github.com/echasnovski/mini.icons", -- (dep)
 
 	-- rust: crate versions and actions inside Cargo.toml
 	"https://github.com/saecki/crates.nvim",

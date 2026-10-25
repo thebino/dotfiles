@@ -7,3 +7,12 @@ actions:
     from: prefs_user.config
     to: "{{ user.config_dir }}/sioyek/prefs_user.config"
  
+
+  # the cask installs an .app bundle, so the binary is not on PATH -- vimtex
+  # looks for a plain "sioyek", and ~/.local/bin is already on PATH
+  - action: command.run
+    where: os.name == "macos"
+    command: sh
+    args:
+      - "-c"
+      - "mkdir -p {{ user.home_dir }}/.local/bin && ln -sf /Applications/sioyek.app/Contents/MacOS/sioyek {{ user.home_dir }}/.local/bin/sioyek"
