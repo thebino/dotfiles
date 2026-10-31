@@ -1,3 +1,5 @@
+depends:
+  - apps.gnupg
 actions:
   - action: command.run
     command: cargo
@@ -8,33 +10,18 @@ actions:
   # local
   - action: file.copy
     from: local_encrypted.asc
-    to: "{{ user.config_dir }}/rustic/local_encrypted.asc"
-  - action: command.run
-    command: gpg
-    args:
-      - "--output"
-      - "{{ user.config_dir }}/rustic/local.toml"
-      - "--decrypt"
-      - "{{ user.config_dir }}/rustic/local_encrypted.asc"
-  # nas
+    to: "{{ user.config_dir }}/rustic/local.toml"
+    chmod: 600
+    process_with: [gpg, --quiet, --decrypt]
+    # nas
   - action: file.copy
     from: nas_encrypted.asc
-    to: "{{ user.config_dir }}/rustic/nas_encrypted.asc"
-  - action: command.run
-    command: gpg
-    args:
-      - "--output"
-      - "{{ user.config_dir }}/rustic/nas.toml"
-      - "--decrypt"
-      - "{{ user.config_dir }}/rustic/nas_encrypted.asc"
+    to: "{{ user.config_dir }}/rustic/nas.toml"
+    chmod: 600
+    process_with: [gpg, --quiet, --decrypt]
   # rustic
   - action: file.copy
     from: rustic_encrypted.asc
-    to: "{{ user.config_dir }}/rustic/rustic_encrypted.asc"
-  - action: command.run
-    command: gpg
-    args:
-      - "--output"
-      - "{{ user.config_dir }}/rustic/rustic.toml"
-      - "--decrypt"
-      - "{{ user.config_dir }}/rustic/rustic_encrypted.asc"
+    to: "{{ user.config_dir }}/rustic/rustic.toml"
+    chmod: 600
+    process_with: [gpg, --quiet, --decrypt]

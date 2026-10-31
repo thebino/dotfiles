@@ -31,15 +31,6 @@ actions:
   # credentials
   - action: file.copy
     from: credentials_encrypted.asc
-    to: "{{ user.home_dir }}/.config/fish/credentials_encrypted.asc"
-  - action: command.run
-    command: gpg
-    args:
-      - "--output"
-      - "{{ user.home_dir }}/.config/fish/credentials.fish"
-      - "--decrypt"
-      - "{{ user.home_dir }}/.config/fish/credentials_encrypted.asc"
-  - action: command.run
-    command: rm
-    args:
-      - "{{ user.home_dir }}/.config/fish/credentials_encrypted.asc"
+    to: "{{ user.home_dir }}/.config/fish/credentials.fish"
+    chmod: 600
+    process_with: [gpg, --quiet, --decrypt]

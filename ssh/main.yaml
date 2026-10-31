@@ -4,60 +4,24 @@ actions:
   # ~/.ssh/config
   - action: file.copy
     from: config_encrypted.asc
-    to: "{{ user.home_dir }}/.ssh/config_encrypted.asc"
-  - action: command.run
-    command: gpg
-    args:
-      - "--output"
-      - "{{ user.home_dir }}/.ssh/config"
-      - "--decrypt"
-      - "{{ user.home_dir }}/.ssh/config_encrypted.asc"
-  - action: command.run
-    command: rm
-    args:
-      - "{{ user.home_dir }}/.ssh/config_encrypted.asc"
+    to: "{{ user.home_dir }}/.ssh/config"
+    chmod: 600
+    process_with: [gpg, --quiet, --decrypt]
   # ~/.ssh/id_github
   - action: file.copy
     from: id_github_encrypted.asc
-    to: "{{ user.home_dir }}/.ssh/id_github_encrypted.asc"
-  - action: command.run
-    command: gpg
-    args:
-      - "--output"
-      - "{{ user.home_dir }}/.ssh/id_github"
-      - "--decrypt"
-      - "{{ user.home_dir }}/.ssh/id_github_encrypted.asc"
-  - action: command.run
-    command: rm
-    args:
-      - "{{ user.home_dir }}/.ssh/id_github_encrypted.asc"
+    to: "{{ user.home_dir }}/.ssh/id_github"
+    chmod: 600
+    process_with: [gpg, --quiet, --decrypt]
   # ~/.ssh/id_gitlab_qm
   - action: file.copy
     from: id_gitlab_qm_encrypted.asc
-    to: "{{ user.home_dir }}/.ssh/id_gitlab_qm_encrypted.asc"
-  - action: command.run
-    command: gpg
-    args:
-      - "--output"
-      - "{{ user.home_dir }}/.ssh/id_gitlab_qm"
-      - "--decrypt"
-      - "{{ user.home_dir }}/.ssh/id_gitlab_qm_encrypted.asc"
-  - action: command.run
-    command: rm
-    args:
-      - "{{ user.home_dir }}/.ssh/id_gitlab_qm_encrypted.asc"
+    to: "{{ user.home_dir }}/.ssh/id_gitlab_qm"
+    chmod: 600
+    process_with: [gpg, --quiet, --decrypt]
   # ~/.ssh/known_hosts
   - action: file.copy
     from: known_hosts_encrypted.asc
-    to: "{{ user.home_dir }}/.ssh/known_hosts_encrypted.asc"
-  - action: command.run
-    command: gpg
-    args:
-      - "--output"
-      - "{{ user.home_dir }}/.ssh/known_hosts"
-      - "--decrypt"
-      - "{{ user.home_dir }}/.ssh/known_hosts_encrypted.asc"
-  - action: command.run
-    command: rm
-    args:
-      - "{{ user.home_dir }}/.ssh/known_hosts_encrypted.asc"
+    to: "{{ user.home_dir }}/.ssh/known_hosts"
+    chmod: 644
+    process_with: [gpg, --quiet, --decrypt]

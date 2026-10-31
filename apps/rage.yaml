@@ -4,4 +4,3 @@ actions:
   - action: package.install
     name: rage
     provider: homebrew
-    repository: str4d.xyz/rage

@@ -7,15 +7,10 @@ actions:
       - ninja
       - dfu-util
 
-  - action: directory.create
-    path: "{{ user.home_dir }}/esp"
-
-  - action: command.run
-    dir: "{{ user.home_dir }}/esp"
-    command: git
-    args:
-      - clone
-      - https://github.com/espressif/esp-idf.git
+  # skipped when the clone exists already, instead of failing like `git clone`
+  - action: git.clone
+    repo_url: https://github.com/espressif/esp-idf.git
+    directory: "{{ user.home_dir }}/esp/esp-idf"
 
   - action: command.run
     command: git

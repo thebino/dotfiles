@@ -8,7 +8,7 @@ The files in this repositories are dotfiles and Manifest files managed by [comtr
 ## 🔧 Installation
 To install [comtrya](https://www.comtrya.dev/getting-started/installation) run the installation script or download it from their page.
 ```shell
-curl -fsSL https://get.comtrya.dev | sh
+curl -fsSL https://comtrya.dev/install.sh | sh
 ```
 
 
@@ -68,16 +68,6 @@ $ gpg --output output.txt --decrypt input_encrypted.asc
 ## 📝 neovim
 
 ![nvim screen](docs/editor_nvim.png)
-
-```sh
-sudo apt remove --purge neovim
-ARCH=$(uname -m)
-[ "$ARCH" = "aarch64" ] && ARCH=arm64
-
-curl -LO "https://github.com/neovim/neovim/releases/download/stable/nvim-linux-$ARCH.tar.gz"
-tar xzf "nvim-linux-$ARCH.tar.gz"
-sudo mv "nvim-linux-$ARCH" /opt/nvim
-```
 
 ## Plugins
  1. **Syntax Highlighting** [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)

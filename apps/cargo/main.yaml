@@ -5,18 +5,9 @@ actions:
   # credentials.toml
   - action: file.copy
     from: credentials_encrypted.asc
-    to: "{{ user.home_dir }}/.cargo/credentials_encrypted.asc"
-  - action: command.run
-    command: gpg
-    args:
-      - "--output"
-      - "{{ user.home_dir }}/.cargo/credentials.toml"
-      - "--decrypt"
-      - "{{ user.home_dir }}/.cargo/credentials_encrypted.asc"
-  - action: command.run
-    command: rm
-    args:
-      - "{{ user.home_dir }}/.cargo/credentials_encrypted.asc"
+    to: "{{ user.home_dir }}/.cargo/credentials.toml"
+    chmod: 600
+    process_with: [gpg, --quiet, --decrypt]
   - action: command.run
     command: cargo
     args:

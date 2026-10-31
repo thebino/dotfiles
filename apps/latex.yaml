@@ -10,11 +10,10 @@ actions:
 
   # install mactex from website: https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg
   # https://tex.stackexchange.com/a/642352
-  - action: command.run
-    command: curl
-    args:
-      - "-O"
-      - "https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg"
+  # downloaded once: skipped while the file exists
+  - action: file.download
+    from: https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg
+    to: "{{ user.home_dir }}/Downloads/MacTeX.pkg"
 
   # install basictext from website
   # a small subset of mactext

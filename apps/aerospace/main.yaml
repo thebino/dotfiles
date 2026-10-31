@@ -13,28 +13,22 @@ actions:
     chmod: "644"
 
   # mission control workaround
-  - action: command.run
-    command: defaults
-    args:
-      - "write"
-      - "com.apple.dock"
-      - "expose-group-apps"
-      - "-bool"
-      - "true"
+  - action: macos.default
+    domain: com.apple.dock
+    key: expose-group-apps
+    kind: bool
+    value: "true"
   - action: command.run
     command: killall 
     args:
       - "Dock"
 
   # Disable "Displays have separate Spaces"
-  - action: command.run
-    command: defaults
-    args:
-      - "write"
-      - "com.apple.spaces"
-      - "spans-displays"
-      - "-bool"
-      - "true"
+  - action: macos.default
+    domain: com.apple.spaces
+    key: spans-displays
+    kind: bool
+    value: "true"
   - action: command.run
     command: killall 
     args:

@@ -2,12 +2,34 @@ depends:
   - apps.jq
 
 actions:
+  # macOS
   - action: package.install
+    where: os.name == "macos"
     list:
       - neovim
       - tree-sitter-cli
       # standalone formatter, run from the cli
       - yamlfmt
+
+  # Linux
+  # latest stable release from GitHub
+  - action: file.download
+    where: os.name == "linux"
+    from: "https://github.com/neovim/neovim/releases/download/stable/nvim-linux-{{ os.arch | replace(from='aarch64', to='arm64') }}.tar.gz"
+    to: /opt/nvim-linux.tar.gz
+    privileged: true
+  - action: file.unarchive
+    where: os.name == "linux"
+    from: /opt/nvim-linux.tar.gz
+    to: /opt/nvim
+    force: false
+    privileged: true
+  - action: file.link
+    where: os.name == "linux"
+    source: "/opt/nvim/nvim-linux-{{ os.arch | replace(from='aarch64', to='arm64') }}/bin/nvim"
+    target: /usr/local/bin/nvim
+    privileged: true
+
   # nuke defaults
   - action: command.run
     where: os.name == "linux" || os.name == "macos"
