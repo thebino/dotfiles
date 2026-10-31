@@ -1,5 +1,6 @@
 depends:
   - apps.jq
+  - apps.git
 
 actions:
   # macOS
@@ -12,21 +13,22 @@ actions:
       - yamlfmt
 
   # Linux
-  # latest stable release from GitHub
+  # latest stable release from GitHub, unpacked to its own directory, so a manual
+  # install in /opt/nvim doesn't get in the way. Delete /opt/neovim* to update
   - action: file.download
     where: os.name == "linux"
     from: "https://github.com/neovim/neovim/releases/download/stable/nvim-linux-{{ os.arch | replace(from='aarch64', to='arm64') }}.tar.gz"
-    to: /opt/nvim-linux.tar.gz
+    to: /opt/neovim.tar.gz
     privileged: true
   - action: file.unarchive
     where: os.name == "linux"
-    from: /opt/nvim-linux.tar.gz
-    to: /opt/nvim
+    from: /opt/neovim.tar.gz
+    to: /opt/neovim
     force: false
     privileged: true
   - action: file.link
     where: os.name == "linux"
-    source: "/opt/nvim/nvim-linux-{{ os.arch | replace(from='aarch64', to='arm64') }}/bin/nvim"
+    source: "/opt/neovim/nvim-linux-{{ os.arch | replace(from='aarch64', to='arm64') }}/bin/nvim"
     target: /usr/local/bin/nvim
     privileged: true
 
